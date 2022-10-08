@@ -1,0 +1,95 @@
+:root {
+    --bg-color: hsl(49 37% 94%);
+    --typewriterSpeed: 1s;
+    --typewriterCharacters: 6;
+}
+
+.title {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    position: absolute;
+    top: -2rem;
+    font-size: clamp(2rem, 3vw + 2rem, 8rem);
+    color: White;
+    background: Black;
+    position: relative;
+    font-family: "Source Code Pro", monospace;
+    position: relative;
+    pointer-events: none;
+    width: max-content;
+    text-shadow: none;
+    animation: strokeFade 1s ease 2s forwards, moveUp .8s cubic-bezier(.41, .82, .61, 1.39) 2s forwards;
+}
+
+
+.title::before,
+.title::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.title::before {
+    background: var(--bg-color);
+    background: Black;
+    animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards;
+}
+
+.title::after {
+    width: 0.125em;
+    background: White;
+    animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards,
+        blink 750ms steps(var(--typewriterCharacters)) infinite;
+    text-align: center;
+}
+
+@keyframes moveUp {
+    0% {
+        top: 0;
+    }
+
+    100% {
+        font-size: clamp(1rem, 3vw + 1rem, 3rem);
+        top: -18rem;
+    }
+}
+
+@keyframes typewriter {
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes strokeFade {
+    100% {
+        text-shadow:
+            -1px -1px 0 White,
+            1px -1px 0 White,
+            -1px 1px 0 White,
+            1px 1px 0 White;
+        color: Black;
+    }
+}
+
+@keyframes blink {
+    to {
+        background: transparent;
+    }
+}
+
+@media screen and (max-width: 50em) {
+    @keyframes moveUp {
+        0% {
+            top: 0;
+        }
+
+        100% {
+            font-size: clamp(1rem, 3vw + 1rem, 3rem);
+            top: -20rem;
+        }
+    }
+}
