@@ -1,0 +1,14 @@
+::selection {
+    background-color: Gray;
+}
+
+.home {
+    animation: fadeIn .750s ease-in 2.2s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
+    }
+}
