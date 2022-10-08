@@ -1,0 +1,47 @@
+.projects {
+    position: absolute;
+    inset: 0;
+    color: White;
+    top: 15rem;
+    font-family: Monospace;
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+.langButton {
+    font-size: 3rem;
+    color: White;
+    line-height: 1.5;
+    font-family: Monospace;
+    font-weight: 100;
+    border: none;
+    margin: 0;
+    padding: 0 1rem;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 10rem;
+}
+
+.pythonButton:hover {
+    background-color: hsl(207, 50%, 40%);
+    color: #f6cd42;
+
+}
+
+.jsButton:hover {
+    background-color: hsl(53, 90%, 53%);
+    color: Black;
+
+}
+
+@keyframes jumpIn {
+    0% {
+        transform: translateX(50rem) translateY(-50rem);
+        scale: 0;
+    }
+
+    100% {
+        transform: translateX(0), translateY(0);
+        scale: 1;
+    }
+}
