@@ -8,40 +8,40 @@
     font-weight: 100;
 }
 
-.langButton {
-    font-size: 3rem;
-    color: White;
-    line-height: 1.5;
-    font-family: Monospace;
-    font-weight: 100;
-    border: none;
+.projectList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    position: absolute;
+    inset: 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     margin: 0;
-    padding: 0 1rem;
-    background-color: transparent;
-    cursor: pointer;
-    border-radius: 10rem;
+    padding: 0;
+    top: 15rem;
+    color: White;
+    list-style: none;
+    isolation: isolate;
 }
 
-.pythonButton:hover {
-    background-color: hsl(207, 50%, 40%);
-    color: #f6cd42;
-
+.project {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 20rem;
+    height: 20rem;
+    background-color: #1e1e1e;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem 0.5rem #1e1e1e;
+    /* border: 2px solid red; */
 }
 
-.jsButton:hover {
-    background-color: hsl(53, 90%, 53%);
-    color: Black;
-
-}
-
-@keyframes jumpIn {
-    0% {
-        transform: translateX(50rem) translateY(-50rem);
-        scale: 0;
-    }
-
-    100% {
-        transform: translateX(0), translateY(0);
-        scale: 1;
-    }
+.project img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
 }
