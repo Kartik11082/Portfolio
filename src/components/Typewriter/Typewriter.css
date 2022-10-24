@@ -92,7 +92,7 @@
 
         100% {
             font-size: clamp(1rem, 3vw + 1rem, 3rem);
-            top: -20rem;
+            top: -23rem;
         }
     }
 }

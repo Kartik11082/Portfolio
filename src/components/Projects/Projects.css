@@ -11,7 +11,7 @@ a {
     position: absolute;
     inset: 0;
     color: White;
-    top: 15rem;
+    top: 13rem;
     font-family: Monospace;
     font-size: 3rem;
     font-weight: 100;
@@ -28,7 +28,7 @@ a {
     align-items: center;
     margin: 0;
     padding: 0;
-    top: 15rem;
+    top: 13rem;
     color: White;
     list-style: none;
     isolation: isolate;
@@ -40,12 +40,12 @@ a {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    padding: .5rem .1rem;
+    padding: 0 .6rem;
     width: 20rem;
     height: 15rem;
     background-color: hsla(0, 0%, 12%, 0.2);
     border-radius: 1rem;
-    box-shadow: 0 0 1rem 0.1rem hsla(0, 0%, 12%, 1);
+    box-shadow: 0 0 1rem 0.1rem hsla(0, 0%, 22%, 1);
 }
 
 .jsProjectList {
@@ -66,12 +66,21 @@ a {
 }
 
 @media (max-width: 75em) {
+    .projects {
+        font-size: 1.7rem;
+    }
+
     .project {
+        padding: .5rem;
         width: 15rem;
         flex-grow: 1;
     }
 
     .pythonProjectList {
-        margin-top: 16rem;
+        margin-top: 8rem;
+    }
+
+    .jsProjectList {
+        top: 92rem;
     }
 }

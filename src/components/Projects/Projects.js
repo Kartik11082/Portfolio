@@ -42,6 +42,23 @@ function Projects() {
     <>
       <div className="projects">
         I have made projects in Python and javascript.
+        <br />
+        {/* downward arrow */}
+        <div className="arrow">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="70"
+            height="60"
+            fill="currentColor"
+            className="bi bi-arrow-down"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fillRule="evenodd"
+              d="M8 4.5a.5.5 0 0 1 .5.5v6.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 11.293V4.5a.5.5 0 0 1 .5-.5z"
+            />
+          </svg>
+        </div>
       </div>
       <div>
         <ul className="pythonProjectList">
