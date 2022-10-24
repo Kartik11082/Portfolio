@@ -1,6 +1,7 @@
 import Typewriter from "../Typewriter/Typewriter";
 import Age from "../Age/Age";
 import Projects from "../Projects/Projects";
+import Footer from "../Footer/Footer";
 import "./Home.css";
 
 function Home() {
@@ -10,6 +11,7 @@ function Home() {
       <div className="home">
         <Age />
         <Projects />
+        <Footer />
       </div>
     </>
   );

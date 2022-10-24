@@ -1,0 +1,25 @@
+.footer {
+    position: absolute;
+    font-size: 1.5rem;
+    inset: 0;
+    top: 58rem;
+    color: White;
+    box-shadow: 0 0 1rem 0.1rem hsla(0, 0%, 22%, 1);
+}
+
+a:hover,
+a:focus {
+    color: #fff;
+    outline-style: dotted;
+    border-bottom: 1px solid #fff;
+}
+
+@media screen and (max-width: 75em) {
+    .footer {
+        top: 125rem;
+    }
+
+    .footer a {
+        font-size: 1.5rem;
+    }
+}
