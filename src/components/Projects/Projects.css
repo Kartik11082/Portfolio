@@ -17,7 +17,7 @@ a {
     font-weight: 100;
 }
 
-.projectList {
+.pythonProjectList {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -48,13 +48,30 @@ a {
     box-shadow: 0 0 1rem 0.1rem hsla(0, 0%, 12%, 1);
 }
 
+.jsProjectList {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    top: 40rem;
+    color: White;
+    list-style: none;
+    isolation: isolate;
+}
+
 @media (max-width: 75em) {
     .project {
         width: 15rem;
         flex-grow: 1;
     }
 
-    .projectList {
+    .pythonProjectList {
         margin-top: 16rem;
     }
 }
