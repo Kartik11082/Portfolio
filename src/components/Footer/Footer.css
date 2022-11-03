@@ -7,11 +7,13 @@
     box-shadow: 0 0 1rem 0.1rem hsla(0, 0%, 22%, 1);
 }
 
-a:hover,
+div p a:hover,
 a:focus {
     color: #fff;
-    outline-style: dotted;
-    border-bottom: 1px solid #fff;
+    /* border-bottom: 2px solid #fff; */
+    /* bottom box shadow */
+    /* box-shadow: 0 0 1rem 0.1rem hsla(0, 0%, 22%, 1); */
+    box-shadow: 0 .1rem 0 0 hsl(0, 0%, 100%);
 }
 
 @media screen and (max-width: 75em) {
