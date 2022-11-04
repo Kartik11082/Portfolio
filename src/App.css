@@ -1,6 +1,8 @@
 body {
   margin: 0;
   font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Courier Prime', monospace;
   min-height: 100vh;
   display: grid;
   place-content: center;

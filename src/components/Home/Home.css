@@ -3,6 +3,7 @@
 }
 
 .home {
+    font-family: 'Courier Prime', monospace;
     animation: fadeIn .750s ease-in 2.2s forwards;
     opacity: 0;
 }
