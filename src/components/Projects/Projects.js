@@ -50,7 +50,7 @@ function Projects() {
   return (
     <>
       <div className="projects">
-        I have made projects in Python and javascript.
+        I have made projects in Python and Javascript.
         <br />
         {/* downward arrow */}
         <div className="arrow">
