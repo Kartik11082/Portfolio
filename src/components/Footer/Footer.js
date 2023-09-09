@@ -9,7 +9,8 @@ function Footer() {
           <a
             target={"_blank"}
             rel="noreferrer"
-            href="https://drive.google.com/file/d/1erW4Q1ZO3errJZd6-zA_QSMcUd9VvJw5/view?usp=sharing"
+            href="#"
+            // href="https://drive.google.com/file/d/1dunuKPYd7Ytf166pan8DRrFNqeEWKjaO/view?usp=drive_link"
           >
             Resume
           </a>{" "}
