@@ -1,0 +1,97 @@
+.projects {
+    opacity: 0;
+    animation: fadeIn 2s 3.5s ease-out forwards;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 0rem;
+    grid-row-gap: 1rem;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    /* border: 2px solid red; */
+}
+
+
+.grid-item {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    width: 250px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.grid-item .thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.grid-item:hover .thumbnail {
+    opacity: 0.1;
+}
+
+.grid-item-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+    z-index: 2;
+}
+
+.grid-item:hover .grid-item-info {
+    opacity: 1;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .grid-item {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-item {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+        pointer-events: all;
+    }
+}

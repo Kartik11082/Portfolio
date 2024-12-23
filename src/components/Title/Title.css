@@ -1,0 +1,98 @@
+/* Global */
+html {
+    min-height: 100%;
+}
+
+body {
+    height: calc(100vh - 8em);
+    padding: 4em;
+    color: rgba(255, 255, 255, .75);
+    font-family: 'Courier New', monospace;
+    background-color: rgb(25, 25, 25);
+    margin: 0;
+    text-align: center;
+}
+
+.line-1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 1rem auto;
+    border-right: 2px solid rgba(255, 255, 255, .75);
+    font-size: 200%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typewriter 1.5s steps(14) 1s 1 normal both,
+        blinkTextCursor 500ms steps(14) infinite normal,
+        jumpToTop 1s 3s forwards;
+}
+
+/* Animation */
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 8.5em;
+    }
+}
+
+@keyframes blinkTextCursor {
+    from {
+        border-right-color: rgba(255, 255, 255, .75);
+    }
+
+    to {
+        border-right-color: transparent;
+    }
+}
+
+@keyframes jumpToTop {
+    0% {
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        top: 0;
+        transform: translate(-50%, 0) scale(1.5);
+    }
+}
+
+/* Adjust the animation so the cursor stops after typing ends and move to top is done */
+.line-1.anim-typewriter {
+    animation: typewriter 1.5s steps(14) 1s 1 normal both,
+        blinkTextCursor 2.5s steps(14) 1s forwards,
+        /* Adjust delay for cursor */
+        jumpToTop 1s 3s forwards;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .line-1 {
+        width: 18em;
+        font-size: 150%;
+    }
+
+    .anim-typewriter {
+        animation: typewriter 1.5s steps(14) 1s 1 normal both,
+            blinkTextCursor 500ms steps(14) 1s forwards,
+            jumpToTop 2s 3.5s forwards;
+    }
+}
+
+@media (max-width: 480px) {
+    .line-1 {
+        width: 12em;
+        font-size: 120%;
+    }
+
+    .anim-typewriter {
+        animation: typewriter 1.5s steps(14) 1s 1 normal both,
+            blinkTextCursor 500ms steps(14) 1s forwards,
+            jumpToTop 2s 3.5s forwards;
+    }
+}
