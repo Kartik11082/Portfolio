@@ -1,88 +1,85 @@
 .projects {
+    margin: 2rem;
+    /* border: 2px solid red; */
     opacity: 0;
     animation: fadeIn 2s 3.5s ease-out forwards;
 }
 
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 0rem;
-    grid-row-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
     justify-items: center;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    /* border: 2px solid red; */
 }
-
 
 .grid-item {
-    margin: 0.5rem;
-    padding: 0.5rem;
-    width: 250px;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+    background-color: #fff;
     border-radius: 8px;
-    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 350px;
 }
 
-.grid-item .thumbnail {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.grid-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.thumbnail {
+    height: 200px;
     background-size: cover;
     background-position: center;
-    transition: transform 0.3s ease-in-out;
-}
-
-.grid-item:hover .thumbnail {
-    opacity: 0.1;
+    border-bottom: 4px solid #f5f5f5;
 }
 
 .grid-item-info {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    text-align: center;
-    z-index: 2;
+    padding: 1.5rem;
 }
 
-.grid-item:hover .grid-item-info {
-    opacity: 1;
+h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: #333;
 }
 
-.thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
+p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
 }
 
-@media (max-width: 768px) {
-    .grid-item {
-        width: 120px;
-        height: 120px;
-    }
+.details h4 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
 }
 
-@media (max-width: 480px) {
-    .grid-item {
-        width: 100px;
-        height: 100px;
-    }
+.details ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.details li {
+    font-size: 1rem;
+    color: #666;
+}
+
+.project-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-link:hover {
+    opacity: 0.8;
 }
 
 @keyframes fadeIn {
@@ -93,5 +90,6 @@
     to {
         opacity: 1;
         pointer-events: all;
+        /* Enable interaction after animation completes */
     }
 }

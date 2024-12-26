@@ -12,7 +12,7 @@ function Age() {
 
             // Convert the time difference to years
             const years = timeDifference / (1000 * 60 * 60 * 24 * 365.25);
-            const ageText = `I am a ${years.toFixed(10)} years old programmer who has experience in Python, SQL and AWS`;
+            const ageText = `I am a ${years.toFixed(10)} years old programmer who has experience in `;
 
             setAge(ageText); // Set age text
         };
@@ -27,15 +27,14 @@ function Age() {
         return () => clearInterval(intervalId);
     }, []);
 
-    // Split the text into two parts to display the second part on a new line
-    const splitText = age ? age.split(". ") : ["Calculating..."];
-
     return (
         <div>
             <div className="age" id="age">
-                {splitText[0]}
-                <br />
-                {splitText[1] || ""}
+                {age}
+                <br></br>
+                <span className="python">Python, </span>
+                <span className="sql">SQL</span>, and
+                <span className="aws"> AWS</span>
             </div>
         </div>
     );
