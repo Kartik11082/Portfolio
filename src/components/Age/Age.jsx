@@ -12,7 +12,7 @@ function Age() {
 
             // Convert the time difference to years
             const years = timeDifference / (1000 * 60 * 60 * 24 * 365.25);
-            const ageText = `I am a ${years.toFixed(10)} years old programmer who has experience in `;
+            const ageText = `I am a ${years.toFixed(10)} years old developer who has experience in `;
 
             setAge(ageText); // Set age text
         };
