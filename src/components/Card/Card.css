@@ -3,6 +3,7 @@
     padding: 20px;
     opacity: 0;
     animation: fadeIn 2s 3.5s ease-out forwards;
+    /* border: 2px solid red; */
 }
 
 /* Card styles */
@@ -11,6 +12,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    /* border: 2px solid red; */
 }
 
 .card {
@@ -22,6 +24,7 @@
     position: relative;
     text-align: left;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    /* transition: width .5s ease-in-out, box-shadow 0.2s ease-in-out; */
     /* border: 2px solid red; */
 }
 
@@ -31,7 +34,10 @@
 
 .card:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    /* box-shadow: 0 12px 24px rgba(255, 255, 255, 0.2), 0 4px 8px rgba(255, 255, 255, 0.15); */
+    /* width: 500px; */
+    box-shadow: 0 0 10px rgba(159, 192, 216, 0.3), 0 8px 16px rgba(255, 255, 255, 0.1);
+
 }
 
 .card-image img {

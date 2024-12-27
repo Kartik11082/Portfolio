@@ -45,7 +45,7 @@ const Card = () => {
                 "outcome": "Enhanced movie suggestions, improving user engagement."
             },
             "image": flixtimeImage,
-            "link": "https://example.com/flixTime"
+            "link": "https://github.com/PVPPBoolean/FlixTime"
         },
         {
             "title": "Hand Sign Recognition",
@@ -60,7 +60,7 @@ const Card = () => {
                 "outcome": "Improved communication for the hearing-impaired community."
             },
             "image": handImage,
-            "link": "https://example.com/handSignRecognition"
+            "link": "https://github.com/Kartik11082/TFODApp"
         },
         {
             "title": "Automated Telegram Broadcasting",
@@ -75,7 +75,7 @@ const Card = () => {
                 "outcome": "Increased efficiency in managing large-scale communications."
             },
             "image": telegramImage,
-            "link": "https://example.com/telegramBroadcasting"
+            "link": ""
         },
         {
             "title": "Terminal-based StackOverflow Searcher",
@@ -90,7 +90,7 @@ const Card = () => {
                 "outcome": "Streamlined access to StackOverflow solutions."
             },
             "image": terminalImage,
-            "link": "https://example.com/stackOverflowSearcher"
+            "link": "https://github.com/Kartik11082/TermiStack"
         }
     ]
 
