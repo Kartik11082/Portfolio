@@ -45,7 +45,7 @@ const Card = () => {
                 "outcome": "Enhanced movie suggestions, improving user engagement."
             },
             "image": flixtimeImage,
-            "link": "https://github.com/PVPPBoolean/FlixTime"
+            "link": "https://flix-time-three.vercel.app/"
         },
         {
             "title": "Hand Sign Recognition",
