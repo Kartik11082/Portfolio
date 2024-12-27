@@ -8,7 +8,7 @@ const Footer = () => {
                 <ul className="footer-links">
                     <li>
                         <a
-                            href="mailto:kartik.karkera@utdallas.edu"
+                            href="mailto:karkerakartik27@gmail.com"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="footer-link"
@@ -18,7 +18,7 @@ const Footer = () => {
                     </li>
                     <li>
                         <a
-                            href="https://www.linkedin.com/in/kartik-karkera/"
+                            href="https://www.linkedin.com/in/kartikkarkera/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="footer-link"
@@ -28,7 +28,7 @@ const Footer = () => {
                     </li>
                     <li>
                         <a
-                            href="https://example.com/resume.pdf"
+                            href="https://drive.google.com/file/d/1_awVUCxj8ac7hGFUDARxwIXIl6NkbPpF/view?usp=sharing"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="footer-link"
