@@ -4,7 +4,7 @@ import Title from "./components/Title/Title"
 import Age from "./components/Age/Age"
 // import Projects from "./components/Projects/Projects"
 import Footer from "./components/Footer/Footer"
-import Card from "./components/Card/Card"
+import Projects from "./components/Projects/Projects"
 
 
 function App() {
@@ -13,9 +13,8 @@ function App() {
     <>
       <Title />
       <Age />
+      <Projects />
       <Footer />
-      {/* <Projects /> */}
-      <Card />
     </>
   )
 }
