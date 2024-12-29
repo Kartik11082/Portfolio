@@ -11,8 +11,8 @@ function Timeline() {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--education"
                     contentStyle={{ background: 'rgb(45, 45, 45)', color: 'rgb(255, 255, 255)' }}
-                    date="May 2026 - Present"
-                    iconStyle={{ background: 'rgb(45, 45, 45)', color: '#ffffff' }}
+                    date="August 2026 - Present"
+                    iconStyle={{ background: 'rgb(74, 226, 63)', color: "#fffff" }}
                 >
                     <h3 className="vertical-timeline-element-title">Master of Science in Computer Science</h3>
                     <h4 className="vertical-timeline-element-subtitle">University of Texas at Dallas</h4>
@@ -42,7 +42,7 @@ function Timeline() {
                     <h3 className="vertical-timeline-element-title">Software Developer Intern</h3>
                     <h4 className="vertical-timeline-element-subtitle">PyCray Technologies, Noida, India</h4>
                     <p>
-                        Enhanced search features for a carpooling app using Elasticsearch and automated Telegram group management with Selenium.
+                        Enhanced search features for a carpooling app using Elasticsearch and automated Telegram message broadcasting with Selenium.
                     </p>
                 </VerticalTimelineElement>
                 <VerticalTimelineElement
