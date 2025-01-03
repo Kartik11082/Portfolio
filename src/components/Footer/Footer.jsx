@@ -4,14 +4,14 @@ const Footer = () => {
     return (
         <footer className="footer">
             <div className="footer-content">
-                <p>Connect with me:</p>
+                <p>Let's Connect:</p>
                 <ul className="footer-links">
                     <li>
                         <a
                             href="mailto:karkerakartik27@gmail.com"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="footer-link"
+                            className="footer-link email"
                         >
                             Email
                         </a>
@@ -21,7 +21,7 @@ const Footer = () => {
                             href="https://www.linkedin.com/in/kartikkarkera/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="footer-link"
+                            className="footer-link linkedin"
                         >
                             LinkedIn
                         </a>
@@ -31,7 +31,7 @@ const Footer = () => {
                             href="https://drive.google.com/file/d/1_awVUCxj8ac7hGFUDARxwIXIl6NkbPpF/view?usp=sharing"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="footer-link"
+                            className="footer-link resume"
                         >
                             Resume
                         </a>

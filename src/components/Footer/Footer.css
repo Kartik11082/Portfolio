@@ -1,27 +1,30 @@
 .footer {
-    padding-top: 2rem;
-    /* background-color: #222; */
-    color: white;
-    padding-bottom: 2rem;
+    padding-top: 3rem;
+    background-color: #1a1a1a;
+    /* Dark background */
+    color: #f5f5f5;
+    /* Light text for contrast */
+    padding-bottom: 3rem;
     text-align: center;
     position: relative;
     bottom: 0;
     width: 100%;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     border-top: 1px solid #444;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
-    animation: fadeIn 2s 3.5s ease-out forwards;
+    animation: fadeIn 2s 2.5s ease-out forwards;
 }
 
 .footer p {
-    margin-bottom: 1rem;
-    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 600;
     color: #ccc;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .footer-links {
@@ -29,38 +32,83 @@
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
     margin: 0;
 }
 
 .footer-link {
-    color: white;
+    color: #f5f5f5;
     text-decoration: none;
-    font-size: 1rem;
-    font-weight: 400;
-    transition: color 0.3s ease;
+    font-size: 1.8rem;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .footer-link:hover {
+    transform: scale(1.1);
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #f39c12;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+    width: 100%;
+}
+
+/* Specific colors for each link */
+.footer-link.email {
+    color: #1a73e8;
+    /* Email color (blue) */
+}
+
+.footer-link.linkedin {
+    color: #0077b5;
+    /* LinkedIn color (blue) */
+}
+
+.footer-link.resume {
+    color: #f39c12;
+    /* Resume color (yellow) */
+}
+
+/* Hover effects for each specific link */
+.footer-link.email:hover {
+    color: #1a73e8;
+}
+
+.footer-link.linkedin:hover {
+    color: #0077b5;
+}
+
+.footer-link.resume:hover {
     color: #f39c12;
 }
 
 @media (max-width: 768px) {
     .footer {
-        padding: 2rem 0.5rem;
+        padding: 2rem 1rem;
     }
 
     .footer p {
-        font-size: 0.9rem;
+        font-size: 1.2rem;
     }
 
     .footer-links {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
     }
 
     .footer-link {
-        font-size: 1.1rem;
+        font-size: 1.4rem;
     }
 }
 
