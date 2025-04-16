@@ -1,53 +1,59 @@
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 .app-container {
     text-align: center;
     padding: 20px;
     opacity: 0;
     animation: fadeIn 2s 3.5s ease-out forwards;
     pointer-events: none;
-    /* border: 2px solid red; */
+    animation-fill-mode: forwards;
 }
 
+/* Divider */
 hr {
     display: block;
     height: 2px;
     border: 0;
     border-top: 2px solid #444;
     margin: 1em 0;
-    padding: 0;
 }
 
-/* Card styles */
+/* Card Layout */
 .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    /* border: 2px solid red; */
-}
-
-.card {
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 300px;
-    position: relative;
-    text-align: left;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    /* transition: width .5s ease-in-out, box-shadow 0.2s ease-in-out; */
-    /* border: 2px solid red; */
 }
 
 .card-container a {
     text-decoration: none;
 }
 
+/* Card Design */
+.card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    text-align: left;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
 .card:hover {
     transform: scale(1.05);
-    /* box-shadow: 0 12px 24px rgba(255, 255, 255, 0.2), 0 4px 8px rgba(255, 255, 255, 0.15); */
-    /* width: 500px; */
     box-shadow: 0 0 10px rgba(159, 192, 216, 0.3), 0 8px 16px rgba(255, 255, 255, 0.1);
-
 }
 
 .card-image img {
@@ -61,12 +67,13 @@ hr {
     font-size: 1rem;
     background-color: #1e1e1e;
     color: white;
-    opacity: .8;
+    opacity: 0.8;
     border-radius: 1rem;
     text-align: center;
     height: 15rem;
 }
 
+/* Card Info Slide-Up */
 .card-info {
     position: absolute;
     top: 100%;
@@ -75,37 +82,32 @@ hr {
     background-color: #1e1e1e;
     color: white;
     padding: 20px;
-    text-align: left;
     transition: top 0.3s ease-in-out;
     z-index: 1;
+    text-align: left;
 }
 
 .card:hover .card-info {
-    top: 0px;
+    top: 0;
 }
 
-.card-info p {
-    margin: 10px 0;
+.card-info h3,
+.card-info p,
+.card-info ul li {
     font-size: 0.9rem;
     color: #ddd;
+    margin: 10px 0;
 }
 
 .card-info h3 {
-    margin: 10px 0 5px;
     font-size: 1rem;
     color: white;
+    margin-bottom: 5px;
 }
 
 .card-info ul {
-    margin: 0;
     padding-left: 20px;
-}
-
-.card-info ul li {
-    list-style-type: disc;
-    margin: 5px 0;
-    font-size: 0.9rem;
-    color: #ddd;
+    margin: 0;
 }
 
 .card-info a {
@@ -120,7 +122,21 @@ hr {
     text-decoration: underline;
 }
 
-/* Responsive adjustments */
+/* Technology Badge Styles */
+.techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.techs span {
+    border-radius: 1rem;
+    padding: 0.2rem 0.6rem;
+    box-shadow: 0 0 2px hsl(0, 1%, 82%);
+    font-size: 0.85rem;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .card-container {
         justify-content: space-around;
@@ -129,17 +145,14 @@ hr {
 
     .card {
         width: 250px;
-        /* Slightly smaller cards for medium screens */
     }
 
     .card-title {
         font-size: 0.9rem;
-        height: 15rem;
-        /* Allow title to adjust based on content */
     }
 
-    .card-info p,
-    .card-info h3 {
+    .card-info h3,
+    .card-info p {
         font-size: 0.8rem;
     }
 }
@@ -152,87 +165,14 @@ hr {
 
     .card {
         width: 100%;
-        /* Full-width cards on small screens */
     }
 
     .card-title {
         font-size: 0.8rem;
-        height: 15rem;
-        /* Allow title to adjust based on content */
     }
 
-    .card-info p,
-    .card-info h3 {
-        font-size: 0.8rem;
+    .card-info h3,
+    .card-info p {
+        font-size: 0.75rem;
     }
-}
-
-
-/* Fade-in animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-        pointer-events: all;
-        /* Enable interaction */
-    }
-}
-
-.techs {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: .5rem .5rem;
-}
-
-span.py {
-    /* border: 2px solid red; */
-    border-radius: 1rem;
-    padding: .2rem;
-    box-shadow: 0 0 2px hsl(0, 1%, 82%);
-}
-
-span.tf {
-    border-radius: 1rem;
-    padding: .2rem;
-    box-shadow: 0 0 2px hsl(0, 1%, 82%);
-    /* border: 2px solid red; */
-}
-
-span.react {
-    border-radius: 1rem;
-    padding: .2rem;
-    box-shadow: 0 0 2px hsl(0, 1%, 82%);
-    /* border: 2px solid red; */
-}
-
-span.flk {
-    border-radius: 1rem;
-    padding: .2rem;
-    box-shadow: 0 0 2px hsl(0, 1%, 82%);
-    /* border: 2px solid red; */
-}
-
-span.seln {
-    border-radius: 1rem;
-    padding: .2rem;
-    box-shadow: 0 0 2px hsl(0, 1%, 82%);
-    /* border: 2px solid red; */
-}
-
-span.llama {
-    border-radius: 1rem;
-    padding: .2rem;
-    box-shadow: 0 0 2px hsl(0, 1%, 82%);
-    /* border: 2px solid red; */
-}
-
-span.ws {
-    border-radius: 1rem;
-    padding: .2rem;
-    box-shadow: 0 0 2px hsl(0, 1%, 82%);
-    /* border: 2px solid red; */
 }

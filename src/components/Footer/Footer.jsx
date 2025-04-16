@@ -28,7 +28,7 @@ const Footer = () => {
                     </li>
                     <li>
                         <a
-                            href="https://drive.google.com/file/d/1_awVUCxj8ac7hGFUDARxwIXIl6NkbPpF/view?usp=sharing"
+                            href="https://drive.google.com/file/d/1o7eaKsKGiQn15TxzYwixJGSW9sZ8o5bF/view?usp=sharing"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="footer-link resume"

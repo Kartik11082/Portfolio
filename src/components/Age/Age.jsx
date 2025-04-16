@@ -33,7 +33,8 @@ function Age() {
                 {age}
                 <br></br>
                 <span className="python">Python, </span>
-                <span className="sql">SQL</span>, and
+                <span className="sql">SQL</span>,
+                <span className="pyspark"> PySpark</span>, and
                 <span className="aws"> AWS</span>
             </div>
         </div>
