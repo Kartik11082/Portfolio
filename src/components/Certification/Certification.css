@@ -1,0 +1,92 @@
+/* Fade-in Animation (same as other sections) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.certs-container {
+    text-align: center;
+    /* padding: 20px; */
+    opacity: 0;
+    animation: fadeIn 2s 3.5s ease-out forwards;
+    animation-fill-mode: forwards;
+    /* margin-top: 40px;
+    margin-bottom: 40px; */
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #fff;
+    /* margin-bottom: 30px; */
+}
+
+/* Card Layout */
+.cert-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Card Design */
+.cert-card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 220px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 15px;
+}
+
+.cert-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(159, 192, 216, 0.3), 0 8px 16px rgba(255, 255, 255, 0.1);
+}
+
+.cert-card-image img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+/* Title */
+.cert-card-title h3 {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.cert-card-title p {
+    font-size: 0.85rem;
+    color: #ccc;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .cert-card {
+        width: 180px;
+    }
+
+    .cert-card-title h3 {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cert-card-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .cert-card {
+        width: 100%;
+    }
+}

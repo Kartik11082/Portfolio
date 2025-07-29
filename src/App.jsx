@@ -6,6 +6,7 @@ import Title from "./components/Title/Title"
 import Footer from "./components/Footer/Footer"
 import Projects from "./components/Projects/Projects"
 import Timeline from "./components/Timeline/Timeline"
+import Certification from "./components/Certification/Certification"
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <>
       <Title />
       <Age />
+      <Certification />
       <Projects />
       <Timeline />
       <Footer />
