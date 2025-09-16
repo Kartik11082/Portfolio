@@ -1,20 +1,21 @@
-import AWSBadge from "../../assets/AWSSAABadge.png";
+import DEAAWSBadge from "../../assets/AWSDEACO1Badge.png";
+import SAAAWSBadge from "../../assets/AWSSAABadge.png";
 import "./Certification.css"
 
 
 const certifications = [
     {
-        title: "AWS Certified Solutions Architect – Associate",
+        title: "AWS Certified Solutions Architect - Associate",
         issuer: "Amazon Web Services",
-        badgeUrl: AWSBadge,
+        badgeUrl: SAAAWSBadge,
         credlyLink: "https://www.credly.com/badges/b15fddf3-6766-433e-b48c-aaceff853a53/public_url"
     },
-    // {
-    //     title: "Databricks Certified Data Engineer Associate",
-    //     issuer: "Databricks",
-    //     badgeUrl: "https://images.credly.com/size/340x340/images/456.png",
-    //     credlyLink: "https://www.credly.com/badges/your-databricks-link"
-    // }
+    {
+        title: "AWS Certified Data Engineer - Associate",
+        issuer: "Amazon Web Services",
+        badgeUrl: DEAAWSBadge,
+        credlyLink: "https://www.credly.com/badges/8adf2868-1640-4895-95ec-7a0e9704d1d1/public_url"
+    }
 ];
 
 const Certifications = () => {
