@@ -41,7 +41,7 @@ const Card = () => {
         {
             title: "🧙‍♂️PotionWatch",
             description:
-                "Real-time discrepancy detection system for monitoring potion flow data - Built at HackUTD XI 2025 (North America's largest hackathon)",
+                "Real-time discrepancy detection system for monitoring potion flow data in the oil and gas industry.",
             hackathon: true,
             hackathonName: "HackUTD 2025",
             company: "EOG Resources",
@@ -128,6 +128,8 @@ const Card = () => {
                             {card.hackathon && (
                                 <div className="hackathon-badge">
                                     <span className="badge-text">{card.hackathonName}</span>
+                                    {/* <span className="hack-sep"> &nbsp;—&nbsp; </span> */}
+                                    <span className="hack-sep"> — </span>
                                     <span className="company-text">for {card.company}</span>
                                 </div>
                             )}
