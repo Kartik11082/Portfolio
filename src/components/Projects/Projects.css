@@ -1,4 +1,6 @@
+/* ========================= */
 /* Fade-in Animation */
+/* ========================= */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -14,115 +16,140 @@
     padding: 20px;
     opacity: 0;
     animation: fadeIn 2s 3.5s ease-out forwards;
-    pointer-events: none;
     animation-fill-mode: forwards;
+    pointer-events: auto;
 }
 
+/* ========================= */
 /* Divider */
+/* ========================= */
 hr {
-    display: block;
     height: 2px;
     border: 0;
     border-top: 2px solid #444;
     margin: 1em 0;
 }
 
+/* ========================= */
 /* Card Layout */
+/* ========================= */
 .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    /* gap: 20px; */
+    gap: 40px;
 }
 
 .card-container a {
     text-decoration: none;
 }
 
-/* Card Design */
+/* ========================= */
+/* Base Card */
+/* ========================= */
 .card {
     background-color: #1e1e1e;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
     overflow: hidden;
-    width: 300px;
+    width: 340px;
     text-align: left;
     position: relative;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .card:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(159, 192, 216, 0.3), 0 8px 16px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 14px rgba(159, 192, 216, 0.35),
+        0 8px 20px rgba(255, 255, 255, 0.12);
 }
 
+/* ========================= */
+/* Card Image */
+/* ========================= */
 .card-image img {
     width: 100%;
-    height: 200px;
+    /* height: 240px; */
+    height: 400px;
     object-fit: cover;
 }
 
+/* ========================= */
+/* Card Title */
+/* ========================= */
 .card-title {
-    padding: 10px;
-    font-size: 1rem;
+    padding: 12px;
     background-color: #1e1e1e;
-    color: white;
-    opacity: 0.8;
-    border-radius: 1rem;
     text-align: center;
-    height: 15rem;
+    color: white;
+    position: relative;
+    z-index: 5;
 }
 
-/* Card Info Slide-Up */
+.card-title h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+/* ========================= */
+/* Slide-Up Info */
+/* ========================= */
 .card-info {
     position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: #1e1e1e;
+    inset: 0;
+    /* full card takeover */
+    background: rgba(30, 30, 30, .95);
+    /* slightly transparent overlay */
     color: white;
     padding: 20px;
-    transition: top 0.3s ease-in-out;
-    z-index: 1;
-    text-align: left;
+    top: 100%;
+    transition: top 0.35s ease-in-out;
+    z-index: 50;
+    /* above everything */
+    overflow-y: auto;
+    /* scroll if content is large */
 }
 
 .card:hover .card-info {
     top: 0;
 }
 
-.card-info h3,
+.card-info h3 {
+    margin: 10px 0 5px;
+    font-size: 1rem;
+    color: #fff;
+}
+
 .card-info p,
 .card-info ul li {
     font-size: 0.9rem;
     color: #ddd;
-    margin: 10px 0;
-}
-
-.card-info h3 {
-    font-size: 1rem;
-    color: white;
-    margin-bottom: 5px;
 }
 
 .card-info ul {
-    padding-left: 20px;
     margin: 0;
+    padding-left: 18px;
 }
 
+/* ========================= */
+/* Link styling */
+/* ========================= */
 .card-info a {
-    display: inline-block;
     margin-top: 10px;
     text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
+    color: #4fa3ff;
+    font-weight: 600;
 }
 
 .card-info a:hover {
     text-decoration: underline;
 }
 
-/* Technology Badge Styles */
+/* ========================= */
+/* Technology Tags */
+/* ========================= */
 .techs {
     display: flex;
     flex-wrap: wrap;
@@ -130,49 +157,143 @@ hr {
 }
 
 .techs span {
-    border-radius: 1rem;
-    padding: 0.2rem 0.6rem;
-    box-shadow: 0 0 2px hsl(0, 1%, 82%);
+    padding: 0.3rem 0.7rem;
+    border-radius: 12px;
+    background: #2b2b2b;
     font-size: 0.85rem;
+    color: #eee;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.2);
 }
 
-/* Responsive Adjustments */
+/* ========================= */
+/* Hackathon Badge */
+/* ========================= */
+.hackathon-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #111;
+    font-weight: 700;
+    font-size: 0.75rem;
+    z-index: 30;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+}
+
+/* ========================= */
+/* Hackathon POP Effect */
+/* ========================= */
+.hackathon-card {
+    border: 2px solid #FFD700;
+    transform: scale(1.02);
+    box-shadow: 0 0 18px rgba(255, 215, 0, 0.35);
+}
+
+.hackathon-card:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.45);
+}
+
+/* Animated glow border */
+.hackathon-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(45deg, #ffd700, #ff9900, #ffe28a, #ffd700);
+    background-size: 300% 300%;
+    animation: hackGlow 4s ease infinite;
+    z-index: -1;
+}
+
+@keyframes hackGlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ========================= */
+/* Hackathon Image Overlay */
+/* ========================= */
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    color: #FFD700;
+    font-weight: 600;
+    opacity: 0;
+    font-size: 0.9rem;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .image-overlay {
+    opacity: 1;
+}
+
+/* ========================= */
+/* Project Links */
+/* ========================= */
+.project-links {
+    margin-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 12px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.link-btn {
+    flex: 1;
+    padding: 8px 0;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: #222;
+    color: white;
+    border: 1px solid #555;
+    transition: 0.25s ease;
+}
+
+.link-btn:hover {
+    background: #333;
+    border-color: #FFD700;
+}
+
+/* ========================= */
+/* Responsive */
+/* ========================= */
 @media (max-width: 768px) {
-    .card-container {
-        justify-content: space-around;
-        gap: 15px;
-    }
-
     .card {
-        width: 250px;
-    }
-
-    .card-title {
-        font-size: 0.9rem;
-    }
-
-    .card-info h3,
-    .card-info p {
-        font-size: 0.8rem;
+        width: 280px;
     }
 }
 
 @media (max-width: 480px) {
     .card-container {
         flex-direction: column;
-        gap: 10px;
+        gap: 14px;
     }
 
     .card {
         width: 100%;
     }
 
-    .card-title {
-        font-size: 0.8rem;
-    }
-
-    .card-info h3,
-    .card-info p {
-        font-size: 0.75rem;
+    .project-links {
+        flex-direction: column;
     }
 }

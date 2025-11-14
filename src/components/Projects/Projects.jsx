@@ -1,10 +1,10 @@
 import "./Projects.css";
 import flixtimeImage from "../../assets/flixtime.jpg"
-// import telegramImage from "../../assets/2.png"
-// import handImage from "../../assets/hsr.jpg"
 import terminalImage from "../../assets/stacksearch.jpg"
 import mushroomImage from "../../assets/mushroom.png"
 import tfidfImage from "../../assets/tfidf.webp"
+import potionwatchImage from "../../assets/potionwatch.png"
+
 
 const Card = () => {
     const classNames = {
@@ -30,7 +30,6 @@ const Card = () => {
         "JavaScript": "js",
         "Machine Learning": "ml",
         "Artificial Intelligence": "ai",
-        // add the new class names like pyspark scikitlearn and nlp
         "PySpark": "PySpark",
         "NLP": "nlp",
         "scikit-learn": "sklearn",
@@ -39,6 +38,23 @@ const Card = () => {
     }
 
     const cards = [
+        {
+            title: "🧙‍♂️PotionWatch",
+            description:
+                "Real-time discrepancy detection system for monitoring potion flow data - Built at HackUTD XI 2025 (North America's largest hackathon)",
+            hackathon: true,
+            hackathonName: "HackUTD 2025",
+            company: "EOG Resources",
+            details: {
+                technologies: ["Python", "Flask", "ReactJS", "Pandas", "NumPy"],
+                features: [
+                    "Developed automated fraud detection system for EOG Resources to identify suspicious tickets and missing records across transactions, preventing revenue loss",
+                    "Built RESTful API with statistical outlier detection and real-time ticket-matching algorithms and enabling operations team to investigate anomalies"
+                ],
+            },
+            image: potionwatchImage,
+            link: "https://github.com/Kartik11082/EOG-HackUTD25",
+        },
         {
             "title": "TF-IDF Search Engine using PySpark",
             "description": "A movie search engine using TF-IDF and cosine similarity ranking.",
@@ -50,7 +66,6 @@ const Card = () => {
                     "Efficient query handling for single-term and multi-term searches.",
                     "Integration with a metadata retrieval system to display relevant movie information."
                 ],
-                "outcome": "Improved search accuracy and relevance using NLP techniques."
             },
             "image": tfidfImage,
             "link": "https://github.com/Kartik11082/Big-Data-Management/blob/main/MovieSearch.ipynb"
@@ -66,7 +81,6 @@ const Card = () => {
                     "Hyperparameter tuning with GridSearchCV and cross-validation.",
                     "Achieved high classification accuracy for determining mushroom edibility.",
                 ],
-                "outcome": "Accurate and efficient mushroom classification using machine learning."
             },
             "image": mushroomImage,
             "link": "https://github.com/Kartik11082/Machine-Learning/blob/main/Project_1/main.ipynb"
@@ -81,41 +95,10 @@ const Card = () => {
                     "RESTful APIs built with Flask.",
                     "Dynamic, responsive UI built with ReactJS."
                 ],
-                "outcome": "Enhanced movie suggestions, improving user engagement."
             },
             "image": flixtimeImage,
             "link": "https://flix-time-three.vercel.app/"
         },
-        // {
-        //     "title": "Hand Sign Recognition",
-        //     "description": "A web app for detecting and interpreting hand signs",
-        //     "details": {
-        //         "technologies": ["Python", "TensorFlow", "ReactJS"],
-        //         "features": [
-        //             "Real-time detection of ASL hand signs.",
-        //             "Custom dataset of hand signs for model fine-tuning.",
-        //             "Web interface for camera-based detection."
-        //         ],
-        //         "outcome": "Improved communication for the hearing-impaired community."
-        //     },
-        //     "image": handImage,
-        //     "link": "https://github.com/Kartik11082/TFODApp"
-        // },
-        // {
-        //     "title": "Automated Telegram Broadcasting",
-        //     "description": "Tool to automate Telegram group broadcasting",
-        //     "details": {
-        //         "technologies": ["Python", "Selenium"],
-        //         "features": [
-        //             "Automates messaging for multiple groups.",
-        //             "Browser automation for reduced manual intervention.",
-        //             "Scalable solution for large group communication."
-        //         ],
-        //         "outcome": "Increased efficiency in managing large-scale communications."
-        //     },
-        //     "image": telegramImage,
-        //     "link": ""
-        // },
         {
             "title": "Terminal-based StackOverflow Searcher",
             "description": "CLI tool to search in StackOverflow",
@@ -126,7 +109,6 @@ const Card = () => {
                     "Local LLM for efficient query interpretation.",
                     "Simplified solution retrieval for developers."
                 ],
-                "outcome": "Streamlined access to StackOverflow solutions."
             },
             "image": terminalImage,
             "link": "https://github.com/Kartik11082/TermiStack"
@@ -140,22 +122,30 @@ const Card = () => {
             <h1>Projects</h1>
             <div className="card-container">
                 {cards.map((card, index) => (
-                    <a key={index} href={card.link} target="_blank" rel="noopener noreferrer">
-                        <div className="card" key={index}>
+                    <a key={index} href={card.link} target="_blank" rel="noopener noreferrer" className="card-link">
+                        <div className="card">
+                            {/* Hackathon Badge */}
+                            {card.hackathon && (
+                                <div className="hackathon-badge">
+                                    <span className="badge-text">{card.hackathonName}</span>
+                                    <span className="company-text">for {card.company}</span>
+                                </div>
+                            )}
+
                             <div className="card-image">
-                                <img src={card.image} alt={`Card ${index + 1}`} />
+                                <img src={card.image} alt={card.title} />
                             </div>
-                            <div className="card-title">
-                                <h2>{card.title}</h2>
-                            </div>
+                            <a href={card.link} target="_blank" rel="noopener noreferrer" className="card-title-link">
+                                <div className="card-title">
+                                    <h2>{card.title}</h2>
+                                </div>
+                            </a>
                             <div className="card-info">
                                 <p>{card.description}</p>
 
-                                {/* <h3>Technologies:</h3> */}
                                 <div className="techs">
-                                    {/* <span key={i} className={tech.replace(/ /g, '').replace(/\./g, "")}>{tech}</span> */}
                                     {card.details.technologies.map((tech, i) => (
-                                        < span key={i} className={classNames[tech]} > {tech}</span>
+                                        <span key={i} className={classNames[tech]}>{tech}</span>
                                     ))}
                                 </div>
 
@@ -165,13 +155,6 @@ const Card = () => {
                                         <li key={i}>{feature}</li>
                                     ))}
                                 </ul>
-
-                                {/* <h3>Outcome:</h3>
-                            <p>{card.details.outcome}</p> */}
-
-                                {/* <a href={card.link} target="_blank" rel="noopener noreferrer">
-                                    Learn More
-                                </a> */}
                             </div>
                         </div>
                     </a>
