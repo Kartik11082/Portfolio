@@ -4,6 +4,7 @@ import terminalImage from "../../assets/stacksearch.jpg"
 import mushroomImage from "../../assets/mushroom.png"
 import tfidfImage from "../../assets/tfidf.webp"
 import potionwatchImage from "../../assets/potionwatch.png"
+import ThreeLCxAWS from "../../assets/3LCxAWShackathon.png"
 
 
 const Card = () => {
@@ -35,9 +36,30 @@ const Card = () => {
         "scikit-learn": "sklearn",
         "Pandas": "pandas",
         "NumPy": "numpy",
+        "3LC dashboard": "3lc",
     }
 
     const cards = [
+        {
+            title: "Chihuahua vs Muffin: Data-Centric AI Challenge",
+            description:
+                "A 50-hour, on-campus hackathon where participants build a high-performing image classifier under real-world constraints.",
+            hackathon: true,
+            hackathonName: "3LC x AWS Club Hackathon",
+            award: "🏆 3rd Place",
+            company: "3LC",
+            details: {
+                technologies: ["Python", "Machine Learning", "3LC dashboard"],
+                features: [
+                    "Built a high-performing image classifier for the \"Chihuahua vs Muffin\" task",
+                    "Utilized data-centric techniques: labeling, curation, revisioning, and embedding-based selection",
+                    "Used 3LC dashboard for embedding analysis and bulk labeling",
+                    "Achieved ~92% accuracy by improving dataset quality without changing the model"
+                ],
+            },
+            image: ThreeLCxAWS,
+            link: "https://github.com/UtkarshVijayvergia/aws-3lc-hackathon",
+        },
         {
             title: "🧙‍♂️PotionWatch",
             description:
@@ -127,10 +149,15 @@ const Card = () => {
                             {/* Hackathon Badge */}
                             {card.hackathon && (
                                 <div className="hackathon-badge">
-                                    <span className="badge-text">{card.hackathonName}</span>
-                                    {/* <span className="hack-sep"> &nbsp;—&nbsp; </span> */}
-                                    <span className="hack-sep"> — </span>
-                                    <span className="company-text">for {card.company}</span>
+                                    {card.award && (
+                                        <div className="award-section">
+                                            <span className="award-text">{card.award}</span>
+                                        </div>
+                                    )}
+                                    <div className="hackathon-info">
+                                        <span className="hackathon-name">{card.hackathonName}</span>
+                                        <span className="company-text">for {card.company}</span>
+                                    </div>
                                 </div>
                             )}
 
