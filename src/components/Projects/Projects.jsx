@@ -5,6 +5,7 @@ import mushroomImage from "../../assets/mushroom.png"
 import tfidfImage from "../../assets/tfidf.webp"
 import potionwatchImage from "../../assets/potionwatch.png"
 import ThreeLCxAWS from "../../assets/3LCxAWShackathon.png"
+import noisytoniceImage from "../../assets/noisytoniceImage.png"
 
 
 const Card = () => {
@@ -76,6 +77,27 @@ const Card = () => {
             },
             image: potionwatchImage,
             link: "https://github.com/Kartik11082/EOG-HackUTD25",
+        },
+        {
+            "title": "Noisy to Nice – Data Quality Copilot",
+            "description": "A web app that uploads CSVs, profiles data quality, and uses AI to recommend cleaning steps for better ML readiness.",
+            "details": {
+                "technologies": [
+                    "Python",
+                    "AWS Bedrock",
+                    "ydata-profiling",
+                ],
+                "features": [
+                    "Simple email + password auth with JWT.",
+                    "CSV uploaded straight to S3 and metadata stored in DynamoDB.",
+                    "Auto-generated profiling report with basic stats and distributions.",
+                    "AWS Bedrock-powered tips on what's wrong with your data and how to fix it.",
+                    "Flags common issues like missing values, duplicates, and tiny datasets.",
+                    "Clear suggestions to make the dataset more ML-ready."
+                ]
+            },
+            "image": noisytoniceImage,
+            "link": "https://github.com/Kartik11082/noisy-to-nice"
         },
         {
             "title": "TF-IDF Search Engine using PySpark",
