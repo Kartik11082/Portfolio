@@ -11,7 +11,7 @@ function Timeline() {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--education"
                     contentStyle={{ background: 'rgb(45, 45, 45)', color: 'rgb(255, 255, 255)' }}
-                    date="August 2026 - Present"
+                    date="August 2024 - August 2026"
                     iconStyle={{ background: 'rgb(74, 226, 63)', color: "#fffff" }}
                 >
                     <h3 className="vertical-timeline-element-title">Master of Science in Computer Science</h3>
@@ -36,7 +36,7 @@ function Timeline() {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--work"
                     contentStyle={{ background: 'rgb(45, 45, 45)', color: 'rgb(255, 255, 255)' }}
-                    date="May 2023 - Aug 2023"
+                    date="May 2023 - July 2023"
                     iconStyle={{ background: 'rgb(45, 45, 45)', color: '#ffffff' }}
                 >
                     <h3 className="vertical-timeline-element-title">Software Developer Intern</h3>
@@ -48,7 +48,7 @@ function Timeline() {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--education"
                     contentStyle={{ background: 'rgb(45, 45, 45)', color: 'rgb(255, 255, 255)' }}
-                    date="August 2019 - August 2023"
+                    date="August 2019 - May 2023"
                     iconStyle={{ background: 'rgb(45, 45, 45)', color: '#ffffff' }}
                 >
                     <h3 className="vertical-timeline-element-title">Bachelor of Engineering in Computer Science</h3>

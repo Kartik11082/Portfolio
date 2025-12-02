@@ -54,7 +54,7 @@ const Card = () => {
                     "Built a high-performing image classifier for the \"Chihuahua vs Muffin\" task",
                     "Utilized data-centric techniques: labeling, curation, revisioning, and embedding-based selection",
                     "Used 3LC dashboard for embedding analysis and bulk labeling",
-                    "Achieved ~92% accuracy by improving dataset quality without changing the model"
+                    "Achieved ~93.5% accuracy by improving dataset quality without changing the model"
                 ],
             },
             image: ThreeLCxAWS,
@@ -63,7 +63,7 @@ const Card = () => {
         {
             title: "🧙‍♂️PotionWatch",
             description:
-                "Real-time discrepancy detection system for monitoring potion flow data in the oil and gas industry.",
+                "A 24 hour hackathon where I built a Real-time discrepancy detection system for monitoring potion flow data in the oil and gas industry.",
             hackathon: true,
             hackathonName: "HackUTD 2025",
             company: "EOG Resources",
