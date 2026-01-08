@@ -97,7 +97,7 @@ const Card = () => {
                 ]
             },
             "image": noisytoniceImage,
-            "link": "https://github.com/Kartik11082/noisy-to-nice"
+            "link": "https://github.com/Kartik11082/Noisy-to-Nice---Data-Centric"
         },
         {
             "title": "TF-IDF Search Engine using PySpark",
@@ -127,7 +127,7 @@ const Card = () => {
                 ],
             },
             "image": mushroomImage,
-            "link": "https://github.com/Kartik11082/Machine-Learning/blob/main/Project_1/main.ipynb"
+            "link": "https://github.com/Kartik11082/Machine-Learning"
         },
         {
             "title": "FlixTime",
