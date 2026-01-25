@@ -1,7 +1,86 @@
 .timeline {
     opacity: 0;
     pointer-events: none;
-    animation: fadeIn .2s 3.5s forwards;
+    animation: fadeIn 2s 3.5s forwards;
+    padding: 2rem 0;
+}
+
+/* Header Styling */
+.timeline-header {
+    text-align: center;
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.divider {
+    width: 60%;
+    margin: 0 auto 3rem;
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+/* Overriding Library Styles for Glassmorphism */
+.vertical-timeline-element-content {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    color: #fff !important;
+}
+
+.vertical-timeline-element-content-arrow {
+    border-right: 7px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Typography */
+.vertical-timeline-element-title {
+    color: #FFD700 !important;
+    /* Gold Title */
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 5px !important;
+}
+
+.vertical-timeline-element-subtitle {
+    color: #ddd !important;
+    font-size: 1rem !important;
+    margin-bottom: 10px !important;
+}
+
+.vertical-timeline-element-date {
+    color: #aaa !important;
+    /* Improved date visibility */
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    opacity: 0.9 !important;
+    padding: 0 10px !important;
+}
+
+.vertical-timeline-element p {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    color: #ccc !important;
+}
+
+/* Icon Shadows */
+.vertical-timeline-element-icon {
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2) !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.vertical-timeline-element-icon svg {
+    width: 24px !important;
+    height: 24px !important;
+    display: block !important;
+    margin: 0 !important;
+    color: #1a1a1a !important;
 }
 
 /* Fade-in animation */
@@ -13,6 +92,5 @@
     to {
         opacity: 1;
         pointer-events: all;
-        /* Enable interaction */
     }
 }

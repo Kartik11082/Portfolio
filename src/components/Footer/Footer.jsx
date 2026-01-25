@@ -37,6 +37,7 @@ const Footer = () => {
                         </a>
                     </li>
                 </ul>
+                <p className="footer-credit">Designed & Built by Kartik Karkera</p>
             </div>
         </footer>
     );

@@ -1,11 +1,22 @@
 .age {
-    font-size: 1.2rem;
-    color: gray;
+    font-size: 1.5rem;
+    color: #e0e0e0;
+    /* Lighter for better readability */
     margin: 2rem;
     padding-top: 3rem;
     line-height: 1.5;
     opacity: 0;
-    animation: fadeIn 2s 3.5s ease-out forwards;
+    animation: fadeIn 1.5s 3.8s ease-out forwards;
+    /* Slightly delayed fade for sequence */
+}
+
+/* Restore age-number just in case, though user removed usage */
+.age-number {
+    font-variant-numeric: tabular-nums;
+    font-family: 'Courier New', monospace;
+    font-weight: 200;
+    color: #fff;
+    padding: 0.2rem;
 }
 
 .pyspark {

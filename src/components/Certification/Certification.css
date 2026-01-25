@@ -35,38 +35,71 @@
 
 /* Card Design */
 .cert-card {
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    width: 220px;
+    width: 280px;
+    /* Slightly wider */
     text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    padding: 30px 20px;
 }
 
 .cert-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(159, 192, 216, 0.3), 0 8px 16px rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(159, 192, 216, 0.2);
+    /* Soft blue glow */
 }
 
 .cert-card-image img {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
     object-fit: contain;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.cert-card:hover .cert-card-image img {
+    transform: scale(1.05);
 }
 
 /* Title */
 .cert-card-title h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #fff;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .cert-card-title p {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.cert-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    color: #fff;
+    text-decoration: none;
     font-size: 0.85rem;
-    color: #ccc;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.cert-btn:hover {
+    background: #fff;
+    color: #1a1a1a;
+    border-color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 /* Responsive Adjustments */

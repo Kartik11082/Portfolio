@@ -1,5 +1,6 @@
 import "./App.css";
 // import Title from components folder
+import TopBar from "./components/TopBar/TopBar";
 import Age from "./components/Age/Age";
 import Title from "./components/Title/Title";
 // import Projects from "./components/Projects/Projects"
@@ -11,12 +12,13 @@ import Certification from "./components/Certification/Certification";
 function App() {
   return (
     <>
+      <TopBar />
       <Title />
       <Age />
-      <Footer />
       <Certification />
       <Projects />
       <Timeline />
+      <Footer />
     </>
   );
 }
