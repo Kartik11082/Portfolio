@@ -1,6 +1,6 @@
 import DEAAWSBadge from "../../assets/AWSDEACO1Badge.png";
 import SAAAWSBadge from "../../assets/AWSSAABadge.png";
-import DatabricksSparkBadge from "../../assets/DatabricksBadge.png";
+import DatabricksSparkBadge from "../../assets/DatabricksSparkBadge.png";
 import "./Certification.css"
 
 
