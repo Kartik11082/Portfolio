@@ -1,6 +1,6 @@
 import DEAAWSBadge from "../../assets/AWSDEACO1Badge.png";
 import SAAAWSBadge from "../../assets/AWSSAABadge.png";
-import DatabricksBadge from "../../assets/DatabricksBadge.png";
+import DatabricksSparkBadge from "../../assets/DatabricksBadge.png";
 import "./Certification.css"
 
 
@@ -20,7 +20,7 @@ const certifications = [
     {
         title: "Databricks Certified Associate Developer for Apache Spark",
         issuer: "Databricks",
-        badgeUrl: DatabricksBadge,
+        badgeUrl: DatabricksSparkBadge,
         credlyLink: "https://credentials.databricks.com/75f367a3-cf8c-45ce-b39d-c3384487bf9d#acc.JibSoBl7"
     }
 ];
