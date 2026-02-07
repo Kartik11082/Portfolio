@@ -59,7 +59,7 @@ const Card = () => {
                 ],
             },
             image: ThreeLCxAWS,
-            link: "https://github.com/Kartik11082/3LCxAWSHackathon",
+            link: "https://github.com/Kartik11082/3LCxAWSHackathon#images---accuracy935",
         },
         {
             title: "🧙‍♂️PotionWatch",
