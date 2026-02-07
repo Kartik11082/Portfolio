@@ -76,7 +76,7 @@ const Card = () => {
                 ],
             },
             image: potionwatchImage,
-            link: "https://github.com/Kartik11082/EOG-HackUTD25",
+            link: "http://18.220.118.210/",
         },
         {
             "title": "Noisy to Nice – Data Quality Copilot",
