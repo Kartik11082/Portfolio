@@ -6,6 +6,7 @@ import tfidfImage from "../../assets/tfidf.webp"
 import potionwatchImage from "../../assets/potionwatch.png"
 import ThreeLCxAWS from "../../assets/3LCxAWShackathon.png"
 import noisytoniceImage from "../../assets/noisytoniceImage.png"
+import tidalhackImage from "../../assets/tidalHackImage.png"
 
 
 const Card = () => {
@@ -41,6 +42,34 @@ const Card = () => {
     }
 
     const cards = [
+        {
+            title: "Traceline – Pipeline Anomaly Alignment & Growth Tracking",
+            description:
+                "A 24-hour hackathon project that solves odometer drift in multi-run pipeline inspections by intelligently aligning anomalies across years.",
+            hackathon: true,
+            hackathonName: "TidalHack @ TAMU 24-Hour Hackathon",
+            award: "🏆 1st Place",
+            company: "RCP Inc.",
+            details: {
+                technologies: [
+                    "Python",
+                    "Pandas",
+                    "NumPy",
+                    "Scikit-learn",
+                    "Plotly",
+                    "Streamlit"
+                ],
+                features: [
+                    "Built an alignment algorithm to correct odometer drift across ILI runs from 2007, 2015, and 2022",
+                    "Used fixed pipeline hardware (valves, tees, welds) as physical anchors to compute relative distances",
+                    "Matched thousands of anomalies across inspection runs with confidence scoring",
+                    "Tracked corrosion growth over time and visualized results in a 3D digital twin dashboard",
+                    "Designed the system to scale beyond rule-based matching toward predictive integrity analysis"
+                ],
+            },
+            image: tidalhackImage,
+            link: "https://devpost.com/software/traceline" // replace if needed
+        },
         {
             title: "Chihuahua vs Muffin: Data-Centric AI Challenge",
             description:
