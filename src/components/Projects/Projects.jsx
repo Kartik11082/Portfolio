@@ -115,7 +115,7 @@ const Card = () => {
                 ],
             },
             image: tidalhackImage,
-            link: "https://devpost.com/software/traceline" // replace if needed
+            link: "http://tidalfrontend.s3-website-us-east-1.amazonaws.com/"
         },
         {
             title: "Chihuahua vs Muffin: Data-Centric AI Challenge",
