@@ -7,6 +7,7 @@ import potionwatchImage from "../../assets/potionwatch.png"
 import ThreeLCxAWS from "../../assets/3LCxAWShackathon.png"
 import noisytoniceImage from "../../assets/noisytoniceImage.png"
 import tidalhackImage from "../../assets/tidalHackImage.png"
+import midnightCommitsImage from "../../assets/midnightCommitsImage.png"
 
 
 const Card = () => {
@@ -42,6 +43,52 @@ const Card = () => {
     }
 
     const cards = [
+        {
+            title: "Midnight Commits - Global Developer Activity Analytics",
+            description:
+                "A real-time data engineering and analytics platform that ingests global GitHub activity to explore when, where, and how developers code, with a focus on night-time programming patterns.",
+            inProgress: true,
+            progressLabel: "Currently Working On",
+            details: {
+                technologies: [
+                    "Python",
+                    "Kafka",
+                    "FastAPI",
+                    "PostgreSQL",
+                    "React",
+                    "Globe.gl",
+                    "AWS (Planned)",
+                ],
+                features: [
+                    "Streaming GitHub event ingestion using Kafka",
+                    "Real-time 3D globe visualization with day/night shading",
+                    "Geospatial and temporal enrichment of commit data",
+                    "Analytics layer with leaderboards and city-level insights",
+                    "Time-series aggregation and forecasting experiments on commit activity",
+                    "Exploration of behavioral patterns such as night vs day coding"
+                ]
+            },
+            image: midnightCommitsImage,
+            link: "https://github.com/Kartik11082/midnight-commits"
+        },
+        // {
+        //     title: "SkillForge - Interview Prep Platform",
+        //     description:
+        //         "A full-stack platform I am currently building to help students prepare for technical interviews with guided practice and progress tracking.",
+        //     inProgress: true,
+        //     progressLabel: "Currently Working On",
+        //     details: {
+        //         technologies: ["ReactJS", "Django", "AWS", "MongoDB"],
+        //         features: [
+        //             "Building role-based dashboards for students and mentors",
+        //             "Adding structured DSA and behavioral interview practice flows",
+        //             "Designing streaks, milestones, and progress analytics",
+        //             "Working on cloud deployment and secure auth"
+        //         ],
+        //     },
+        //     image: noisytoniceImage,
+        //     link: "https://github.com/Kartik11082"
+        // },
         {
             title: "Traceline – Pipeline Anomaly Alignment & Growth Tracking",
             description:
@@ -196,7 +243,13 @@ const Card = () => {
             <div className="card-container">
                 {cards.map((card, index) => (
                     <a key={index} href={card.link} target="_blank" rel="noopener noreferrer" className="card-link">
-                        <div className="card">
+                        <div className={`card ${card.inProgress ? "in-progress-card" : ""}`}>
+                            {card.inProgress && (
+                                <div className="in-progress-badge">
+                                    <span className="in-progress-dot" />
+                                    <span>{card.progressLabel || "Currently Working On"}</span>
+                                </div>
+                            )}
                             {/* Hackathon Badge */}
                             {card.hackathon && (
                                 <div className="hackathon-badge">

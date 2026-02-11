@@ -228,6 +228,63 @@ hr {
 }
 
 /* ========================= */
+/* In Progress Badge */
+/* ========================= */
+.in-progress-card {
+    border-color: rgba(56, 189, 248, 0.45);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 24px rgba(56, 189, 248, 0.18);
+}
+
+.in-progress-card:hover {
+    border-color: rgba(56, 189, 248, 0.7);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 32px rgba(56, 189, 248, 0.3);
+}
+
+.in-progress-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 35;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(10, 20, 32, 0.9);
+    border: 1px solid rgba(56, 189, 248, 0.45);
+    color: #bae6fd;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.in-progress-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
+    animation: pulseProgress 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseProgress {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+}
+
+/* ========================= */
 /* Hackathon Badge */
 /* ========================= */
 .hackathon-badge {
