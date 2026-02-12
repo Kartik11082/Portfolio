@@ -24,15 +24,28 @@ function Timeline() {
             <h1 className="timeline-header">Timeline</h1>
             <VerticalTimeline lineColor="rgba(255,255,255,0.1)">
                 <VerticalTimelineElement
+                    className="vertical-timeline-element--work"
+                    date="Oct 1, 2024 - Present"
+                    iconStyle={{ background: '#FFD700', color: '#1a1a1a' }}
+                    icon={<WorkIcon />}
+                >
+                    <h3 className="vertical-timeline-element-title">Technical Officer (Backend)</h3>
+                    <h4 className="vertical-timeline-element-subtitle">AWS Club at UTD</h4>
+                    <p>
+                        Worked on backend systems for projects used in AWS Club events at UTD as an active club member.
+                    </p>
+                </VerticalTimelineElement>
+
+                <VerticalTimelineElement
                     className="vertical-timeline-element--education"
-                    date="August 2024 - August 2026"
+                    date="Aug 2024 - Present (Expected Graduation: May 2026)"
                     iconStyle={{ background: '#FFD700', color: '#1a1a1a' }}
                     icon={<SchoolIcon />}
                 >
                     <h3 className="vertical-timeline-element-title">Master of Science in Computer Science</h3>
                     <h4 className="vertical-timeline-element-subtitle">University of Texas at Dallas</h4>
                     <p>
-                        Relevant Coursework: Database Design, Algorithms, Web Programming
+                        Currently pursuing MSCS. Relevant Coursework: Database Design, Algorithms, Web Programming.
                     </p>
                 </VerticalTimelineElement>
 

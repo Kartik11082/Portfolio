@@ -69,26 +69,8 @@ const Card = () => {
                 ]
             },
             image: midnightCommitsImage,
-            link: "https://github.com/Kartik11082/midnight-commits"
+            link: "https://github.com/Kartik11082/MidnightCommits"
         },
-        // {
-        //     title: "SkillForge - Interview Prep Platform",
-        //     description:
-        //         "A full-stack platform I am currently building to help students prepare for technical interviews with guided practice and progress tracking.",
-        //     inProgress: true,
-        //     progressLabel: "Currently Working On",
-        //     details: {
-        //         technologies: ["ReactJS", "Django", "AWS", "MongoDB"],
-        //         features: [
-        //             "Building role-based dashboards for students and mentors",
-        //             "Adding structured DSA and behavioral interview practice flows",
-        //             "Designing streaks, milestones, and progress analytics",
-        //             "Working on cloud deployment and secure auth"
-        //         ],
-        //     },
-        //     image: noisytoniceImage,
-        //     link: "https://github.com/Kartik11082"
-        // },
         {
             title: "Traceline – Pipeline Anomaly Alignment & Growth Tracking",
             description:
