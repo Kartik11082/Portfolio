@@ -1,5 +1,5 @@
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import 'react-vertical-timeline-component/style.min.css';
+import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
 import "./Timeline.css";
 
 const WorkIcon = () => (
@@ -17,76 +17,71 @@ const SchoolIcon = () => (
     </svg>
 );
 
+const TIMELINE_ITEMS = [
+    {
+        type: "work",
+        title: "Technical Officer (Backend)",
+        org: "AWS Club at UTD",
+        dateLabel: "Oct 1, 2024 - Present",
+        isCurrent: true,
+        summary: "Build backend systems for projects used in AWS Club event workflows and technical demonstrations at UTD."
+    },
+    {
+        type: "education",
+        title: "Master of Science in Computer Science",
+        org: "University of Texas at Dallas",
+        dateLabel: "Aug 2024 - Present",
+        isCurrent: true,
+        summary: "Currently pursuing MSCS with expected graduation in May 2026, focused on databases, algorithms, and web systems."
+    },
+    {
+        type: "work",
+        title: "Software Developer",
+        org: "PyCray Technologies, Noida, India",
+        dateLabel: "Aug 2023 - Jun 2024",
+        isCurrent: false,
+        summary: "Designed secure high-performance APIs for an algorithmic trading product and integrated real-time market data pipelines on AWS."
+    },
+    {
+        type: "work",
+        title: "Software Developer Intern",
+        org: "PyCray Technologies, Noida, India",
+        dateLabel: "May 2023 - Jul 2023",
+        isCurrent: false,
+        summary: "Improved production search quality with Elasticsearch and automated operational messaging workflows."
+    },
+    {
+        type: "education",
+        title: "Bachelor of Engineering in Computer Science",
+        org: "University of Mumbai",
+        dateLabel: "Aug 2019 - May 2023",
+        isCurrent: false,
+        summary: "Built and deployed course and capstone projects including recommendation and computer vision systems."
+    }
+];
+
 function Timeline() {
     return (
         <div className="timeline">
-            <hr className="divider" />
-            <h1 className="timeline-header">Timeline</h1>
-            <VerticalTimeline lineColor="rgba(255,255,255,0.1)">
-                <VerticalTimelineElement
-                    className="vertical-timeline-element--work"
-                    date="Oct 1, 2024 - Present"
-                    iconStyle={{ background: '#FFD700', color: '#1a1a1a' }}
-                    icon={<WorkIcon />}
-                >
-                    <h3 className="vertical-timeline-element-title">Technical Officer (Backend)</h3>
-                    <h4 className="vertical-timeline-element-subtitle">AWS Club at UTD</h4>
-                    <p>
-                        Worked on backend systems for projects used in AWS Club events at UTD as an active club member.
-                    </p>
-                </VerticalTimelineElement>
-
-                <VerticalTimelineElement
-                    className="vertical-timeline-element--education"
-                    date="Aug 2024 - Present (Expected Graduation: May 2026)"
-                    iconStyle={{ background: '#FFD700', color: '#1a1a1a' }}
-                    icon={<SchoolIcon />}
-                >
-                    <h3 className="vertical-timeline-element-title">Master of Science in Computer Science</h3>
-                    <h4 className="vertical-timeline-element-subtitle">University of Texas at Dallas</h4>
-                    <p>
-                        Currently pursuing MSCS. Relevant Coursework: Database Design, Algorithms, Web Programming.
-                    </p>
-                </VerticalTimelineElement>
-
-                <VerticalTimelineElement
-                    className="vertical-timeline-element--work"
-                    date="Aug 2023 - Jun 2024"
-                    iconStyle={{ background: '#FFD700', color: '#1a1a1a' }}
-                    icon={<WorkIcon />}
-                >
-                    <h3 className="vertical-timeline-element-title">Software Developer</h3>
-                    <h4 className="vertical-timeline-element-subtitle">PyCray Technologies, Noida, India</h4>
-                    <p>
-                        Led a team to design secure, high-performance APIs for an algorithmic trading platform and integrated real-time stock data streaming using Python and AWS services.
-                    </p>
-                </VerticalTimelineElement>
-
-                <VerticalTimelineElement
-                    className="vertical-timeline-element--work"
-                    date="May 2023 - July 2023"
-                    iconStyle={{ background: '#FFD700', color: '#1a1a1a' }}
-                    icon={<WorkIcon />}
-                >
-                    <h3 className="vertical-timeline-element-title">Software Developer Intern</h3>
-                    <h4 className="vertical-timeline-element-subtitle">PyCray Technologies, Noida, India</h4>
-                    <p>
-                        Enhanced search features for a carpooling app using Elasticsearch and automated Telegram message broadcasting with Selenium.
-                    </p>
-                </VerticalTimelineElement>
-
-                <VerticalTimelineElement
-                    className="vertical-timeline-element--education"
-                    date="August 2019 - May 2023"
-                    iconStyle={{ background: '#FFD700', color: '#1a1a1a' }}
-                    icon={<SchoolIcon />}
-                >
-                    <h3 className="vertical-timeline-element-title">Bachelor of Engineering in Computer Science</h3>
-                    <h4 className="vertical-timeline-element-subtitle">University of Mumbai</h4>
-                    <p>
-                        Developed key projects like FlixTime and Hand Sign Recognition.
-                    </p>
-                </VerticalTimelineElement>
+            <h2 className="timeline-header">Timeline</h2>
+            <VerticalTimeline lineColor="rgba(255,255,255,0.14)">
+                {TIMELINE_ITEMS.map((item) => (
+                    <VerticalTimelineElement
+                        key={`${item.title}-${item.dateLabel}`}
+                        className={`vertical-timeline-element--${item.type}`}
+                        date={
+                            <span className={`timeline-date-label ${item.isCurrent ? "is-current" : ""}`}>
+                                {item.dateLabel}
+                            </span>
+                        }
+                        iconStyle={{ background: "#F6C453", color: "#1a1a1a" }}
+                        icon={item.type === "work" ? <WorkIcon /> : <SchoolIcon />}
+                    >
+                        <h3 className="vertical-timeline-element-title">{item.title}</h3>
+                        <h4 className="vertical-timeline-element-subtitle">{item.org}</h4>
+                        <p>{item.summary}</p>
+                    </VerticalTimelineElement>
+                ))}
             </VerticalTimeline>
         </div>
     );

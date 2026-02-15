@@ -4,28 +4,43 @@ import "./Navbar.css";
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const navItems = [
+        { label: "Home", href: "#home" },
+        { label: "Certifications", href: "#certifications" },
+        { label: "Projects", href: "#projects" },
+        { label: "Timeline", href: "#timeline" },
+        { label: "Contact", href: "#contact" }
+    ];
 
     useEffect(() => {
         const handleScroll = () => {
-            const isScrolled = window.scrollY > 50;
+            const isScrolled = window.scrollY > 20;
             if (isScrolled !== scrolled) {
                 setScrolled(isScrolled);
             }
         };
 
         window.addEventListener("scroll", handleScroll);
+        handleScroll();
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, [scrolled]);
 
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    };
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 900) {
+                setMenuOpen(false);
+            }
+        };
 
-    const scrollToSection = (id) => {
-        const element = document.querySelector(id);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    const scrollToSection = (href) => {
+        const element = document.querySelector(href);
         if (element) {
             element.scrollIntoView({ behavior: "smooth" });
             setMenuOpen(false);
@@ -33,33 +48,28 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
+        <nav className={`navbar ${scrolled ? "scrolled" : ""}`} aria-label="Primary">
             <div className="navbar-container">
-                <div className="navbar-logo" onClick={() => scrollToSection("#root")}>
-                    KK
-                </div>
+                <button
+                    className={`menu-icon ${menuOpen ? "open" : ""}`}
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    aria-expanded={menuOpen}
+                    aria-controls="nav-menu"
+                    aria-label="Toggle navigation menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
 
-                <div className={`menu-icon ${menuOpen ? "open" : ""}`} onClick={toggleMenu}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-
-                <ul className={`nav-menu ${menuOpen ? "active" : ""}`}>
-                    {/* Assuming section IDs exist or will be added. 
-                        If not, we'll map them to generic locations for now */}
-                    <li className="nav-item">
-                        <span className="nav-link" onClick={() => scrollToSection("#root")}>Home</span>
-                    </li>
-                    <li className="nav-item">
-                        <span className="nav-link" onClick={() => scrollToSection(".age")}>About</span>
-                    </li>
-                    <li className="nav-item">
-                        <span className="nav-link" onClick={() => scrollToSection(".certs-container")}>Certifications</span>
-                    </li>
-                    <li className="nav-item">
-                        <span className="nav-link" onClick={() => scrollToSection(".footer")}>Contact</span>
-                    </li>
+                <ul id="nav-menu" className={`nav-menu ${menuOpen ? "active" : ""}`}>
+                    {navItems.map((item) => (
+                        <li className="nav-item" key={item.href}>
+                            <button className="nav-link" onClick={() => scrollToSection(item.href)}>
+                                {item.label}
+                            </button>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </nav>

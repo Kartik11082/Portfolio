@@ -3,41 +3,15 @@ import "./Footer.css";
 const Footer = () => {
     return (
         <footer className="footer">
-            <div className="footer-content">
-                <p>Let's Connect:</p>
-                <ul className="footer-links">
-                    <li>
-                        <a
-                            href="mailto:karkerakartik27@gmail.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="footer-link email"
-                        >
-                            Email
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://www.linkedin.com/in/kartikkarkera/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="footer-link linkedin"
-                        >
-                            LinkedIn
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://drive.google.com/file/d/1o7eaKsKGiQn15TxzYwixJGSW9sZ8o5bF/view?usp=sharing"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="footer-link resume"
-                        >
-                            Resume
-                        </a>
-                    </li>
-                </ul>
-                <p className="footer-credit">Designed & Built by Kartik Karkera</p>
+            <div className="section-content footer-content glass-panel">
+                <h2>Let&apos;s Connect</h2>
+                <p className="footer-description">
+                    Open to backend software engineering and data platform opportunities.
+                </p>
+                <a href="mailto:karkerakartik27@gmail.com" className="footer-link">
+                    karkerakartik27@gmail.com
+                </a>
+                <p className="footer-credit">Designed and built by Kartik Karkera</p>
             </div>
         </footer>
     );

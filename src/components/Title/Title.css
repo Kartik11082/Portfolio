@@ -1,99 +1,160 @@
-/* Global */
-html {
-    min-height: 100%;
+.hero {
+    position: relative;
+    overflow: hidden;
+    min-height: auto;
+    padding: clamp(0.75rem, 2vw, 1.4rem) 0 clamp(1rem, 2.2vw, 1.6rem);
 }
 
-body {
-    height: calc(100vh - 8em);
-    padding: 4em;
-    color: rgba(255, 255, 255, .75);
-    font-family: 'Courier New', monospace;
-    background-color: rgb(25, 25, 25);
-    margin: 0;
-    text-align: center;
-}
-
-.line-1 {
-    /* border: 2px solid red; */
+.hero-intro {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin: 4rem auto;
-    border-right: 2px solid rgba(255, 255, 255, .75);
-    font-size: 2.5rem;
-    text-align: center;
-    white-space: nowrap;
+    pointer-events: none;
+    transition: top 0.75s cubic-bezier(0.2, 0.8, 0.2, 1),
+        left 0.75s cubic-bezier(0.2, 0.8, 0.2, 1),
+        transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 0.25s ease;
+    z-index: 3;
+}
+
+.hero-intro.is-moving {
+    top: 0.8rem;
+    left: 0;
+    transform: translate(0, 0) scale(0.98);
+}
+
+.hero-intro-text {
+    margin: 0;
+    display: inline-block;
+    width: 14ch;
+    max-width: 0ch;
     overflow: hidden;
-    animation: typewriter 1.5s steps(14) 1s 1 normal both,
-        blinkTextCursor 500ms steps(14) infinite normal,
-        jumpToTop 1s 3s forwards;
+    white-space: nowrap;
+    font-family: "Consolas", "Menlo", monospace;
+    font-size: clamp(2rem, 7vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text-100);
+    border-right: 2px solid rgba(255, 255, 255, 0.85);
+    animation: typeName 1.5s steps(14, end) forwards, cursorBlink 0.6s step-end infinite;
 }
 
-/* Animation */
-@keyframes typewriter {
+.hero-intro.is-moving .hero-intro-text {
+    border-right-color: transparent;
+}
+
+.hero-content {
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+}
+
+.hero-content.revealed {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: auto;
+}
+
+.hero-kicker {
+    color: var(--accent-gold);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: var(--space-2);
+}
+
+.hero-name {
+    font-size: clamp(2rem, 7vw, 3.5rem);
+    line-height: 1.05;
+}
+
+.hero-role {
+    margin-top: var(--space-3);
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: var(--text-100);
+    font-weight: 600;
+}
+
+.hero-summary {
+    margin-top: var(--space-2);
+    max-width: 65ch;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.hero-actions {
+    margin-top: var(--space-4);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--text-100);
+    text-decoration: none;
+    padding: 0.72rem 1.2rem;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.hero-btn:hover {
+    border-color: rgba(255, 255, 255, 0.45);
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.hero-btn-primary {
+    background: var(--accent-blue-strong);
+    border-color: var(--accent-blue-strong);
+}
+
+.hero-btn-primary:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+}
+
+@keyframes typeName {
     from {
-        width: 0;
+        max-width: 0ch;
     }
 
     to {
-        width: 8.5em;
+        max-width: 14ch;
     }
 }
 
-@keyframes blinkTextCursor {
-    from {
-        border-right-color: rgba(255, 255, 255, .75);
+@keyframes cursorBlink {
+    from,
+    to {
+        border-right-color: rgba(255, 255, 255, 0.85);
     }
 
-    to {
+    50% {
         border-right-color: transparent;
     }
 }
 
-@keyframes jumpToTop {
-    0% {
-        top: 50%;
-        transform: translate(-50%, -50%) scale(1);
+@media (max-width: 680px) {
+    .hero {
+        padding: 0.9rem 0 1.15rem;
+        min-height: auto;
     }
 
-    100% {
-        top: 0;
-        transform: translate(-50%, 0) scale(1.5);
-    }
-}
-
-/* Adjust the animation so the cursor stops after typing ends and move to top is done */
-.line-1.anim-typewriter {
-    animation: typewriter 1.5s steps(14) 1s 1 normal both,
-        blinkTextCursor 2.5s steps(14) 1s forwards,
-        /* Adjust delay for cursor */
-        jumpToTop 1s 3s forwards;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .line-1 {
-        width: 18em;
-        font-size: 150%;
+    .hero-intro.is-moving {
+        top: 0.7rem;
+        left: 0;
     }
 
-    .anim-typewriter {
-        animation: typewriter 1.5s steps(14) 1s 1 normal both,
-            blinkTextCursor 500ms steps(14) 1s forwards,
-            jumpToTop 2s 3.5s forwards;
-    }
-}
-
-@media (max-width: 480px) {
-    .line-1 {
-        width: 12em;
-        font-size: 120%;
-    }
-
-    .anim-typewriter {
-        animation: typewriter 1.5s steps(14) 1s 1 normal both,
-            blinkTextCursor 500ms steps(14) 1s forwards,
-            jumpToTop 2s 3.5s forwards;
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
     }
 }

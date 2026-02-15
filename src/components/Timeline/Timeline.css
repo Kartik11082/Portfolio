@@ -1,96 +1,84 @@
 .timeline {
-    opacity: 0;
-    pointer-events: none;
-    animation: fadeIn 2s 3.5s forwards;
-    padding: 2rem 0;
+    animation: timelineEnter 0.35s ease-out both;
 }
 
-/* Header Styling */
 .timeline-header {
-    text-align: center;
-    color: #fff;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-size: clamp(1.45rem, 4vw, 2rem);
+    margin-bottom: var(--space-4);
 }
 
-.divider {
-    width: 60%;
-    margin: 0 auto 3rem;
-    border: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
-}
-
-/* Overriding Library Styles for Glassmorphism */
 .vertical-timeline-element-content {
     background: rgba(255, 255, 255, 0.05) !important;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 12px !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-    color: #fff !important;
+    box-shadow: var(--shadow-soft) !important;
+    color: var(--text-100) !important;
 }
 
 .vertical-timeline-element-content-arrow {
-    border-right: 7px solid rgba(255, 255, 255, 0.1) !important;
+    border-right: 7px solid rgba(255, 255, 255, 0.12) !important;
 }
 
-/* Typography */
 .vertical-timeline-element-title {
-    color: #FFD700 !important;
-    /* Gold Title */
-    font-size: 1.3rem !important;
+    color: var(--accent-gold) !important;
+    font-size: 1.1rem !important;
     font-weight: 700 !important;
-    margin-bottom: 5px !important;
 }
 
 .vertical-timeline-element-subtitle {
-    color: #ddd !important;
-    font-size: 1rem !important;
-    margin-bottom: 10px !important;
-}
-
-.vertical-timeline-element-date {
-    color: #aaa !important;
-    /* Improved date visibility */
-    font-size: 0.9rem !important;
-    font-weight: 500 !important;
-    opacity: 0.9 !important;
-    padding: 0 10px !important;
+    color: var(--text-100) !important;
+    font-size: 0.95rem !important;
+    margin-top: 0.35rem !important;
 }
 
 .vertical-timeline-element p {
-    font-size: 0.95rem !important;
-    line-height: 1.6 !important;
-    color: #ccc !important;
+    margin-top: 0.6rem !important;
+    font-size: 0.9rem !important;
+    line-height: 1.62 !important;
+    color: var(--text-200) !important;
 }
 
-/* Icon Shadows */
+.vertical-timeline-element-date {
+    color: #dfe7fb !important;
+    opacity: 1 !important;
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+}
+
+.timeline-date-label {
+    display: inline-block;
+    padding: 0.15rem 0;
+}
+
+.timeline-date-label.is-current {
+    color: #0e1828;
+    background: var(--accent-gold);
+    border-radius: 999px;
+    padding: 0.24rem 0.6rem;
+    font-weight: 800;
+}
+
 .vertical-timeline-element-icon {
-    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2) !important;
+    box-shadow: 0 0 0 4px rgba(246, 196, 83, 0.2) !important;
     display: flex !important;
     justify-content: center;
     align-items: center;
 }
 
 .vertical-timeline-element-icon svg {
-    width: 24px !important;
-    height: 24px !important;
-    display: block !important;
-    margin: 0 !important;
+    width: 22px !important;
+    height: 22px !important;
     color: #1a1a1a !important;
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
+@keyframes timelineEnter {
     from {
         opacity: 0;
+        transform: translateY(8px);
     }
 
     to {
         opacity: 1;
-        pointer-events: all;
+        transform: translateY(0);
     }
 }

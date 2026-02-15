@@ -1,125 +1,102 @@
-/* Fade-in Animation (same as other sections) */
-@keyframes fadeIn {
+.certs-container {
+    text-align: left;
+    animation: certEnter 0.35s ease-out both;
+}
+
+.section-title {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    color: var(--text-100);
+    margin-bottom: var(--space-4);
+}
+
+.cert-card-container {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cert-card {
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    padding: 1.3rem 1rem;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cert-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.24);
+    box-shadow: var(--shadow-strong);
+}
+
+.cert-card-image img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    margin: 0 auto var(--space-3);
+}
+
+.cert-card-title {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.cert-card-title h3 {
+    font-size: 1rem;
+    color: var(--text-100);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.cert-card-title p {
+    font-size: 0.88rem;
+    color: var(--text-300);
+    margin-bottom: var(--space-4);
+}
+
+.cert-btn {
+    display: inline-flex;
+    justify-content: center;
+    margin-top: auto;
+    padding: 0.55rem 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 8px;
+    color: var(--text-100);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.cert-btn:hover {
+    background: rgba(255, 255, 255, 0.11);
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 980px) {
+    .cert-card-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 680px) {
+    .cert-card-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@keyframes certEnter {
     from {
         opacity: 0;
+        transform: translateY(8px);
     }
 
     to {
         opacity: 1;
-    }
-}
-
-.certs-container {
-    text-align: center;
-    /* padding: 20px; */
-    opacity: 0;
-    animation: fadeIn 2s 3.5s ease-out forwards;
-    animation-fill-mode: forwards;
-    /* margin-top: 40px;
-    margin-bottom: 40px; */
-}
-
-.section-title {
-    font-size: 2rem;
-    color: #fff;
-    /* margin-bottom: 30px; */
-}
-
-/* Card Layout */
-.cert-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-/* Card Design */
-.cert-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    width: 280px;
-    /* Slightly wider */
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    padding: 30px 20px;
-}
-
-.cert-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(159, 192, 216, 0.2);
-    /* Soft blue glow */
-}
-
-.cert-card-image img {
-    width: 160px;
-    height: 160px;
-    object-fit: contain;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
-    transition: transform 0.3s ease;
-}
-
-.cert-card:hover .cert-card-image img {
-    transform: scale(1.05);
-}
-
-/* Title */
-.cert-card-title h3 {
-    font-size: 1.1rem;
-    color: #fff;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.cert-card-title p {
-    font-size: 0.9rem;
-    color: #aaa;
-    margin-bottom: 20px;
-}
-
-.cert-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    background: transparent;
-}
-
-.cert-btn:hover {
-    background: #fff;
-    color: #1a1a1a;
-    border-color: #fff;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .cert-card {
-        width: 180px;
-    }
-
-    .cert-card-title h3 {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .cert-card-container {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .cert-card {
-        width: 100%;
+        transform: translateY(0);
     }
 }

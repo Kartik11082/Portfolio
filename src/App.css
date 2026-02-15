@@ -1,3 +1,39 @@
-body {
-    font-family: 'Outfit', sans-serif;
+.site-main {
+    padding-top: 5.25rem;
+}
+
+.app-section {
+    padding-block: var(--space-5);
+    scroll-margin-top: 6rem;
+}
+
+.app-section:not(.hero-section):not(.contact-section) {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-section {
+    min-height: auto;
+    padding-top: clamp(1rem, 2.2vw, 1.5rem);
+    padding-bottom: clamp(1rem, 2.4vw, 1.75rem);
+    background: linear-gradient(180deg, rgba(6, 9, 14, 0.96) 0%, rgba(8, 11, 18, 0.84) 62%, rgba(8, 11, 18, 0.1) 100%);
+}
+
+.hero-section+.app-section {
+    padding-top: var(--space-3);
+}
+
+.contact-section {
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-5);
+}
+
+@media (max-width: 900px) {
+    .site-main {
+        padding-top: 4.5rem;
+    }
+
+    .hero-section {
+        padding-top: var(--space-4);
+        padding-bottom: var(--space-3);
+    }
 }

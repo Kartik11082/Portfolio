@@ -1,282 +1,250 @@
+import { useState } from "react";
 import "./Projects.css";
-import flixtimeImage from "../../assets/flixtime.jpg"
-import terminalImage from "../../assets/stacksearch.jpg"
-import mushroomImage from "../../assets/mushroom.png"
-import tfidfImage from "../../assets/tfidf.webp"
-import potionwatchImage from "../../assets/potionwatch.png"
-import ThreeLCxAWS from "../../assets/3LCxAWShackathon.png"
-import noisytoniceImage from "../../assets/noisytoniceImage.png"
-import tidalhackImage from "../../assets/tidalHackImage.png"
-import midnightCommitsImage from "../../assets/midnightCommitsImage.png"
+import flixtimeImage from "../../assets/flixtime.jpg";
+import terminalImage from "../../assets/stacksearch.jpg";
+import mushroomImage from "../../assets/mushroom.png";
+import tfidfImage from "../../assets/tfidf.webp";
+import potionwatchImage from "../../assets/potionwatch.png";
+import ThreeLCxAWS from "../../assets/3LCxAWShackathon.png";
+import noisytoniceImage from "../../assets/noisytoniceImage.png";
+import tidalhackImage from "../../assets/tidalHackImage.png";
+import midnightCommitsImage from "../../assets/midnightCommitsImage.png";
 
+const PREVIEW_FEATURE_COUNT = 4;
 
-const Card = () => {
-    const classNames = {
-        "Python": "py",
-        "Flask": "flk",
-        "ReactJS": "react",
-        "TensorFlow": "tf",
-        "Selenium": "seln",
-        "Llama 3.2": "llama",
-        "Web Scraping": "ws",
-        "SQL": "sql",
-        "HTML": "html",
-        "CSS": "css",
-        "GraphQL": "graphql",
-        "Django": "djn",
-        "Django REST Framework": "drf",
-        "AWS": "aws",
-        "Firebase": "fb",
-        "Git": "git",
-        "MongoDB": "Mongo",
-        "Elasticsearch": "ES",
-        "DynamoDB": "dynamo",
-        "JavaScript": "js",
-        "Machine Learning": "ml",
-        "Artificial Intelligence": "ai",
-        "PySpark": "PySpark",
-        "NLP": "nlp",
-        "scikit-learn": "sklearn",
-        "Pandas": "pandas",
-        "NumPy": "numpy",
-        "3LC dashboard": "3lc",
+const PROJECTS = [
+
+    {
+        title: "Traceline - Pipeline Anomaly Alignment",
+        summary:
+            "A 24-hour hackathon build that aligns anomalies across inspection years and corrects odometer drift in pipeline runs.",
+        impact: "Delivered a scalable anomaly alignment workflow for multi-year pipeline inspection analysis.",
+        tech: ["Python", "Pandas", "NumPy", "Scikit-learn", "Plotly", "Streamlit"],
+        details: [
+            "Used fixed hardware points as anchors to correct relative distances.",
+            "Matched anomalies across 2007, 2015, and 2022 runs.",
+            "Built confidence scoring for large-scale anomaly alignment.",
+            "Visualized corrosion growth in a 3D digital twin dashboard."
+        ],
+        link: "http://tidalfrontend.s3-website-us-east-1.amazonaws.com/",
+        status: "hackathon",
+        awardLabel: "Won 1st Place",
+        eventLabel: "TidalHack @ TAMU",
+        image: tidalhackImage
+    },
+    {
+        title: "Chihuahua vs Muffin - Data-Centric AI Challenge",
+        summary:
+            "A 50-hour hackathon project focused on improving model performance through dataset quality improvements.",
+        impact: "Achieved ~93.5% classifier accuracy through data-centric optimization.",
+        tech: ["Python", "Machine Learning", "3LC"],
+        details: [
+            "Built a high-performing image classifier for noisy visual classes.",
+            "Used embedding-based data selection and revision workflows.",
+            "Applied bulk relabeling and dataset curation in 3LC.",
+            "Improved accuracy without changing base model architecture."
+        ],
+        link: "https://github.com/Kartik11082/3LCxAWSHackathon#images---accuracy935",
+        status: "hackathon",
+        awardLabel: "Won 3rd Place",
+        eventLabel: "3LC x AWS Club Hackathon",
+        image: ThreeLCxAWS
+    },
+    {
+        title: "Midnight Commits - Global Developer Activity Analytics",
+        summary:
+            "A real-time analytics platform for exploring where and when developers code, with emphasis on night-time activity patterns.",
+        impact: "Live geospatial commit insights with city-level and leaderboard views.",
+        tech: ["Python", "Kafka", "FastAPI", "PostgreSQL", "React", "AWS"],
+        details: [
+            "Streaming GitHub event ingestion with topic-based pipelines.",
+            "Real-time globe visualization with day and night shading.",
+            "Temporal enrichment for hourly and regional commit trends.",
+            "Leaderboard analytics for high-activity cities and countries.",
+            "Forecasting experiments on commit activity seasonality."
+        ],
+        link: "https://github.com/Kartik11082/MidnightCommits",
+        status: "in-progress",
+        image: midnightCommitsImage
+    },
+    {
+        title: "PotionWatch - Real-time Ticket Discrepancy Detection",
+        summary:
+            "A 24-hour HackUTD build for monitoring transaction inconsistencies in oil and gas operation records.",
+        impact: "Delivered anomaly detection APIs for faster operational investigations.",
+        tech: ["Python", "Flask", "React", "Pandas", "NumPy"],
+        details: [
+            "Created outlier detection logic for suspicious ticket behavior.",
+            "Built ticket-matching APIs to detect missing record pairs.",
+            "Enabled near real-time checks to reduce manual audit effort."
+        ],
+        link: "http://18.220.118.210/",
+        status: "hackathon",
+        eventLabel: "HackUTD 2025",
+        image: potionwatchImage
+    },
+    {
+        title: "Noisy to Nice - Data Quality Copilot",
+        summary:
+            "A web app that profiles CSV quality and recommends targeted cleaning actions for machine learning readiness.",
+        impact: "Automated profiling and AI-guided cleanup suggestions for faster data prep.",
+        tech: ["Python", "AWS Bedrock", "DynamoDB", "S3"],
+        details: [
+            "Implemented authenticated upload flow for CSV datasets.",
+            "Stored files in S3 and metadata in DynamoDB.",
+            "Generated profile reports for missing values and duplicates.",
+            "Used Bedrock to produce actionable cleanup guidance."
+        ],
+        link: "https://github.com/Kartik11082/Noisy-to-Nice---Data-Centric",
+        status: "standard",
+        image: noisytoniceImage
+    },
+    {
+        title: "TF-IDF Search Engine with PySpark",
+        summary: "A movie search engine that ranks results using TF-IDF and cosine similarity.",
+        impact: "Improved query relevance using scalable text ranking pipelines.",
+        tech: ["Python", "PySpark", "NLP"],
+        details: [
+            "Implemented tokenization, stopword removal, and weighting.",
+            "Built ranking for single-term and multi-term queries.",
+            "Integrated metadata retrieval for richer result pages."
+        ],
+        link: "https://github.com/Kartik11082/Big-Data-Management/blob/main/MovieSearch.ipynb",
+        status: "standard",
+        image: tfidfImage
+    },
+    {
+        title: "Mushroom Classification with Machine Learning",
+        summary: "A classification project that predicts mushroom edibility from structured features.",
+        impact: "Trained high-accuracy classifiers on 50,000+ records.",
+        tech: ["Python", "scikit-learn", "Pandas", "NumPy"],
+        details: [
+            "Benchmarked Decision Tree, k-NN, and Random Forest models.",
+            "Handled feature preprocessing and missing data treatment.",
+            "Used GridSearchCV and cross-validation for tuning."
+        ],
+        link: "https://github.com/Kartik11082/Machine-Learning",
+        status: "standard",
+        image: mushroomImage
+    },
+    {
+        title: "FlixTime",
+        summary: "A movie recommendation platform combining collaborative and content-based filtering.",
+        impact: "Delivered a full-stack recommendation experience with responsive UI.",
+        tech: ["Python", "Flask", "React"],
+        details: [
+            "Built REST APIs for recommendation delivery.",
+            "Combined collaborative and content-based recommendation logic.",
+            "Deployed a responsive React front end for browsing results."
+        ],
+        link: "https://flix-time-three.vercel.app/",
+        status: "standard",
+        image: flixtimeImage
+    },
+    {
+        title: "TermiStack - Terminal StackOverflow Searcher",
+        summary: "A CLI experience for searching StackOverflow with lightweight query interpretation.",
+        impact: "Reduced context switching by bringing search directly into terminal workflows.",
+        tech: ["Python", "Llama", "Web Scraping"],
+        details: [
+            "Parsed and summarized StackOverflow results in terminal view.",
+            "Used a local model workflow for compact query interpretation.",
+            "Optimized retrieval flow for developer troubleshooting speed."
+        ],
+        link: "https://github.com/Kartik11082/TermiStack",
+        status: "standard",
+        image: terminalImage
     }
+];
 
-    const cards = [
-        {
-            title: "Midnight Commits - Global Developer Activity Analytics",
-            description:
-                "A real-time data engineering and analytics platform that ingests global GitHub activity to explore when, where, and how developers code, with a focus on night-time programming patterns.",
-            inProgress: true,
-            progressLabel: "Currently Working On",
-            details: {
-                technologies: [
-                    "Python",
-                    "Kafka",
-                    "FastAPI",
-                    "PostgreSQL",
-                    "React",
-                    "Globe.gl",
-                    "AWS (Planned)",
-                ],
-                features: [
-                    "Streaming GitHub event ingestion using Kafka",
-                    "Real-time 3D globe visualization with day/night shading",
-                    "Geospatial and temporal enrichment of commit data",
-                    "Analytics layer with leaderboards and city-level insights",
-                    "Time-series aggregation and forecasting experiments on commit activity",
-                    "Exploration of behavioral patterns such as night vs day coding"
-                ]
-            },
-            image: midnightCommitsImage,
-            link: "https://github.com/Kartik11082/MidnightCommits"
-        },
-        {
-            title: "Traceline – Pipeline Anomaly Alignment & Growth Tracking",
-            description:
-                "A 24-hour hackathon project that solves odometer drift in multi-run pipeline inspections by intelligently aligning anomalies across years.",
-            hackathon: true,
-            hackathonName: "TidalHack @ TAMU 24-Hour Hackathon",
-            award: "🏆 1st Place",
-            company: "RCP Inc.",
-            details: {
-                technologies: [
-                    "Python",
-                    "Pandas",
-                    "NumPy",
-                    "Scikit-learn",
-                    "Plotly",
-                    "Streamlit"
-                ],
-                features: [
-                    "Built an alignment algorithm to correct odometer drift across ILI runs from 2007, 2015, and 2022",
-                    "Used fixed pipeline hardware (valves, tees, welds) as physical anchors to compute relative distances",
-                    "Matched thousands of anomalies across inspection runs with confidence scoring",
-                    "Tracked corrosion growth over time and visualized results in a 3D digital twin dashboard",
-                    "Designed the system to scale beyond rule-based matching toward predictive integrity analysis"
-                ],
-            },
-            image: tidalhackImage,
-            link: "http://tidalfrontend.s3-website-us-east-1.amazonaws.com/"
-        },
-        {
-            title: "Chihuahua vs Muffin: Data-Centric AI Challenge",
-            description:
-                "A 50-hour, on-campus hackathon where participants build a high-performing image classifier under real-world constraints.",
-            hackathon: true,
-            hackathonName: "3LC x AWS Club Hackathon",
-            award: "🏆 3rd Place",
-            company: "3LC",
-            details: {
-                technologies: ["Python", "Machine Learning", "3LC dashboard"],
-                features: [
-                    "Built a high-performing image classifier for the \"Chihuahua vs Muffin\" task",
-                    "Utilized data-centric techniques: labeling, curation, revisioning, and embedding-based selection",
-                    "Used 3LC dashboard for embedding analysis and bulk labeling",
-                    "Achieved ~93.5% accuracy by improving dataset quality without changing the model"
-                ],
-            },
-            image: ThreeLCxAWS,
-            link: "https://github.com/Kartik11082/3LCxAWSHackathon#images---accuracy935",
-        },
-        {
-            title: "🧙‍♂️PotionWatch",
-            description:
-                "A 24 hour hackathon where I built a Real-time discrepancy detection system for monitoring potion flow data in the oil and gas industry.",
-            hackathon: true,
-            hackathonName: "HackUTD 2025",
-            company: "EOG Resources",
-            details: {
-                technologies: ["Python", "Flask", "ReactJS", "Pandas", "NumPy"],
-                features: [
-                    "Developed automated fraud detection system for EOG Resources to identify suspicious tickets and missing records across transactions, preventing revenue loss",
-                    "Built RESTful API with statistical outlier detection and real-time ticket-matching algorithms and enabling operations team to investigate anomalies"
-                ],
-            },
-            image: potionwatchImage,
-            link: "http://18.220.118.210/",
-        },
-        {
-            "title": "Noisy to Nice – Data Quality Copilot",
-            "description": "A web app that uploads CSVs, profiles data quality, and uses AI to recommend cleaning steps for better ML readiness.",
-            "details": {
-                "technologies": [
-                    "Python",
-                    "AWS Bedrock",
-                    "ydata-profiling",
-                ],
-                "features": [
-                    "Simple email + password auth with JWT.",
-                    "CSV uploaded straight to S3 and metadata stored in DynamoDB.",
-                    "Auto-generated profiling report with basic stats and distributions.",
-                    "AWS Bedrock-powered tips on what's wrong with your data and how to fix it.",
-                    "Flags common issues like missing values, duplicates, and tiny datasets.",
-                    "Clear suggestions to make the dataset more ML-ready."
-                ]
-            },
-            "image": noisytoniceImage,
-            "link": "https://github.com/Kartik11082/Noisy-to-Nice---Data-Centric"
-        },
-        {
-            "title": "TF-IDF Search Engine using PySpark",
-            "description": "A movie search engine using TF-IDF and cosine similarity ranking.",
-            "details": {
-                "technologies": ["Python", "PySpark", "NLP"],
-                "features": [
-                    "Implements Term Frequency-Inverse Document Frequency (TF-IDF) for movie search ranking.",
-                    "Text preprocessing techniques including tokenization, stopword removal, and term weighting.",
-                    "Efficient query handling for single-term and multi-term searches.",
-                    "Integration with a metadata retrieval system to display relevant movie information."
-                ],
-            },
-            "image": tfidfImage,
-            "link": "https://github.com/Kartik11082/Big-Data-Management/blob/main/MovieSearch.ipynb"
-        },
-        {
-            "title": "Mushroom Classification using Machine Learning",
-            "description": "A machine learning model for predicting mushroom edibility.",
-            "details": {
-                "technologies": ["Python", "scikit-learn", "Pandas", "NumPy"],
-                "features": [
-                    "Built classification models using Decision Tree, k-NN, and Random Forest.",
-                    "Processed a dataset of 50,000+ mushroom samples, handling missing values and feature selection.",
-                    "Hyperparameter tuning with GridSearchCV and cross-validation.",
-                    "Achieved high classification accuracy for determining mushroom edibility.",
-                ],
-            },
-            "image": mushroomImage,
-            "link": "https://github.com/Kartik11082/Machine-Learning"
-        },
-        {
-            "title": "FlixTime",
-            "description": "A movie recommendation system using content and collaborative based filtering",
-            "details": {
-                "technologies": ["Python", "Flask", "ReactJS"],
-                "features": [
-                    "Hybrid recommendation approach combining collaborative and content-based filtering.",
-                    "RESTful APIs built with Flask.",
-                    "Dynamic, responsive UI built with ReactJS."
-                ],
-            },
-            "image": flixtimeImage,
-            "link": "https://flix-time-three.vercel.app/"
-        },
-        {
-            "title": "Terminal-based StackOverflow Searcher",
-            "description": "CLI tool to search in StackOverflow",
-            "details": {
-                "technologies": ["Python", "Llama 3.2", "Web Scraping"],
-                "features": [
-                    "Search and parse StackOverflow queries in the terminal.",
-                    "Local LLM for efficient query interpretation.",
-                    "Simplified solution retrieval for developers."
-                ],
-            },
-            "image": terminalImage,
-            "link": "https://github.com/Kartik11082/TermiStack"
-        }
-    ]
+const Projects = () => {
+    const [expanded, setExpanded] = useState({});
 
+    const toggleExpanded = (title) => {
+        setExpanded((previous) => ({
+            ...previous,
+            [title]: !previous[title]
+        }));
+    };
 
     return (
-        <div className="app-container dark">
-            <hr></hr>
-            <h1>Projects</h1>
-            <div className="card-container">
-                {cards.map((card, index) => (
-                    <a key={index} href={card.link} target="_blank" rel="noopener noreferrer" className="card-link">
-                        <div className={`card ${card.inProgress ? "in-progress-card" : ""}`}>
-                            {card.inProgress && (
-                                <div className="in-progress-badge">
-                                    <span className="in-progress-dot" />
-                                    <span>{card.progressLabel || "Currently Working On"}</span>
-                                </div>
-                            )}
-                            {/* Hackathon Badge */}
-                            {card.hackathon && (
-                                <div className="hackathon-badge">
-                                    {card.award && (
-                                        <div className="award-section">
-                                            <span className="award-text">{card.award}</span>
-                                        </div>
-                                    )}
-                                    <div className="hackathon-info">
-                                        <span className="hackathon-name">{card.hackathonName}</span>
-                                        <span className="company-text">for {card.company}</span>
-                                    </div>
-                                </div>
-                            )}
+        <div className="projects-shell">
+            <h2 className="projects-title">Projects</h2>
+            <div className="projects-grid">
+                {PROJECTS.map((project) => {
+                    const isExpanded = Boolean(expanded[project.title]);
+                    const hasOverflowDetails = project.details.length > PREVIEW_FEATURE_COUNT;
+                    const detailsToRender = isExpanded
+                        ? project.details
+                        : project.details.slice(0, PREVIEW_FEATURE_COUNT);
 
-                            <div className="card-image">
-                                <img src={card.image} alt={card.title} />
+                    return (
+                        <article
+                            key={project.title}
+                            className={`project-card glass-panel ${project.status === "in-progress" ? "project-card-in-progress" : ""}`}
+                        >
+                            <div className="project-media">
+                                <img loading="lazy" src={project.image} alt={project.title} />
+                                {project.status === "in-progress" && (
+                                    <span className="project-badge">In Progress</span>
+                                )}
+                                {project.awardLabel ? (
+                                    <span className="project-badge project-badge-win">
+                                        {project.awardLabel}
+                                    </span>
+                                ) : project.status === "hackathon" && (
+                                    <span className="project-badge project-badge-award">Hackathon Build</span>
+                                )}
                             </div>
-                            <a href={card.link} target="_blank" rel="noopener noreferrer" className="card-title-link">
-                                <div className="card-title">
-                                    <h2>{card.title}</h2>
-                                </div>
-                            </a>
-                            <div className="card-info">
-                                <p>{card.description}</p>
 
-                                <div className="techs">
-                                    {card.details.technologies.map((tech, i) => (
-                                        <span key={i} className={classNames[tech]}>{tech}</span>
+                            <div className="project-body">
+                                <h3>{project.title}</h3>
+                                <p className="project-summary">{project.summary}</p>
+                                <p className="project-impact">
+                                    <span>Outcome:</span> {project.impact}
+                                </p>
+
+                                <div className="project-tech" aria-label="Project technologies">
+                                    {project.tech.map((tech) => (
+                                        <span key={`${project.title}-${tech}`} className="tech-pill">
+                                            {tech}
+                                        </span>
                                     ))}
                                 </div>
 
-                                <h3>Features:</h3>
+                                <h4>Highlights</h4>
                                 <ul>
-                                    {card.details.features.map((feature, i) => (
-                                        <li key={i}>{feature}</li>
+                                    {detailsToRender.map((detail, index) => (
+                                        <li key={`${project.title}-${index}`}>{detail}</li>
                                     ))}
                                 </ul>
+
+                                {hasOverflowDetails && (
+                                    <button
+                                        type="button"
+                                        className="project-expand"
+                                        onClick={() => toggleExpanded(project.title)}
+                                        aria-expanded={isExpanded}
+                                    >
+                                        {isExpanded ? "View less" : "View more"}
+                                    </button>
+                                )}
+
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="project-link"
+                                >
+                                    Open Project
+                                </a>
                             </div>
-                        </div>
-                    </a>
-                ))}
+                        </article>
+                    );
+                })}
             </div>
         </div>
     );
 };
 
-export default Card;
+export default Projects;

@@ -1,463 +1,198 @@
-/* ========================= */
-/* Fade-in Animation */
-/* ========================= */
-@keyframes fadeIn {
+.projects-shell {
+    animation: projectsEnter 0.35s ease-out both;
+}
+
+.projects-title {
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    margin-bottom: var(--space-4);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem;
+}
+
+.project-card {
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.26);
+    box-shadow: var(--shadow-strong);
+}
+
+.project-card-in-progress {
+    border-color: rgba(104, 178, 255, 0.56);
+}
+
+.project-media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.project-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.project-card:hover .project-media img {
+    transform: scale(1.04);
+}
+
+.project-badge {
+    position: absolute;
+    top: 0.7rem;
+    left: 0.7rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #0f1828;
+    padding: 0.3rem 0.55rem;
+    border-radius: 999px;
+    background: var(--accent-blue);
+}
+
+.project-badge-award {
+    background: var(--accent-gold);
+    color: #3a2a00;
+}
+
+.project-badge-win {
+    left: 0.7rem;
+    right: 0.7rem;
+    text-align: center;
+    background: linear-gradient(135deg, #ffd76a, #f3b642);
+    color: #2d2105;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    box-shadow: 0 10px 24px -12px rgba(246, 196, 83, 0.95);
+}
+
+.project-body {
+    padding: 1rem;
+}
+
+.project-body h3 {
+    font-size: 1.1rem;
+    line-height: 1.35;
+}
+
+.project-summary {
+    margin-top: 0.6rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.project-impact {
+    margin-top: 0.75rem;
+    color: var(--text-100);
+    font-size: 0.93rem;
+    line-height: 1.55;
+}
+
+.project-impact span {
+    color: var(--accent-gold);
+    font-weight: 700;
+}
+
+.project-tech {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.tech-pill {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 999px;
+    padding: 0.25rem 0.62rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--text-200);
+}
+
+.project-body h4 {
+    margin-top: 0.95rem;
+    font-size: 0.9rem;
+    color: var(--text-100);
+}
+
+.project-body ul {
+    margin-top: 0.6rem;
+    margin-bottom: 0;
+    padding-left: 1.1rem;
+    color: var(--text-200);
+    display: grid;
+    gap: 0.42rem;
+}
+
+.project-body li {
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.project-expand {
+    margin-top: 0.8rem;
+    border: 0;
+    background: transparent;
+    color: var(--accent-blue);
+    font-weight: 700;
+    font-size: 0.84rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+.project-link {
+    margin-top: 0.9rem;
+    display: inline-flex;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-100);
+    font-weight: 700;
+    font-size: 0.84rem;
+    padding: 0.5rem 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.project-link:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 980px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 680px) {
+    .project-card {
+        backdrop-filter: blur(6px);
+    }
+
+    .project-body {
+        padding: 0.95rem;
+    }
+}
+
+@keyframes projectsEnter {
     from {
         opacity: 0;
+        transform: translateY(8px);
     }
 
     to {
         opacity: 1;
-    }
-}
-
-.app-container {
-    text-align: center;
-    padding: 20px;
-    opacity: 0;
-    animation: fadeIn 2s 3.5s ease-out forwards;
-    animation-fill-mode: forwards;
-    pointer-events: auto;
-}
-
-/* ========================= */
-/* Divider */
-/* ========================= */
-hr {
-    height: 2px;
-    border: 0;
-    border-top: 2px solid #444;
-    margin: 1em 0;
-}
-
-/* ========================= */
-/* Card Layout */
-/* ========================= */
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    /* gap: 20px; */
-    gap: 40px;
-}
-
-.card-container a {
-    text-decoration: none;
-}
-
-/* ============================================================================= */
-/* Base Card */
-/* ========================= */
-.card {
-    background: rgba(255, 255, 255, 0.03);
-    /* Lighter touch */
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    /* More subtle border */
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    /* Stronger rounding */
-    overflow: hidden;
-    width: 380px;
-    height: 540px;
-    /* Taller to fit new image size */
-    text-align: left;
-    position: relative;
-    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-    /* Deep shadow */
-    display: flex;
-    flex-direction: column;
-}
-
-.card:hover {
-    transform: translateY(-8px) scale(1.02);
-    background: rgba(255, 255, 255, 0.08);
-    /* Highlight on hover */
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
-        0 0 30px rgba(159, 192, 216, 0.15);
-    /* Soft glow */
-    border-color: rgba(255, 255, 255, 0.25);
-}
-
-/* ========================= */
-/* Card Image */
-/* ========================= */
-.card-image {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    /* Fixed taller height (~ 4:3) */
-    overflow: hidden;
-    flex-shrink: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    /* Separator */
-}
-
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.7s ease;
-    /* Slower, smoother zoom */
-}
-
-.card:hover .card-image img {
-    transform: scale(1.08);
-}
-
-/* Gradient Overlay - Cinematic */
-.card-image::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top,
-            rgba(10, 10, 10, 0.95) 0%,
-            rgba(10, 10, 10, 0.4) 30%,
-            rgba(0, 0, 0, 0) 100%);
-    pointer-events: none;
-    opacity: 0.9;
-}
-
-/* ========================= */
-/* Card Title */
-/* ========================= */
-.card-title {
-    padding: 15px;
-    background: transparent;
-    text-align: center;
-    color: white;
-    position: relative;
-    z-index: 5;
-    min-height: 4.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    transition: opacity 0.3s ease;
-    /* Smooth fade out */
-    flex-grow: 1;
-    /* allow title to take space */
-}
-
-/* Hide title when hovering to prevent overlap with info */
-.card:hover .card-title {
-    opacity: 0;
-}
-
-
-.card-title h2 {
-    margin: 0;
-    font-size: 1.2rem;
-    line-height: 1.4;
-}
-
-/* ========================= */
-/* Slide-Up Info */
-/* ========================= */
-.card-info {
-    position: absolute;
-    inset: 0;
-    /* full card takeover */
-    background: rgba(0, 0, 0, 0.7);
-    /* Lighter, see-through */
-    backdrop-filter: blur(15px);
-    /* Strong blur */
-    -webkit-backdrop-filter: blur(15px);
-    color: white;
-    padding: 20px;
-    top: 100%;
-    transition: top 0.35s ease-in-out;
-    z-index: 50;
-    /* above everything */
-    overflow-y: auto;
-    /* scroll if content is large */
-}
-
-.card:hover .card-info {
-    top: 0;
-}
-
-.card-info h3 {
-    margin: 10px 0 5px;
-    font-size: 1rem;
-    color: #fff;
-}
-
-.card-info p,
-.card-info ul li {
-    font-size: 1rem;
-    color: #ddd;
-}
-
-.card-info ul {
-    margin: 0;
-    padding-left: 18px;
-}
-
-/* ========================= */
-/* Link styling */
-/* ========================= */
-.card-info a {
-    margin-top: 10px;
-    text-decoration: none;
-    color: #4fa3ff;
-    font-weight: 800;
-}
-
-.card-info a:hover {
-    text-decoration: underline;
-}
-
-/* ========================= */
-/* Technology Tags */
-/* ========================= */
-.techs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.techs span {
-    padding: 0.3rem 0.7rem;
-    border-radius: 12px;
-    background: #2b2b2b;
-    font-size: 0.85rem;
-    color: #eee;
-    box-shadow: 0 0 2px rgba(255, 255, 255, 0.2);
-}
-
-/* ========================= */
-/* In Progress Badge */
-/* ========================= */
-.in-progress-card {
-    border-color: rgba(56, 189, 248, 0.45);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 24px rgba(56, 189, 248, 0.18);
-}
-
-.in-progress-card:hover {
-    border-color: rgba(56, 189, 248, 0.7);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 32px rgba(56, 189, 248, 0.3);
-}
-
-.in-progress-badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    z-index: 35;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: rgba(10, 20, 32, 0.9);
-    border: 1px solid rgba(56, 189, 248, 0.45);
-    color: #bae6fd;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-}
-
-.in-progress-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #38bdf8;
-    box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
-    animation: pulseProgress 1.8s ease-in-out infinite;
-}
-
-@keyframes pulseProgress {
-    0% {
-        transform: scale(0.9);
-        opacity: 0.7;
-    }
-
-    50% {
-        transform: scale(1.2);
-        opacity: 1;
-    }
-
-    100% {
-        transform: scale(0.9);
-        opacity: 0.7;
-    }
-}
-
-/* ========================= */
-/* Hackathon Badge */
-/* ========================= */
-.hackathon-badge {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    z-index: 30;
-    /* increase wuidth to same as card */
-    width: calc(100% - 24px);
-}
-
-/* Award Section */
-.award-section {
-    padding: 6px 12px;
-    /* border-radius: 8px 8px 0 0; */
-    border-radius: 1rem;
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
-}
-
-.award-text {
-    color: #111;
-    font-weight: 800;
-    /* font-size: 0.85rem; */
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* Hackathon Info Section */
-.hackathon-info {
-    padding: 6px 12px;
-    /* border-radius: 0 0 8px 8px; */
-    border-radius: 8px;
-    background: rgba(30, 30, 30, 0.95);
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    border: 2px solid #FFD700;
-    /* border-top: none; */
-}
-
-.hackathon-name {
-    color: #FFD700;
-    font-weight: 700;
-    /* font-size: 0.7rem; */
-    font-size: 1rem;
-    line-height: 1.2;
-}
-
-.company-text {
-    color: #FFA500;
-    font-weight: 600;
-    font-size: 0.75rem;
-    font-style: italic;
-}
-
-/* ========================= */
-/* Hackathon POP Effect */
-/* ========================= */
-.hackathon-card {
-    border: 2px solid #FFD700;
-    transform: scale(1.02);
-    box-shadow: 0 0 18px rgba(255, 215, 0, 0.35);
-}
-
-.hackathon-card:hover {
-    transform: scale(1.07);
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.45);
-}
-
-/* Animated glow border */
-.hackathon-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 12px;
-    padding: 2px;
-    background: linear-gradient(45deg, #ffd700, #ff9900, #ffe28a, #ffd700);
-    background-size: 300% 300%;
-    animation: hackGlow 4s ease infinite;
-    z-index: -1;
-}
-
-@keyframes hackGlow {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* ========================= */
-/* Hackathon Image Overlay */
-/* ========================= */
-.image-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 12px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-    color: #FFD700;
-    font-weight: 600;
-    opacity: 0;
-    font-size: 0.9rem;
-    transition: opacity 0.3s ease;
-}
-
-.card:hover .image-overlay {
-    opacity: 1;
-}
-
-/* ========================= */
-/* Project Links */
-/* ========================= */
-.project-links {
-    margin-top: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 12px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.link-btn {
-    flex: 1;
-    padding: 8px 0;
-    border-radius: 6px;
-    text-align: center;
-    font-size: 0.85rem;
-    font-weight: 600;
-    background: #222;
-    color: white;
-    border: 1px solid #555;
-    transition: 0.25s ease;
-}
-
-.link-btn:hover {
-    background: #333;
-    border-color: #FFD700;
-}
-
-/* ========================= */
-/* Responsive */
-/* ========================= */
-@media (max-width: 768px) {
-    .card {
-        width: 280px;
-    }
-}
-
-@media (max-width: 480px) {
-    .card-container {
-        flex-direction: column;
-        gap: 14px;
-    }
-
-    .card {
-        width: 100%;
-    }
-
-    .project-links {
-        flex-direction: column;
+        transform: translateY(0);
     }
 }

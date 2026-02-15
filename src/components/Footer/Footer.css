@@ -1,138 +1,37 @@
 .footer {
-    padding-top: 2rem;
-    margin-top: 4rem;
-    background-color: #1a1a1a;
-    border-radius: 50px 50px 0 0;
-    /* Rounded top corners only looks better at bottom */
-    /* Dark background */
-    color: #f5f5f5;
-    /* Light text for contrast */
-    padding-bottom: 2rem;
-    text-align: center;
-    position: relative;
-    bottom: 0;
     width: 100%;
-    font-family: 'Roboto', sans-serif;
-    /* border-top: 1px solid #444; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    /* animation: fadeIn 2s 2.5s ease-out forwards; */
-    animation: fadeIn .2s 3.5s forwards;
 }
 
-.footer p {
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #ccc;
-    letter-spacing: 2px;
-    /* text-transform: uppercase; */
+.footer-content {
+    padding: 1.4rem;
+    text-align: center;
 }
 
-.footer-links {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    margin: 0;
+.footer-content h2 {
+    font-size: clamp(1.25rem, 4vw, 1.8rem);
+}
+
+.footer-description {
+    margin-top: 0.6rem;
+    color: var(--text-200);
+    font-size: 0.95rem;
 }
 
 .footer-link {
-    color: #f5f5f5;
+    margin-top: var(--space-3);
+    display: inline-flex;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-blue);
     text-decoration: none;
-    font-size: 1.8rem;
-    font-weight: 500;
-    position: relative;
-    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .footer-link:hover {
-    transform: scale(1.1);
-}
-
-.footer-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background-color: #f39c12;
-    bottom: -5px;
-    left: 0;
-    transition: width 0.3s ease;
-}
-
-.footer-link:hover::after {
-    width: 100%;
-}
-
-/* Specific colors for each link */
-.footer-link.email {
-    color: #1a73e8;
-    /* Email color (blue) */
-}
-
-.footer-link.linkedin {
-    color: #0077b5;
-    /* LinkedIn color (blue) */
-}
-
-.footer-link.resume {
-    color: #f39c12;
-    /* Resume color (yellow) */
-}
-
-/* Hover effects for each specific link */
-.footer-link.email:hover {
-    color: #1a73e8;
-}
-
-.footer-link.linkedin:hover {
-    color: #0077b5;
-}
-
-.footer-link.resume:hover {
-    color: #f39c12;
-}
-
-@media (max-width: 768px) {
-    .footer {
-        padding: 2rem 1rem;
-    }
-
-    .footer p {
-        font-size: 1.2rem;
-    }
-
-    .footer-links {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .footer-link {
-        font-size: 1.4rem;
-    }
+    color: #8bc6ff;
 }
 
 .footer-credit {
-    font-size: 0.9rem !important;
-    /* Override the main p style */
-    color: #888 !important;
-    margin-top: 2rem;
-    margin-bottom: 0 !important;
-    font-weight: 400 !important;
-    letter-spacing: 1px !important;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-        pointer-events: all;
-    }
+    margin-top: var(--space-4);
+    color: var(--text-300);
+    font-size: 0.84rem;
 }

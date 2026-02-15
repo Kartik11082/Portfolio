@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap');
+
+:root {
+  --bg-900: #0c0f14;
+  --bg-850: #111622;
+  --surface-800: rgba(255, 255, 255, 0.05);
+  --surface-700: rgba(255, 255, 255, 0.08);
+  --surface-border: rgba(255, 255, 255, 0.14);
+  --text-100: #f4f6fb;
+  --text-200: #d5dbea;
+  --text-300: #a9b2c9;
+  --accent-gold: #f6c453;
+  --accent-blue: #68b2ff;
+  --accent-blue-strong: #3f97f3;
+  --shadow-soft: 0 10px 30px -16px rgba(0, 0, 0, 0.65);
+  --shadow-strong: 0 20px 50px -20px rgba(0, 0, 0, 0.72);
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 2.75rem;
+  --max-content-width: 1120px;
+  --font-heading: "Sora", "Segoe UI", Arial, sans-serif;
+  --font-body: "Manrope", "Segoe UI", Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text-100);
+  background:
+    radial-gradient(circle at 20% -18%, #1a2f58 0%, transparent 40%),
+    radial-gradient(circle at 83% 6%, #23183d 0%, transparent 34%),
+    linear-gradient(180deg, #06080e 0%, #0b1222 38%, var(--bg-900) 100%);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  color: var(--text-200);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+.section-content {
+  width: min(var(--max-content-width), calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.glass-panel {
+  background: var(--surface-800);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+}
+
+:where(a, button, [role="button"], summary):focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --space-6: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

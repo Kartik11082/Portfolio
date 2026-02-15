@@ -27,38 +27,35 @@ const certifications = [
 
 const Certifications = () => {
     return (
-        <>
-            <div className="certs-container">
-                <hr />
-                <h2 className="section-title">Certifications</h2>
-                <div className="cert-card-container">
-                    {certifications.map((cert, index) => (
-                        <div className="cert-card" key={index}>
+        <div className="certs-container">
+            <h2 className="section-title">Certifications</h2>
+            <div className="cert-card-container">
+                {certifications.map((cert, index) => (
+                    <article className="cert-card glass-panel" key={index}>
+                        <a
+                            href={cert.credlyLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="cert-card-image"
+                        >
+                            <img loading="lazy" src={cert.badgeUrl} alt={cert.title} />
+                        </a>
+                        <div className="cert-card-title">
+                            <h3>{cert.title}</h3>
+                            <p>{cert.issuer}</p>
                             <a
                                 href={cert.credlyLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="cert-card-image"
+                                className="cert-btn"
                             >
-                                <img src={cert.badgeUrl} alt={cert.title} />
+                                View Credential
                             </a>
-                            <div className="cert-card-title">
-                                <h3>{cert.title}</h3>
-                                <p>{cert.issuer}</p>
-                                <a
-                                    href={cert.credlyLink}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="cert-btn"
-                                >
-                                    View Credly
-                                </a>
-                            </div>
                         </div>
-                    ))}
-                </div>
+                    </article>
+                ))}
             </div>
-        </>
+        </div>
     );
 };
 
