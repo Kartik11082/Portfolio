@@ -29,15 +29,16 @@ const Title = () => {
 
     return (
         <div className={`hero phase-${phase}`}>
-            {phase !== INTRO_PHASES.REVEALED && (
-                <div className={`hero-intro ${phase === INTRO_PHASES.MOVING ? "is-moving" : ""}`} aria-hidden="true">
-                    <p className="hero-intro-text">Kartik Karkera</p>
-                </div>
-            )}
+            <div
+                className={`hero-intro ${phase !== INTRO_PHASES.TYPING ? "is-moving" : ""} ${phase === INTRO_PHASES.REVEALED ? "is-hidden" : ""}`}
+                aria-hidden="true"
+            >
+                <p className="hero-intro-text">Kartik Karkera</p>
+            </div>
 
             <div className={`hero-content ${phase === INTRO_PHASES.REVEALED ? "revealed" : ""}`}>
-                <p className="hero-kicker">Backend Engineering | Data Systems | AWS</p>
                 <h1 className="hero-name">Kartik Karkera</h1>
+                <p className="hero-kicker">Backend Engineering | Data Systems | AWS</p>
                 <Age />
                 <p className="hero-role">Software Engineer Building Scalable Backend Products</p>
                 <p className="hero-summary">

@@ -29,6 +29,7 @@ const PROJECTS = [
         link: "http://tidalfrontend.s3-website-us-east-1.amazonaws.com/",
         status: "hackathon",
         awardLabel: "Won 1st Place",
+        featured: true,
         eventLabel: "TidalHack @ TAMU",
         image: tidalhackImage
     },
@@ -177,19 +178,23 @@ const Projects = () => {
                     const detailsToRender = isExpanded
                         ? project.details
                         : project.details.slice(0, PREVIEW_FEATURE_COUNT);
+                    const isChampion = project.awardLabel?.toLowerCase().includes("1st");
 
                     return (
                         <article
                             key={project.title}
-                            className={`project-card glass-panel ${project.status === "in-progress" ? "project-card-in-progress" : ""}`}
+                            className={`project-card glass-panel ${project.status === "in-progress" ? "project-card-in-progress" : ""} ${project.featured ? "project-card-featured" : ""} ${isChampion ? "project-card-champion" : ""}`}
                         >
                             <div className="project-media">
                                 <img loading="lazy" src={project.image} alt={project.title} />
+                                {project.featured && (
+                                    <span className="project-badge project-badge-featured">Featured Winner</span>
+                                )}
                                 {project.status === "in-progress" && (
                                     <span className="project-badge">In Progress</span>
                                 )}
                                 {project.awardLabel ? (
-                                    <span className="project-badge project-badge-win">
+                                    <span className={`project-badge project-badge-win ${isChampion ? "project-badge-champion" : ""}`}>
                                         {project.awardLabel}
                                     </span>
                                 ) : project.status === "hackathon" && (
