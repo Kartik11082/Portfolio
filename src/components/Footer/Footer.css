@@ -3,7 +3,7 @@
 }
 
 .footer-content {
-    padding: 1.4rem;
+    padding: 2.5rem 2rem;
     text-align: center;
 }
 
@@ -27,7 +27,8 @@
 }
 
 .footer-link:hover {
-    color: #8bc6ff;
+    color: var(--accent-blue);
+    opacity: 0.8;
 }
 
 .footer-credit {

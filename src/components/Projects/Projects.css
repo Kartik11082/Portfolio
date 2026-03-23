@@ -111,7 +111,7 @@
 }
 
 .project-body {
-    padding: 1rem;
+    padding: 1.25rem;
 }
 
 .project-body h3 {
@@ -145,13 +145,15 @@
 }
 
 .tech-pill {
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
     border-radius: 999px;
-    padding: 0.25rem 0.62rem;
-    font-size: 0.76rem;
-    font-weight: 700;
-    color: var(--text-200);
+    padding: 0.22rem 0.62rem;
+    font-size: 0.74rem;
+    font-weight: 500;
+    font-family: var(--font-mono);
+    color: var(--text-300);
+    letter-spacing: 0.02em;
 }
 
 .project-body h4 {

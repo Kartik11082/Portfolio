@@ -6,22 +6,57 @@ import Projects from "./components/Projects/Projects";
 import Timeline from "./components/Timeline/Timeline";
 import Certification from "./components/Certification/Certification";
 import { useScrollReveal } from "./hooks/useScrollReveal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const INTRO_PHASES = {
+  TYPING: "typing",
+  MOVING: "moving",
+  REVEALED: "revealed"
+};
 
 function App() {
+  const [phase, setPhase] = useState(INTRO_PHASES.TYPING);
   const [introCompleted, setIntroCompleted] = useState(false);
   const { ref: heroRef, isVisible: heroVisible } = useScrollReveal();
   const { ref: certsRef, isVisible: certsVisible } = useScrollReveal();
   const { ref: projectsRef, isVisible: projectsVisible } = useScrollReveal();
   const { ref: timelineRef, isVisible: timelineVisible } = useScrollReveal();
 
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
+      setPhase(INTRO_PHASES.REVEALED);
+      setIntroCompleted(true);
+      return undefined;
+    }
+
+    const toMoving = window.setTimeout(() => setPhase(INTRO_PHASES.MOVING), 1700);
+    const toRevealed = window.setTimeout(() => {
+      setPhase(INTRO_PHASES.REVEALED);
+      setIntroCompleted(true);
+    }, 2550);
+
+    return () => {
+      window.clearTimeout(toMoving);
+      window.clearTimeout(toRevealed);
+    };
+  }, []);
+
   return (
     <div className={`app-wrapper ${introCompleted ? 'app-ready' : 'app-loading'}`}>
+      {/* Typing overlay — rendered OUTSIDE site-main so it's always visible */}
+      <div
+        className={`hero-intro ${phase !== INTRO_PHASES.TYPING ? "is-moving" : ""} ${phase === INTRO_PHASES.REVEALED ? "is-hidden" : ""}`}
+        aria-hidden="true"
+      >
+        <p className="hero-intro-text">Kartik Karkera</p>
+      </div>
+
       <Navbar isReady={introCompleted} />
       <main className={`site-main ${introCompleted ? 'app-ready' : ''}`}>
         <section ref={heroRef} id="home" className={`app-section hero-section reveal ${heroVisible ? "is-visible" : ""}`}>
           <div className="section-content">
-            <Title onIntroComplete={() => setIntroCompleted(true)} />
+            <Title phase={phase} />
           </div>
         </section>
 

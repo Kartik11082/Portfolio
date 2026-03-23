@@ -4,8 +4,8 @@
 }
 
 .vertical-timeline-element-content {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07);
     border-radius: 12px !important;
     box-shadow: var(--shadow-soft) !important;
     color: var(--text-100) !important;
@@ -35,10 +35,12 @@
 }
 
 .vertical-timeline-element-date {
-    color: #dfe7fb !important;
+    color: var(--text-200) !important;
     opacity: 1 !important;
     font-size: 0.88rem !important;
-    font-weight: 700 !important;
+    font-weight: 500 !important;
+    font-family: var(--font-mono) !important;
+    letter-spacing: 0.02em !important;
 }
 
 .timeline-date-label {
@@ -47,15 +49,15 @@
 }
 
 .timeline-date-label.is-current {
-    color: #0e1828;
+    color: #0d0f0e;
     background: var(--accent-gold);
     border-radius: 999px;
     padding: 0.24rem 0.6rem;
-    font-weight: 800;
+    font-weight: 700;
 }
 
 .vertical-timeline-element-icon {
-    box-shadow: 0 0 0 4px rgba(246, 196, 83, 0.2) !important;
+    box-shadow: 0 0 0 4px rgba(106, 158, 114, 0.25) !important;
     display: flex !important;
     justify-content: center;
     align-items: center;

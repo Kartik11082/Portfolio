@@ -1,42 +1,42 @@
 .age-line {
     margin-top: var(--space-3);
-    font-size: clamp(0.95rem, 2.4vw, 1.06rem);
-    line-height: 1.7;
+    font-size: clamp(0.92rem, 2.4vw, 1.04rem);
+    line-height: 1.8;
     color: var(--text-200);
-    max-width: 70ch;
+    max-width: 60ch;
 }
 
 .age-number {
-    color: var(--text-100);
-    font-weight: 700;
+    color: var(--accent-gold);
+    font-weight: 500;
     font-variant-numeric: tabular-nums;
-    font-family: "Consolas", "Menlo", monospace;
+    font-family: var(--font-mono);
 }
 
 .skill-highlight {
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .skill-highlight.python {
-    color: #ffd24a;
+    color: #d4b76a;
 }
 
 .skill-highlight.sql {
-    color: #44c0bf;
+    color: #7bbfb8;
 }
 
 .skill-highlight.pyspark {
-    color: #ff8b3d;
+    color: #d4946a;
 }
 
 .skill-highlight.aws {
-    color: #f6c453;
+    color: #c4b07a;
 }
 
 .skill-highlight.react {
-    color: #74d5ff;
+    color: #8ab8d4;
 }
 
 .skill-highlight.fastapi {
-    color: #5de0b2;
+    color: #7bc4a0;
 }

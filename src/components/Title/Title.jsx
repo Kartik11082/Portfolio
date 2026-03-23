@@ -2,45 +2,10 @@ import { useEffect, useState } from "react";
 import Age from "../Age/Age";
 import "./Title.css";
 
-const INTRO_PHASES = {
-    TYPING: "typing",
-    MOVING: "moving",
-    REVEALED: "revealed"
-};
-
-const Title = ({ onIntroComplete }) => {
-    const [phase, setPhase] = useState(INTRO_PHASES.TYPING);
-
-    useEffect(() => {
-        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if (prefersReducedMotion) {
-            setPhase(INTRO_PHASES.REVEALED);
-            if (onIntroComplete) onIntroComplete();
-            return undefined;
-        }
-
-        const toMoving = window.setTimeout(() => setPhase(INTRO_PHASES.MOVING), 1700);
-        const toRevealed = window.setTimeout(() => {
-            setPhase(INTRO_PHASES.REVEALED);
-            if (onIntroComplete) onIntroComplete();
-        }, 2550);
-
-        return () => {
-            window.clearTimeout(toMoving);
-            window.clearTimeout(toRevealed);
-        };
-    }, []);
-
+const Title = ({ phase = "revealed" }) => {
     return (
         <div className={`hero phase-${phase}`}>
-            <div
-                className={`hero-intro ${phase !== INTRO_PHASES.TYPING ? "is-moving" : ""} ${phase === INTRO_PHASES.REVEALED ? "is-hidden" : ""}`}
-                aria-hidden="true"
-            >
-                <p className="hero-intro-text">Kartik Karkera</p>
-            </div>
-
-            <div className={`hero-content ${phase === INTRO_PHASES.REVEALED ? "revealed" : ""}`}>
+            <div className={`hero-content ${phase === "revealed" ? "revealed" : ""}`}>
                 <h1 className="hero-name">Kartik Karkera</h1>
                 <p className="hero-kicker">Backend Engineering | Data Systems | AWS</p>
                 <Age />

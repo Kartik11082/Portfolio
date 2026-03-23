@@ -9,19 +9,29 @@
 }
 
 .app-section {
-    padding-block: var(--space-5);
+    padding-block: var(--space-6);
     scroll-margin-top: 6rem;
 }
 
 .app-section:not(.hero-section):not(.contact-section) {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: none;
+    position: relative;
+}
+
+.app-section:not(.hero-section):not(.contact-section)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-gold) 0%, rgba(159, 196, 163, 0.15) 30%, transparent 65%);
 }
 
 .hero-section {
     min-height: auto;
     padding-top: clamp(1rem, 2.2vw, 1.5rem);
     padding-bottom: clamp(1rem, 2.4vw, 1.75rem);
-    background: linear-gradient(180deg, rgba(6, 9, 14, 0.96) 0%, rgba(8, 11, 18, 0.84) 62%, rgba(8, 11, 18, 0.1) 100%);
 }
 
 .hero-section+.app-section {

@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
 :root {
-  --bg-900: #0c0f14;
-  --bg-850: #111622;
-  --surface-800: rgba(255, 255, 255, 0.05);
-  --surface-700: rgba(255, 255, 255, 0.08);
-  --surface-border: rgba(255, 255, 255, 0.14);
-  --text-100: #e0e5ea;
-  --text-200: #bac3cf;
-  --text-300: #8c97a8;
-  --accent-gold: #e8d3a2;
-  --accent-blue: #7ca8d8;
-  --accent-blue-strong: #5481bb;
+  --bg-900: #0d0f0e;
+  --bg-850: #131613;
+  --surface-800: rgba(255, 255, 255, 0.04);
+  --surface-700: rgba(255, 255, 255, 0.06);
+  --surface-border: rgba(255, 255, 255, 0.08);
+  --text-100: #e8eae6;
+  --text-200: #a8b0a4;
+  --text-300: #6e7a6a;
+  --accent-gold: #9fc4a3;
+  --accent-blue: #b8cbb9;
+  --accent-blue-strong: #6a9e72;
   --shadow-soft: 0 10px 30px -16px rgba(0, 0, 0, 0.65);
   --shadow-strong: 0 20px 50px -20px rgba(0, 0, 0, 0.72);
   --radius-lg: 20px;
@@ -23,8 +23,9 @@
   --space-5: 2rem;
   --space-6: 2.75rem;
   --max-content-width: 1120px;
-  --font-heading: "Sora", "Segoe UI", Arial, sans-serif;
-  --font-body: "Manrope", "Segoe UI", Arial, sans-serif;
+  --font-heading: "DM Sans", "Segoe UI", Arial, sans-serif;
+  --font-body: "DM Sans", "Segoe UI", Arial, sans-serif;
+  --font-mono: "DM Mono", "Consolas", "Menlo", monospace;
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -46,10 +47,10 @@ body {
   min-height: 100vh;
   font-family: var(--font-body);
   color: var(--text-100);
+  line-height: 1.75;
+  letter-spacing: 0.01em;
   background:
-    radial-gradient(circle at 20% -18%, rgba(26, 47, 88, 0.4) 0%, transparent 40%),
-    radial-gradient(circle at 83% 6%, rgba(35, 24, 61, 0.4) 0%, transparent 34%),
-    linear-gradient(180deg, #06080e 0%, #0b1222 38%, var(--bg-900) 100%);
+    linear-gradient(180deg, #090b09 0%, #0d0f0e 45%, var(--bg-900) 100%);
 }
 
 h1,
