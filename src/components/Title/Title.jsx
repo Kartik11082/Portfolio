@@ -8,18 +8,22 @@ const INTRO_PHASES = {
     REVEALED: "revealed"
 };
 
-const Title = () => {
+const Title = ({ onIntroComplete }) => {
     const [phase, setPhase] = useState(INTRO_PHASES.TYPING);
 
     useEffect(() => {
         const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (prefersReducedMotion) {
             setPhase(INTRO_PHASES.REVEALED);
+            if (onIntroComplete) onIntroComplete();
             return undefined;
         }
 
         const toMoving = window.setTimeout(() => setPhase(INTRO_PHASES.MOVING), 1700);
-        const toRevealed = window.setTimeout(() => setPhase(INTRO_PHASES.REVEALED), 2550);
+        const toRevealed = window.setTimeout(() => {
+            setPhase(INTRO_PHASES.REVEALED);
+            if (onIntroComplete) onIntroComplete();
+        }, 2550);
 
         return () => {
             window.clearTimeout(toMoving);

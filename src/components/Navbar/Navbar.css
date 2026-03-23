@@ -7,14 +7,21 @@
     z-index: 1000;
     background: rgba(8, 11, 18, 0.56);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    transition: background 0.25s ease, border-color 0.25s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: background 0.25s ease, border-color 0.25s ease, opacity 0.8s var(--ease-out-quint), transform 0.8s var(--ease-out-quint);
+}
+
+.navbar.nav-ready {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .navbar.scrolled {
     background: rgba(10, 14, 24, 0.92);
-    border-color: rgba(255, 255, 255, 0.13);
-    box-shadow: 0 8px 22px -18px rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 18px -12px rgba(0, 0, 0, 0.6);
 }
 
 .navbar-container {
@@ -47,14 +54,34 @@
     cursor: pointer;
     padding: 0.5rem 0.78rem;
     border-radius: 9px;
-    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     font-family: var(--font-body);
+    position: relative;
+    overflow: hidden;
+    transition: color 0.25s var(--ease-out-quint), background 0.25s var(--ease-out-quint);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0.25rem;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background-color: var(--accent-blue);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s var(--ease-out-quint);
+    border-radius: 2px;
 }
 
 .nav-link:hover {
     color: var(--text-100);
-    border-color: rgba(255, 255, 255, 0.14);
     background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 /* Mobile Hamburger Menu */

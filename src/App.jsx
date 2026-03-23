@@ -5,31 +5,39 @@ import Footer from "./components/Footer/Footer";
 import Projects from "./components/Projects/Projects";
 import Timeline from "./components/Timeline/Timeline";
 import Certification from "./components/Certification/Certification";
+import { useScrollReveal } from "./hooks/useScrollReveal";
+import { useState } from "react";
 
 function App() {
+  const [introCompleted, setIntroCompleted] = useState(false);
+  const { ref: heroRef, isVisible: heroVisible } = useScrollReveal();
+  const { ref: certsRef, isVisible: certsVisible } = useScrollReveal();
+  const { ref: projectsRef, isVisible: projectsVisible } = useScrollReveal();
+  const { ref: timelineRef, isVisible: timelineVisible } = useScrollReveal();
+
   return (
-    <>
-      <Navbar />
-      <main className="site-main">
-        <section id="home" className="app-section hero-section">
+    <div className={`app-wrapper ${introCompleted ? 'app-ready' : 'app-loading'}`}>
+      <Navbar isReady={introCompleted} />
+      <main className={`site-main ${introCompleted ? 'app-ready' : ''}`}>
+        <section ref={heroRef} id="home" className={`app-section hero-section reveal ${heroVisible ? "is-visible" : ""}`}>
           <div className="section-content">
-            <Title />
+            <Title onIntroComplete={() => setIntroCompleted(true)} />
           </div>
         </section>
 
-        <section id="certifications" className="app-section">
+        <section ref={certsRef} id="certifications" className={`app-section reveal ${certsVisible ? "is-visible" : ""}`}>
           <div className="section-content">
             <Certification />
           </div>
         </section>
 
-        <section id="projects" className="app-section">
+        <section ref={projectsRef} id="projects" className={`app-section reveal ${projectsVisible ? "is-visible" : ""}`}>
           <div className="section-content">
             <Projects />
           </div>
         </section>
 
-        <section id="timeline" className="app-section">
+        <section ref={timelineRef} id="timeline" className={`app-section reveal ${timelineVisible ? "is-visible" : ""}`}>
           <div className="section-content">
             <Timeline />
           </div>
@@ -39,7 +47,7 @@ function App() {
           <Footer />
         </section>
       </main>
-    </>
+    </div>
   );
 }
 

@@ -11,9 +11,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
-    transition: top 0.75s cubic-bezier(0.2, 0.8, 0.2, 1),
-        left 0.75s cubic-bezier(0.2, 0.8, 0.2, 1),
-        transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transition: top 0.75s var(--ease-out-expo),
+        left 0.75s var(--ease-out-expo),
+        transform 0.75s var(--ease-out-expo),
         opacity 0.4s ease;
     z-index: 3;
 }
@@ -56,7 +56,7 @@
 .hero-content.revealed {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.45s ease, transform 0.45s ease;
+    transition: opacity 0.8s var(--ease-out-quint), transform 0.8s var(--ease-out-quint);
     pointer-events: auto;
 }
 
@@ -120,14 +120,18 @@
     padding: 0.72rem 1.2rem;
     border-radius: 10px;
     font-weight: 700;
-    transition: all 0.2s ease;
+    transition: all 0.25s var(--ease-out-back);
     background: rgba(255, 255, 255, 0.02);
 }
 
 .hero-btn:hover {
     border-color: rgba(255, 255, 255, 0.45);
-    transform: translateY(-1px);
+    transform: scale(0.95);
     background: rgba(255, 255, 255, 0.08);
+}
+
+.hero-btn:active {
+    transform: scale(1.05);
 }
 
 .hero-btn-primary {

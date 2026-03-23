@@ -31,7 +31,7 @@ const Certifications = () => {
             <h2 className="section-title">Certifications</h2>
             <div className="cert-card-container">
                 {certifications.map((cert, index) => (
-                    <article className="cert-card glass-panel" key={index}>
+                    <article className={`cert-card glass-panel reveal reveal-delay-${(index % 3) + 1} is-visible`} key={index}>
                         <a
                             href={cert.credlyLink}
                             target="_blank"

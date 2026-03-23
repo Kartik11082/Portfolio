@@ -6,12 +6,12 @@
   --surface-800: rgba(255, 255, 255, 0.05);
   --surface-700: rgba(255, 255, 255, 0.08);
   --surface-border: rgba(255, 255, 255, 0.14);
-  --text-100: #f4f6fb;
-  --text-200: #d5dbea;
-  --text-300: #a9b2c9;
-  --accent-gold: #f6c453;
-  --accent-blue: #68b2ff;
-  --accent-blue-strong: #3f97f3;
+  --text-100: #e0e5ea;
+  --text-200: #bac3cf;
+  --text-300: #8c97a8;
+  --accent-gold: #e8d3a2;
+  --accent-blue: #7ca8d8;
+  --accent-blue-strong: #5481bb;
   --shadow-soft: 0 10px 30px -16px rgba(0, 0, 0, 0.65);
   --shadow-strong: 0 20px 50px -20px rgba(0, 0, 0, 0.72);
   --radius-lg: 20px;
@@ -25,6 +25,10 @@
   --max-content-width: 1120px;
   --font-heading: "Sora", "Segoe UI", Arial, sans-serif;
   --font-body: "Manrope", "Segoe UI", Arial, sans-serif;
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 *,
@@ -43,8 +47,8 @@ body {
   font-family: var(--font-body);
   color: var(--text-100);
   background:
-    radial-gradient(circle at 20% -18%, #1a2f58 0%, transparent 40%),
-    radial-gradient(circle at 83% 6%, #23183d 0%, transparent 34%),
+    radial-gradient(circle at 20% -18%, rgba(26, 47, 88, 0.4) 0%, transparent 40%),
+    radial-gradient(circle at 83% 6%, rgba(35, 24, 61, 0.4) 0%, transparent 34%),
     linear-gradient(180deg, #06080e 0%, #0b1222 38%, var(--bg-900) 100%);
 }
 
@@ -88,6 +92,25 @@ a {
   outline-offset: 2px;
   border-radius: 8px;
 }
+
+/* Scroll Reveal Utilities */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  will-change: opacity, transform;
+  transition: opacity 0.8s var(--ease-out-quint), transform 0.8s var(--ease-out-quint);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+.reveal-delay-5 { transition-delay: 500ms; }
 
 @media (max-width: 720px) {
   :root {

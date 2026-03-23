@@ -1,7 +1,3 @@
-.projects-shell {
-    animation: projectsEnter 0.35s ease-out both;
-}
-
 .projects-title {
     font-size: clamp(1.5rem, 4vw, 2.1rem);
     margin-bottom: var(--space-4);
@@ -15,24 +11,25 @@
 
 .project-card {
     overflow: hidden;
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.4s var(--ease-out-quint), border-color 0.4s var(--ease-out-quint), box-shadow 0.4s var(--ease-out-quint);
+    will-change: transform;
 }
 
 .project-card:hover {
     transform: translateY(-3px);
-    border-color: rgba(255, 255, 255, 0.26);
-    box-shadow: var(--shadow-strong);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 12px 30px -15px rgba(0, 0, 0, 0.8);
 }
 
 .project-card-featured {
     grid-column: 1 / -1;
-    border: 2px solid rgba(246, 196, 83, 0.78);
-    box-shadow: 0 26px 60px -34px rgba(246, 196, 83, 0.52);
+    border: 1px solid rgba(232, 211, 162, 0.35);
+    box-shadow: 0 15px 40px -25px rgba(232, 211, 162, 0.15);
 }
 
 .project-card-featured:hover {
-    border-color: rgba(255, 218, 112, 0.95);
-    box-shadow: 0 30px 65px -30px rgba(246, 196, 83, 0.7);
+    border-color: rgba(232, 211, 162, 0.6);
+    box-shadow: 0 18px 45px -20px rgba(232, 211, 162, 0.25);
 }
 
 .project-card-featured .project-media {
@@ -40,11 +37,11 @@
 }
 
 .project-card-champion {
-    border-color: rgba(246, 196, 83, 0.78);
+    border-color: rgba(232, 211, 162, 0.35);
 }
 
 .project-card-in-progress {
-    border-color: rgba(104, 178, 255, 0.56);
+    border-color: rgba(124, 168, 216, 0.3);
 }
 
 .project-media {
@@ -58,41 +55,44 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.35s ease;
+    transition: transform 0.6s var(--ease-out-quint);
+    will-change: transform;
 }
 
 .project-card:hover .project-media img {
-    transform: scale(1.04);
+    transform: scale(1.06);
 }
 
 .project-badge {
     position: absolute;
     top: 0.7rem;
     left: 0.7rem;
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.03em;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: #0f1828;
-    padding: 0.3rem 0.55rem;
+    color: #08101a;
+    padding: 0.25rem 0.55rem;
     border-radius: 999px;
     background: var(--accent-blue);
+    opacity: 0.9;
 }
 
 .project-badge-award {
     background: var(--accent-gold);
-    color: #3a2a00;
+    color: #2b2210;
 }
 
 .project-badge-win {
     left: 0.7rem;
     right: 0.7rem;
     text-align: center;
-    background: linear-gradient(135deg, #ffd76a, #f3b642);
-    color: #2d2105;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    box-shadow: 0 10px 24px -12px rgba(246, 196, 83, 0.95);
+    background: rgba(232, 211, 162, 0.9);
+    backdrop-filter: blur(8px);
+    color: #1a150c;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px -6px rgba(0, 0, 0, 0.4);
 }
 
 .project-badge-featured {
@@ -100,14 +100,14 @@
     bottom: 0.7rem;
     left: auto;
     right: 0.7rem;
-    background: rgba(8, 12, 20, 0.88);
-    color: #ffe08a;
-    border: 1px solid rgba(246, 196, 83, 0.7);
+    background: rgba(12, 15, 20, 0.85);
+    color: var(--accent-gold);
+    border: 1px solid rgba(232, 211, 162, 0.25);
 }
 
 .project-badge-champion {
-    background: linear-gradient(120deg, #ffe694, #ffca4b 45%, #f2ac2c);
-    box-shadow: 0 14px 28px -12px rgba(246, 196, 83, 0.96), 0 0 18px rgba(246, 196, 83, 0.45);
+    background: rgba(232, 211, 162, 0.95);
+    box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.5);
 }
 
 .project-body {
@@ -224,17 +224,5 @@
 
     .project-body {
         padding: 0.95rem;
-    }
-}
-
-@keyframes projectsEnter {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
     }
 }

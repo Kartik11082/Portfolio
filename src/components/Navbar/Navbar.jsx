@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ isReady = true }) => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const navItems = [
@@ -48,7 +48,10 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`navbar ${scrolled ? "scrolled" : ""}`} aria-label="Primary">
+        <nav 
+            className={`navbar ${scrolled ? "scrolled" : ""} ${isReady ? "nav-ready" : ""}`} 
+            aria-label="Primary"
+        >
             <div className="navbar-container">
                 <button
                     className={`menu-icon ${menuOpen ? "open" : ""}`}

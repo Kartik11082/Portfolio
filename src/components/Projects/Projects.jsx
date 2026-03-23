@@ -9,6 +9,7 @@ import ThreeLCxAWS from "../../assets/3LCxAWShackathon.png";
 import noisytoniceImage from "../../assets/noisytoniceImage.png";
 import tidalhackImage from "../../assets/tidalHackImage.png";
 import midnightCommitsImage from "../../assets/midnightCommitsImage.png";
+import waypointImage from "../../assets/waypoint.png";
 
 const PREVIEW_FEATURE_COUNT = 4;
 
@@ -52,6 +53,28 @@ const PROJECTS = [
         image: ThreeLCxAWS
     },
     {
+        title: "Waypoint - Daily Geography News Game",
+        summary:
+            "A daily geography guessing game where players locate real news stories on a world map using three AI-generated clues.",
+        impact:
+            "Serverless pipeline on AWS processing real news daily with a shared DynamoDB cache — Bedrock calls fixed at 30 per day regardless of traffic.",
+        tech: [
+            "Python", "FastAPI", "React", "AWS Lambda", "DynamoDB", "AWS Bedrock"
+        ],
+        details: [
+            // "Geo-location extracted as bounding boxes via Claude Haiku, scoring measures distance to nearest box edge, not a single coordinate.",
+            "DynamoDB atomic writes prevent race conditions across Lambda instances, one cache write per day regardless of concurrent users.",
+            "Browser fingerprint combined with IP into a stable device hash server-side, one game per device without any login.",
+            "Public /stats page showing live cache status, player counts, and daily scores.",
+            "Fully serverless — Lambda, DynamoDB, S3, CloudFront deployed with AWS SAM in one command.",
+            // "Costs ~$0.50/month on AWS free tier."
+        ],
+        link: "https://waypoint.madebykartik.us/",
+        status: "standard",
+        featured: false,
+        image: waypointImage
+    },
+    {
         title: "Midnight Commits - Global Developer Activity Analytics",
         summary:
             "A real-time analytics platform for exploring where and when developers code, with emphasis on night-time activity patterns.",
@@ -68,6 +91,7 @@ const PROJECTS = [
         status: "in-progress",
         image: midnightCommitsImage
     },
+
     {
         title: "PotionWatch - Real-time Ticket Discrepancy Detection",
         summary:
@@ -172,7 +196,7 @@ const Projects = () => {
         <div className="projects-shell">
             <h2 className="projects-title">Projects</h2>
             <div className="projects-grid">
-                {PROJECTS.map((project) => {
+                {PROJECTS.map((project, index) => {
                     const isExpanded = Boolean(expanded[project.title]);
                     const hasOverflowDetails = project.details.length > PREVIEW_FEATURE_COUNT;
                     const detailsToRender = isExpanded
@@ -183,7 +207,7 @@ const Projects = () => {
                     return (
                         <article
                             key={project.title}
-                            className={`project-card glass-panel ${project.status === "in-progress" ? "project-card-in-progress" : ""} ${project.featured ? "project-card-featured" : ""} ${isChampion ? "project-card-champion" : ""}`}
+                            className={`project-card glass-panel reveal reveal-delay-${(index % 2) + 1} is-visible ${project.status === "in-progress" ? "project-card-in-progress" : ""} ${project.featured ? "project-card-featured" : ""} ${isChampion ? "project-card-champion" : ""}`}
                         >
                             <div className="project-media">
                                 <img loading="lazy" src={project.image} alt={project.title} />

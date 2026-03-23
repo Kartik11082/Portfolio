@@ -23,10 +23,10 @@ function Age() {
             I am a <span className="age-number">{age}</span> year old developer with experience in
             <span className="skill-highlight python"> Python</span>,
             <span className="skill-highlight sql"> SQL</span>,
-            <span className="skill-highlight pyspark"> PySpark</span>,
+            <span className="skill-highlight pyspark"> Apache Spark</span>, and
             <span className="skill-highlight aws"> AWS</span>,
-            <span className="skill-highlight react"> React</span>, and
-            <span className="skill-highlight fastapi"> FastAPI</span>.
+            {/* <span className="skill-highlight react"> React</span>, and
+            <span className="skill-highlight fastapi"> FastAPI</span>. */}
         </p>
     );
 }
