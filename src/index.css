@@ -49,8 +49,7 @@ body {
   color: var(--text-100);
   line-height: 1.75;
   letter-spacing: 0.01em;
-  background:
-    linear-gradient(180deg, #090b09 0%, #0d0f0e 45%, var(--bg-900) 100%);
+  background: #000;
 }
 
 h1,

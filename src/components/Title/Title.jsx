@@ -1,39 +1,36 @@
-import { useEffect, useState } from "react";
 import Age from "../Age/Age";
 import "./Title.css";
 
 const Title = ({ phase = "revealed" }) => {
     return (
-        <div className={`hero phase-${phase}`}>
-            <div className={`hero-content ${phase === "revealed" ? "revealed" : ""}`}>
-                <h1 className="hero-name">Kartik Karkera</h1>
-                <p className="hero-kicker">Backend Engineering | Data Systems | AWS</p>
-                <Age />
-                <p className="hero-role">Software Engineer Building Scalable Backend Products</p>
-                <p className="hero-summary">
-                    Technical Officer (Backend) at AWS Club at UTD and MSCS candidate graduating in May 2026.
+        <div className={`hero-terminal phase-${phase}`}>
+            <div className={`terminal-content ${phase === "revealed" ? "revealed" : ""}`}>
+                <h1 className="terminal-name">{"{ KARTIK KARKERA }"}</h1>
+                <p className="terminal-line">
+                    I'm a <Age /> year-old developer
                 </p>
-                <div className="hero-actions">
-                    <a
-                        href="https://drive.google.com/file/d/1o7eaKsKGiQn15TxzYwixJGSW9sZ8o5bF/view?usp=sharing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hero-btn hero-btn-primary"
-                    >
-                        Resume
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/kartikkarkera/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hero-btn"
-                    >
-                        LinkedIn
-                    </a>
-                    <a href="#projects" className="hero-btn">
-                        View Projects
-                    </a>
-                </div>
+                <p className="terminal-line">
+                    who uses{" "}
+                    <span className="t-python">Python</span>,{" "}
+                    <span className="t-sql">SQL</span>,{" "}
+                    <span className="t-spark">Apache Spark</span>, and{" "}
+                    <span className="t-aws">AWS</span>.
+                </p>
+                <div className="terminal-gap" />
+                <p className="terminal-line">
+                    Check out my{" "}
+                    <a href="https://github.com/Kartik11082" target="_blank" rel="noopener noreferrer" className="t-link">GitHub</a>{" "}
+                    and{" "}
+                    <a href="https://www.linkedin.com/in/kartikkarkera/" target="_blank" rel="noopener noreferrer" className="t-link">LinkedIn</a>.
+                </p>
+                <p className="terminal-line">
+                    I was last seen working on{" "}
+                    <a href="#projects" className="t-project">Traceline</a>.
+                </p>
+                <p className="terminal-line">
+                    Business inquiry?{" "}
+                    <a href="mailto:karkerakartik27@gmail.com" className="t-email">Email me!</a>
+                </p>
             </div>
         </div>
     );

@@ -49,7 +49,7 @@ function App() {
         className={`hero-intro ${phase !== INTRO_PHASES.TYPING ? "is-moving" : ""} ${phase === INTRO_PHASES.REVEALED ? "is-hidden" : ""}`}
         aria-hidden="true"
       >
-        <p className="hero-intro-text">Kartik Karkera</p>
+        <p className="hero-intro-text">{"{ KARTIK KARKERA }"}</p>
       </div>
 
       <Navbar isReady={introCompleted} />
