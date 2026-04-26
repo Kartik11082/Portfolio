@@ -1,11 +1,33 @@
+import { useEffect, useRef } from "react";
 import Age from "../Age/Age";
 import "./Title.css";
 
-const Title = ({ phase = "revealed" }) => {
+const Title = ({ phase = "revealed", onNameReady }) => {
+    const nameRef = useRef(null);
+
+    useEffect(() => {
+        if (phase === "moving" && nameRef.current && onNameReady) {
+            const rect = nameRef.current.getBoundingClientRect();
+            const fontSize = window.getComputedStyle(nameRef.current).fontSize;
+            onNameReady(rect, fontSize);
+        }
+    }, [phase, onNameReady]);
+
+    const isRevealed = phase === "revealed";
+
     return (
         <div className={`hero-terminal phase-${phase}`}>
-            <div className={`terminal-content ${phase === "revealed" ? "revealed" : ""}`}>
-                <h1 className="terminal-name">{"{ KARTIK KARKERA }"}</h1>
+            <div className={`terminal-content ${isRevealed ? "revealed" : ""}`}>
+                <h1
+                    ref={nameRef}
+                    className="terminal-name"
+                    style={{
+                        opacity: isRevealed ? 1 : 0,
+                        transform: "none",
+                    }}
+                >
+                    {"{ KARTIK KARKERA }"}
+                </h1>
                 <p className="terminal-line">
                     I'm a <Age /> year-old developer
                 </p>

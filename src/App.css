@@ -1,11 +1,5 @@
 .site-main {
     padding-top: 5.25rem;
-    opacity: 0;
-    transition: opacity 1s var(--ease-out-quint);
-}
-
-.site-main.app-ready {
-    opacity: 1;
 }
 
 .app-section {
@@ -46,10 +40,5 @@
 @media (max-width: 900px) {
     .site-main {
         padding-top: 4.5rem;
-    }
-
-    .hero-section {
-        padding-top: var(--space-4);
-        padding-bottom: var(--space-3);
     }
 }

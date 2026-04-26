@@ -7,25 +7,23 @@
     font-family: var(--font-mono);
 }
 
-/* ── Intro overlay (typing animation) ── */
+/* ── Intro overlay ─────────────────────────────────────────── */
 .hero-intro {
     position: fixed;
     top: 50vh;
     left: 50vw;
     transform: translate(-50%, -50%);
     pointer-events: none;
-    transition: opacity 0.55s ease, transform 0.55s var(--ease-out-expo);
     z-index: 3000;
+    /* top/left transition fires when JS sets inline styles on phase=moving */
+    transition:
+        top 0.85s var(--ease-out-expo),
+        left 0.85s var(--ease-out-expo);
 }
 
-.hero-intro.is-moving {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1.06);
-}
-
+/* instant hide — no opacity fade so there is zero flicker on the swap */
 .hero-intro.is-hidden {
     visibility: hidden;
-    pointer-events: none;
 }
 
 .hero-intro-text {
@@ -35,12 +33,14 @@
     overflow: hidden;
     white-space: nowrap;
     font-family: var(--font-mono);
-    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    /* starts large; JS sets the target size on phase=moving → CSS transitions it */
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
     font-weight: 400;
     line-height: 1.1;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     color: #fff;
     border-right: 2px solid rgba(255, 255, 255, 0.7);
+    transition: font-size 0.85s var(--ease-out-expo);
     animation: typeName 1.5s steps(22, end) forwards, cursorBlink 0.6s step-end 3;
 }
 
@@ -49,20 +49,33 @@
     animation: typeName 1.5s steps(22, end) forwards;
 }
 
-/* ── Terminal content ── */
+/* ── Terminal content ──────────────────────────────────────── */
 .terminal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* All lines (not the name or the gap) start hidden and slide up */
+.terminal-content > *:not(.terminal-name):not(.terminal-gap) {
     opacity: 0;
     transform: translateY(8px);
-    pointer-events: none;
+    transition: opacity 0.45s var(--ease-out-quint), transform 0.45s var(--ease-out-quint);
 }
 
-.terminal-content.revealed {
+.terminal-content.revealed > *:not(.terminal-name):not(.terminal-gap) {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.6s var(--ease-out-quint), transform 0.6s var(--ease-out-quint);
-    pointer-events: auto;
 }
 
+/* Stagger each line */
+.terminal-content.revealed > :nth-child(2) { transition-delay: 0.05s; }
+.terminal-content.revealed > :nth-child(3) { transition-delay: 0.12s; }
+.terminal-content.revealed > :nth-child(5) { transition-delay: 0.20s; }
+.terminal-content.revealed > :nth-child(6) { transition-delay: 0.28s; }
+.terminal-content.revealed > :nth-child(7) { transition-delay: 0.36s; }
+
+/* Name: opacity + transform controlled via inline styles in JSX */
 .terminal-name {
     font-family: var(--font-mono);
     font-size: clamp(1.3rem, 4vw, 2rem);
@@ -92,7 +105,7 @@
     height: 1em;
 }
 
-/* ── Colors ── */
+/* ── Token colors ──────────────────────────────────────────── */
 .t-python  { color: #8BC34A; }
 .t-sql     { color: #64B5F6; }
 .t-spark   { color: #FF7043; }
@@ -102,7 +115,7 @@
 .t-project { color: #8BC34A; }
 .t-email   { color: #8BC34A; }
 
-/* ── Keyframes ── */
+/* ── Keyframes ─────────────────────────────────────────────── */
 @keyframes typeName {
     from { max-width: 0; }
     to   { max-width: 22em; }

@@ -6,7 +6,7 @@ import Projects from "./components/Projects/Projects";
 import Timeline from "./components/Timeline/Timeline";
 import Certification from "./components/Certification/Certification";
 import { useScrollReveal } from "./hooks/useScrollReveal";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 const INTRO_PHASES = {
   TYPING: "typing",
@@ -17,10 +17,19 @@ const INTRO_PHASES = {
 function App() {
   const [phase, setPhase] = useState(INTRO_PHASES.TYPING);
   const [introCompleted, setIntroCompleted] = useState(false);
-  const { ref: heroRef, isVisible: heroVisible } = useScrollReveal();
+  const introRef = useRef(null);
   const { ref: certsRef, isVisible: certsVisible } = useScrollReveal();
   const { ref: projectsRef, isVisible: projectsVisible } = useScrollReveal();
   const { ref: timelineRef, isVisible: timelineVisible } = useScrollReveal();
+
+  const handleNameReady = useCallback((rect, fontSize) => {
+    if (introRef.current) {
+      introRef.current.style.top = `${rect.top + rect.height / 2}px`;
+      introRef.current.style.left = `${rect.left + rect.width / 2}px`;
+      const introText = introRef.current.querySelector(".hero-intro-text");
+      if (introText) introText.style.fontSize = fontSize;
+    }
+  }, []);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -43,9 +52,9 @@ function App() {
   }, []);
 
   return (
-    <div className={`app-wrapper ${introCompleted ? 'app-ready' : 'app-loading'}`}>
-      {/* Typing overlay — rendered OUTSIDE site-main so it's always visible */}
+    <div className="app-wrapper">
       <div
+        ref={introRef}
         className={`hero-intro ${phase !== INTRO_PHASES.TYPING ? "is-moving" : ""} ${phase === INTRO_PHASES.REVEALED ? "is-hidden" : ""}`}
         aria-hidden="true"
       >
@@ -53,10 +62,10 @@ function App() {
       </div>
 
       <Navbar isReady={introCompleted} />
-      <main className={`site-main ${introCompleted ? 'app-ready' : ''}`}>
-        <section ref={heroRef} id="home" className={`app-section hero-section reveal ${heroVisible ? "is-visible" : ""}`}>
+      <main className="site-main">
+        <section id="home" className="app-section hero-section">
           <div className="section-content">
-            <Title phase={phase} />
+            <Title phase={phase} onNameReady={handleNameReady} />
           </div>
         </section>
 
