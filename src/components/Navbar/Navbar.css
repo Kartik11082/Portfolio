@@ -157,3 +157,22 @@
         transform: rotate(-45deg) translate(5px, -6px);
     }
 }
+
+/* Resume Nav Button Styling */
+a.nav-link.resume-button {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    color: var(--accent-gold);
+}
+
+a.nav-link.resume-button::after {
+    background-color: var(--accent-gold);
+}
+
+@media screen and (max-width: 900px) {
+    a.nav-link.resume-button {
+        margin-top: 0.25rem;
+    }
+}
+

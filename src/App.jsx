@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer";
 import Projects from "./components/Projects/Projects";
 import Timeline from "./components/Timeline/Timeline";
 import Certification from "./components/Certification/Certification";
+import ResumeModal from "./components/ResumeModal/ResumeModal";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import { useState, useEffect, useRef, useCallback } from "react";
 
@@ -17,6 +18,7 @@ const INTRO_PHASES = {
 function App() {
   const [phase, setPhase] = useState(INTRO_PHASES.TYPING);
   const [introCompleted, setIntroCompleted] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
   const introRef = useRef(null);
   const { ref: certsRef, isVisible: certsVisible } = useScrollReveal();
   const { ref: projectsRef, isVisible: projectsVisible } = useScrollReveal();
@@ -61,11 +63,11 @@ function App() {
         <p className="hero-intro-text">{"{ KARTIK KARKERA }"}</p>
       </div>
 
-      <Navbar isReady={introCompleted} />
+      <Navbar isReady={introCompleted} onOpenResume={() => setIsResumeOpen(true)} />
       <main className="site-main">
         <section id="home" className="app-section hero-section">
           <div className="section-content">
-            <Title phase={phase} onNameReady={handleNameReady} />
+            <Title phase={phase} onNameReady={handleNameReady} onOpenResume={() => setIsResumeOpen(true)} />
           </div>
         </section>
 
@@ -91,6 +93,8 @@ function App() {
           <Footer />
         </section>
       </main>
+
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </div>
   );
 }

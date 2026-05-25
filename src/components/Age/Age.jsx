@@ -9,7 +9,7 @@ function Age() {
         const updateAge = () => {
             const now = Date.now();
             const years = (now - BIRTH_TIMESTAMP) / (1000 * 60 * 60 * 24 * 365.25);
-            setAge(years.toFixed(9));
+            setAge(years.toFixed(12));
         };
 
         updateAge();

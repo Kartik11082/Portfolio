@@ -1,0 +1,163 @@
+.resume-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(4, 5, 5, 0.78);
+    backdrop-filter: blur(14px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+    animation: modalOverlayFade 0.25s var(--ease-out-quart) forwards;
+}
+
+.resume-modal-container {
+    width: min(920px, 100%);
+    height: min(85vh, 900px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--surface-border);
+    box-shadow: var(--shadow-strong);
+    background: rgba(13, 15, 14, 0.95);
+    border-radius: var(--radius-lg);
+    animation: modalSlideUp 0.32s var(--ease-out-back) forwards;
+}
+
+.resume-modal-header {
+    height: 3.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-4);
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid var(--surface-border);
+    user-select: none;
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: filter 0.2s ease, transform 0.15s ease;
+}
+
+.dot:hover {
+    filter: brightness(1.2) contrast(1.1);
+    transform: scale(1.1);
+}
+
+.dot-red { background-color: #ff5f56; }
+.dot-yellow { background-color: #ffbd2e; }
+.dot-green { background-color: #27c93f; }
+
+.resume-modal-title {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-200);
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+.resume-modal-actions {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.modal-action-btn {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid transparent;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s var(--ease-out-quint);
+}
+
+.download-btn {
+    color: var(--accent-gold);
+    border-color: rgba(159, 196, 163, 0.28);
+    background: rgba(159, 196, 163, 0.05);
+}
+
+.download-btn:hover {
+    background: rgba(159, 196, 163, 0.18);
+    border-color: var(--accent-gold);
+    color: var(--text-100);
+    box-shadow: 0 0 10px rgba(159, 196, 163, 0.1);
+}
+
+.close-btn {
+    color: var(--text-200);
+    border-color: var(--surface-border);
+}
+
+.close-btn:hover {
+    color: var(--text-100);
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.resume-modal-body {
+    flex: 1;
+    background: #0f1110;
+    position: relative;
+}
+
+.resume-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #0f1110;
+}
+
+@keyframes modalOverlayFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Mobile layout adaptation */
+@media screen and (max-width: 720px) {
+    .resume-modal-overlay {
+        padding: var(--space-2);
+    }
+    
+    .resume-modal-container {
+        height: 94vh;
+        border-radius: var(--radius-md);
+    }
+    
+    .resume-modal-header {
+        padding: 0 var(--space-3);
+    }
+    
+    .resume-modal-title {
+        display: none;
+    }
+}

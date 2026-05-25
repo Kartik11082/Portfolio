@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Navbar.css";
 
-const Navbar = ({ isReady = true }) => {
+const Navbar = ({ isReady = true, onOpenResume }) => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const navItems = [
@@ -73,6 +73,17 @@ const Navbar = ({ isReady = true }) => {
                             </button>
                         </li>
                     ))}
+                    <li className="nav-item">
+                        <button 
+                            className="nav-link resume-button"
+                            onClick={() => {
+                                if (onOpenResume) onOpenResume();
+                                setMenuOpen(false);
+                            }}
+                        >
+                            Resume
+                        </button>
+                    </li>
                 </ul>
             </div>
         </nav>

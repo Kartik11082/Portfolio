@@ -112,6 +112,21 @@
 .t-aws     { color: #FFB74D; }
 .t-age     { color: #8BC34A; }
 .t-link    { color: #90A4AE; }
+.t-resume {
+    color: var(--accent-gold);
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    line-height: inherit;
+    display: inline;
+}
+.t-resume:hover {
+    text-decoration: underline;
+}
 .t-project { color: #8BC34A; }
 .t-email   { color: #8BC34A; }
 

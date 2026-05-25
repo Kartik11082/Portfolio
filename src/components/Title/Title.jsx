@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import Age from "../Age/Age";
 import "./Title.css";
 
-const Title = ({ phase = "revealed", onNameReady }) => {
+const Title = ({ phase = "revealed", onNameReady, onOpenResume }) => {
     const nameRef = useRef(null);
 
     useEffect(() => {
@@ -41,9 +41,10 @@ const Title = ({ phase = "revealed", onNameReady }) => {
                 <div className="terminal-gap" />
                 <p className="terminal-line">
                     Check out my{" "}
-                    <a href="https://github.com/Kartik11082" target="_blank" rel="noopener noreferrer" className="t-link">GitHub</a>{" "}
+                    <a href="https://github.com/Kartik11082" target="_blank" rel="noopener noreferrer" className="t-link">GitHub</a>,{" "}
+                    <a href="https://www.linkedin.com/in/kartikkarkera/" target="_blank" rel="noopener noreferrer" className="t-link">LinkedIn</a>,{" "}
                     and{" "}
-                    <a href="https://www.linkedin.com/in/kartikkarkera/" target="_blank" rel="noopener noreferrer" className="t-link">LinkedIn</a>.
+                    <button onClick={onOpenResume} className="t-link t-resume">Resume</button>.
                 </p>
                 <p className="terminal-line">
                     I was last seen working on{" "}
