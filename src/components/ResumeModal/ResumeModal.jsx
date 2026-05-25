@@ -39,12 +39,12 @@ const ResumeModal = ({ isOpen, onClose }) => {
                         <span className="dot dot-green" title="Interactive viewing"></span>
                     </div>
                     <div className="resume-modal-title">
-                        resume_viewer.sh
+                        Resume Viewer
                     </div>
                     <div className="resume-modal-actions">
-                        <a 
-                            href="/resume.pdf" 
-                            download="Kartik_Karkera_Resume.pdf" 
+                        <a
+                            href="/resume.pdf"
+                            download="Kartik_Karkera_Resume.pdf"
                             className="modal-action-btn download-btn"
                             title="Download PDF directly"
                         >
@@ -56,8 +56,8 @@ const ResumeModal = ({ isOpen, onClose }) => {
                     </div>
                 </div>
                 <div className="resume-modal-body">
-                    <iframe 
-                        src="/resume.pdf#toolbar=0" 
+                    <iframe
+                        src="/resume.pdf#toolbar=0"
                         title="Kartik Karkera Resume"
                         className="resume-iframe"
                     />
