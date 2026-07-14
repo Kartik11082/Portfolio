@@ -12,7 +12,7 @@ const TopBar = () => {
                 LinkedIn
             </a>
             <a
-                href="https://drive.google.com/file/d/1o7eaKsKGiQn15TxzYwixJGSW9sZ8o5bF/view?usp=sharing"
+                href="https://drive.google.com/file/d/1o7eaKsKGiQn15TxzYwixJGSW9sZ8o5bF/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="top-link"

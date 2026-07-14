@@ -48,8 +48,8 @@ const Navbar = ({ isReady = true, onOpenResume }) => {
     };
 
     return (
-        <nav 
-            className={`navbar ${scrolled ? "scrolled" : ""} ${isReady ? "nav-ready" : ""}`} 
+        <nav
+            className={`navbar ${scrolled ? "scrolled" : ""} ${isReady ? "nav-ready" : ""}`}
             aria-label="Primary"
         >
             <div className="navbar-container">
@@ -74,7 +74,7 @@ const Navbar = ({ isReady = true, onOpenResume }) => {
                         </li>
                     ))}
                     <li className="nav-item">
-                        <button 
+                        <button
                             className="nav-link resume-button"
                             onClick={() => {
                                 if (onOpenResume) onOpenResume();
