@@ -51,7 +51,7 @@ const Title = ({ phase = "revealed", onNameReady, onOpenResume }) => {
                     <a href="#projects" className="t-project">Traceline</a>.
                 </p>
                 <p className="terminal-line">
-                    Business inquiry?{" "}
+                    Looking for my next role &mdash;{" "}
                     <a href="mailto:karkerakartik27@gmail.com" className="t-email">Email me!</a>
                 </p>
             </div>
