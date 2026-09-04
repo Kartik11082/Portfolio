@@ -5,6 +5,7 @@
     min-height: calc(100vh - 5.25rem);
     text-align: center;
     font-family: var(--font-mono);
+    position: relative;
 }
 
 /* ── Intro overlay ─────────────────────────────────────────── */
@@ -38,8 +39,8 @@
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: 0.08em;
-    color: #fff;
-    border-right: 2px solid rgba(255, 255, 255, 0.7);
+    color: #ede6d6;
+    border-right: 2px solid rgba(237, 230, 214, 0.7);
     transition: font-size 0.85s var(--ease-out-expo);
     animation: typeName 1.5s steps(22, end) forwards, cursorBlink 0.6s step-end 3;
 }
@@ -80,17 +81,19 @@
     font-family: var(--font-mono);
     font-size: clamp(1.3rem, 4vw, 2rem);
     font-weight: 400;
-    color: #fff;
+    color: #ede6d6;
     letter-spacing: 0.08em;
     margin: 0 0 0.6rem;
 }
 
 .terminal-line {
     font-family: var(--font-mono);
-    font-size: clamp(0.8rem, 1.5vw, 0.92rem);
-    color: #fff;
-    line-height: 2;
+    font-size: clamp(0.95rem, 2.4vw, 1.02rem);
+    color: #d9d0bd;
+    line-height: 1.7;
     margin: 0;
+    max-width: 42rem;
+    text-wrap: pretty;
 }
 
 .terminal-line a {
@@ -105,13 +108,18 @@
     height: 1em;
 }
 
-/* ── Token colors ──────────────────────────────────────────── */
-.t-python  { color: #8BC34A; }
-.t-sql     { color: #64B5F6; }
-.t-spark   { color: #FF7043; }
-.t-aws     { color: #FFB74D; }
-.t-age     { color: #8BC34A; }
-.t-link    { color: #90A4AE; }
+/* ── Token colors: warm family only, no rainbow ────────────── */
+.t-python  { color: #d8b47c; }
+.t-sql     { color: #c9a86a; }
+.t-spark   { color: #e0682e; }
+.t-aws     { color: #b3a996; }
+.t-age {
+    color: #e0682e;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+    letter-spacing: 0.02em;
+}
+.t-link    { color: #b3a996; }
 .t-resume {
     color: var(--accent-gold);
     font-weight: 500;
@@ -127,8 +135,8 @@
 .t-resume:hover {
     text-decoration: underline;
 }
-.t-project { color: #8BC34A; }
-.t-email   { color: #8BC34A; }
+.t-project { color: #e0682e; }
+.t-email   { color: #e0682e; }
 
 /* ── Keyframes ─────────────────────────────────────────────── */
 @keyframes typeName {
@@ -137,7 +145,7 @@
 }
 
 @keyframes cursorBlink {
-    from, to { border-right-color: rgba(255, 255, 255, 0.85); }
+    from, to { border-right-color: rgba(237, 230, 214, 0.85); }
     50%      { border-right-color: transparent; }
 }
 
@@ -145,4 +153,46 @@
     .hero-terminal {
         min-height: calc(100vh - 4.5rem);
     }
+}
+
+/* ── Subtle scroll cue ─────────────────────────────────────── */
+.scroll-cue {
+    position: absolute;
+    bottom: 1.1rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    min-height: 44px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.9s var(--ease-out-quint) 0.9s, transform 0.9s var(--ease-out-quint) 0.9s;
+}
+.scroll-cue.revealed {
+    opacity: 0.55;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+.scroll-cue:hover { opacity: 1; }
+.scroll-cue-bar {
+    width: 1px;
+    height: 2rem;
+    background: linear-gradient(180deg, transparent, var(--text-300));
+    display: block;
+}
+.scroll-cue-arrow {
+    font-size: 0.8rem;
+    color: var(--text-300);
+    line-height: 1;
+    animation: cueDrift 2.4s ease-in-out infinite;
+}
+@keyframes cueDrift {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(4px); opacity: 1; }
 }

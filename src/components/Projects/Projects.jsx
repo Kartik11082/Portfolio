@@ -1,19 +1,14 @@
 import "./Projects.css";
-import flixtimeImage from "../../assets/flixtime.jpg";
-import terminalImage from "../../assets/stacksearch.jpg";
-import mushroomImage from "../../assets/mushroom.png";
-import tfidfImage from "../../assets/tfidf.webp";
 import potionwatchImage from "../../assets/potionwatch.png";
 import ThreeLCxAWS from "../../assets/3LCxAWShackathon.png";
-import noisytoniceImage from "../../assets/noisytoniceImage.png";
 import tidalhackImage from "../../assets/tidalHackImage.png";
-import midnightCommitsImage from "../../assets/midnightCommitsImage.png";
-import waypointImage from "../../assets/waypoint.png";
 
 const PROJECTS = [
     {
         title: "Traceline",
         summary: "Aligns pipeline inspection anomalies across years and corrects odometer drift in a 24-hour hackathon build.",
+        problem: "Pipeline anomaly reports drift year over year, making repeats hard to match.",
+        built: "Year-over-year alignment + drift correction with visual QA in Streamlit/Plotly.",
         tech: ["Python", "Pandas", "Scikit-learn", "Plotly", "Streamlit"],
         link: "http://tidalfrontend.s3-website-us-east-1.amazonaws.com/",
         status: "hackathon",
@@ -24,6 +19,8 @@ const PROJECTS = [
     {
         title: "Chihuahua vs Muffin",
         summary: "Data-centric AI challenge — improved classifier accuracy to ~93.5% through dataset curation, not model changes.",
+        problem: "Model was stuck because the dataset had bad labels and weak classes.",
+        built: "Curated and rebalanced the dataset, kept test set clean, versioned every change.",
         tech: ["Python", "Machine Learning", "3LC"],
         link: "https://github.com/Kartik11082/3LCxAWSHackathon#images---accuracy935",
         status: "hackathon",
@@ -43,6 +40,8 @@ const PROJECTS = [
     {
         title: "Waypoint",
         summary: "Daily geography news guessing game. Players locate real stories on a world map using three AI clues.",
+        problem: "News games are either trivial or stale after one play.",
+        built: "Daily seed + 3 progressive AI clues on a map, serverless API on Lambda + DynamoDB.",
         tech: ["FastAPI", "React", "AWS Lambda", "DynamoDB", "Bedrock"],
         link: "https://waypoint.madebykartik.us/",
         status: "standard",
@@ -50,6 +49,8 @@ const PROJECTS = [
     {
         title: "Midnight Commits",
         summary: "Real-time analytics for global developer activity — geospatial commit insights with city-level leaderboards.",
+        problem: "Global dev activity is noisy and hard to explore by place and time.",
+        built: "Streaming ingest (Kafka) → FastAPI + Postgres → map + leaderboards UI.",
         tech: ["Kafka", "FastAPI", "PostgreSQL", "React", "AWS"],
         link: "https://github.com/Kartik11082/MidnightCommits",
         status: "in-progress",
@@ -91,19 +92,69 @@ const PROJECTS = [
     },
 ];
 
-const imageMap = {
-    Traceline: tidalhackImage,
-    "Chihuahua vs Muffin": ThreeLCxAWS,
-    PotionWatch: potionwatchImage,
-};
+const FEATURED_TITLES = ["Traceline", "Chihuahua vs Muffin", "Waypoint"];
 
-const hackathons = PROJECTS.filter(p => p.status === "hackathon");
-const others = PROJECTS.filter(p => p.status !== "hackathon");
+const featured = PROJECTS.filter((p) => FEATURED_TITLES.includes(p.title));
+const rest = PROJECTS.filter((p) => !FEATURED_TITLES.includes(p.title));
+const hackathons = rest.filter(p => p.status === "hackathon");
+const others = rest.filter(p => p.status !== "hackathon");
 
-const Projects = () => (
+function CraftMedia({ p }) {
+    if (p.image) {
+        return (
+            <div className="craft-media">
+                <img src={p.image} alt={p.title} loading="lazy" />
+            </div>
+        );
+    }
+    return (
+        <div className="craft-media craft-media-fallback" aria-hidden="true">
+            <span className="craft-fallback-prompt">$ ./run --craft {p.title.toLowerCase().replace(/\s+/g, "-")}</span>
+            <span className="craft-fallback-sub">github ↗ · readme · notes</span>
+        </div>
+    );
+}
+
+export const FeaturedCraft = () => (
+    <div className="craft-shell">
+        <p className="craft-kicker">$ ls ./projects --featured</p>
+        <h2 className="craft-heading">Projects</h2>
+        <p className="craft-sub">Hackathon wins first — 1st + 3rd — plus Waypoint. GitHub only.</p>
+        <div className="craft-grid">
+            {featured.map((p) => (
+                <article key={p.title} className="craft-card glass-panel">
+                    <CraftMedia p={p} />
+                    <div className="craft-body">
+                        <div className="craft-top">
+                            <h3 className="craft-title">{p.title}</h3>
+                            {p.status === "in-progress" ? (
+                                <span className="wip-badge">WIP</span>
+                            ) : p.awardLabel ? (
+                                <span className="hbadge hbadge-first">{p.awardLabel}</span>
+                            ) : null}
+                        </div>
+                        {p.problem && <p className="craft-line"><span className="craft-label">Problem:</span> {p.problem}</p>}
+                        {p.built && <p className="craft-line"><span className="craft-label">Built:</span> {p.built}</p>}
+                        <p className="craft-summary">{p.summary}</p>
+                        <div className="hack-tech">
+                            {p.tech.slice(0, 4).map((t) => (
+                                <span key={t} className="tech-pill">{t}</span>
+                            ))}
+                        </div>
+                        <a href={p.link} target="_blank" rel="noopener noreferrer" className="craft-link">
+                            {p.link.includes("github.com") ? "GitHub" : "Visit"} <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </article>
+            ))}
+        </div>
+    </div>
+);
+
+export const ProjectsGrid = () => (
     <div className="projects-shell">
-        {/* ── Hackathon Wins ── */}
-        <h2 className="projects-heading">Hackathons</h2>
+        {/* ── Remaining hackathon ── */}
+        <h2 className="projects-heading projects-heading-other">More hackathons</h2>
         <div className="hack-grid">
             {hackathons.map(p => (
                 <a
@@ -138,7 +189,7 @@ const Projects = () => (
         </div>
 
         {/* ── Other Projects ── */}
-        <h2 className="projects-heading projects-heading-other">Projects</h2>
+        <h2 className="projects-heading projects-heading-other">More projects</h2>
         <div className="other-grid">
             {others.map(p => (
                 <a
@@ -163,6 +214,14 @@ const Projects = () => (
             ))}
         </div>
     </div>
+);
+
+const Projects = () => (
+    <>
+        <FeaturedCraft />
+        <div style={{ height: "2.5rem" }} />
+        <ProjectsGrid />
+    </>
 );
 
 export default Projects;

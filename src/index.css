@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
 :root {
-  --bg-900: #0d0f0e;
-  --bg-850: #131613;
-  --surface-800: rgba(255, 255, 255, 0.04);
-  --surface-700: rgba(255, 255, 255, 0.06);
-  --surface-border: rgba(255, 255, 255, 0.08);
-  --text-100: #e8eae6;
-  --text-200: #a8b0a4;
-  --text-300: #6e7a6a;
-  --accent-gold: #9fc4a3;
-  --accent-blue: #b8cbb9;
-  --accent-blue-strong: #6a9e72;
+  --bg-900: #14110d;
+  --bg-850: #1b1813;
+  --surface-800: rgba(237, 230, 214, 0.032);
+  --surface-700: rgba(237, 230, 214, 0.055);
+  --surface-border: rgba(201, 168, 106, 0.16);
+  --text-100: #ede6d6;
+  --text-200: #b3a996;
+  --text-300: #7e7666;
+  --accent-gold: #e0682e;
+  --accent-blue: #c9a86a;
+  --accent-blue-strong: #a25436;
   --shadow-soft: 0 10px 30px -16px rgba(0, 0, 0, 0.65);
   --shadow-strong: 0 20px 50px -20px rgba(0, 0, 0, 0.72);
   --radius-lg: 20px;
@@ -49,7 +49,7 @@ body {
   color: var(--text-100);
   line-height: 1.75;
   letter-spacing: 0.01em;
-  background: #000;
+  background: #14110d;
 }
 
 h1,

@@ -19,7 +19,7 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, var(--accent-gold) 0%, rgba(159, 196, 163, 0.15) 30%, transparent 65%);
+    background: linear-gradient(90deg, rgba(224, 104, 46, 0.55) 0%, rgba(201, 168, 106, 0.14) 30%, transparent 65%);
 }
 
 .hero-section {

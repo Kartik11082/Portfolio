@@ -9,15 +9,19 @@ function Age() {
         const updateAge = () => {
             const now = Date.now();
             const years = (now - BIRTH_TIMESTAMP) / (1000 * 60 * 60 * 24 * 365.25);
-            setAge(years.toFixed(12));
+            setAge(years.toFixed(9));
         };
 
         updateAge();
-        const timer = setInterval(updateAge, 100);
+        const timer = setInterval(updateAge, 500);
         return () => clearInterval(timer);
     }, []);
 
-    return <span className="t-age">{age}</span>;
+    return (
+        <span className="t-age" aria-hidden="true" title="My live age in years">
+            {age}
+        </span>
+    );
 }
 
 export default Age;

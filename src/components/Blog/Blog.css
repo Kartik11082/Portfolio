@@ -1,0 +1,43 @@
+.blog-shell { display: flex; flex-direction: column; gap: 0.6rem; }
+.blog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+.blog-card {
+  text-align: left;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+  background: var(--surface-800);
+  transition: transform 0.3s var(--ease-out-quint), border-color 0.3s ease;
+  min-height: 44px;
+}
+.blog-card:hover { transform: translateY(-2px); border-color: rgba(201,168,106,0.3); }
+.blog-date { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-300); }
+.blog-title { font-size: 0.98rem; font-weight: 700; color: var(--text-100); line-height: 1.35; }
+.blog-excerpt { font-size: 0.84rem; line-height: 1.6; color: var(--text-200); }
+.blog-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.blog-open { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-gold); margin-top: auto; padding-top: 0.3rem; }
+
+.blog-reader { max-height: 85vh; }
+.blog-reader-body { overflow-y: auto; padding: 1.2rem 1.4rem 2rem; background: #171410; }
+.blog-meta { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-300); margin: 0 0 1rem; }
+
+.md-body { color: #d9d0bd; font-size: 0.92rem; line-height: 1.7; }
+.md-h1 { font-size: 1.25rem; color: #ede6d6; margin: 0 0 0.8rem; line-height: 1.3; }
+.md-h2 { font-size: 1.02rem; color: #ede6d6; margin: 1.2rem 0 0.5rem; }
+.md-p { margin: 0 0 0.8rem; }
+.md-ul, .md-ol { margin: 0 0 0.9rem; padding-left: 1.2rem; }
+.md-ul li, .md-ol li { margin-bottom: 0.3rem; }
+.md-code { background: rgba(237,230,214,0.08); padding: 0.1rem 0.35rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.82em; }
+.md-codeblock { border: 1px solid rgba(201,168,106,0.18); border-radius: 12px; overflow: hidden; margin: 0 0 1rem; }
+.md-codebar { display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0.7rem; background: rgba(237,230,214,0.04); font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-300); }
+.md-copy { background: transparent; border: 1px solid rgba(201,168,106,0.25); color: var(--text-200); border-radius: 7px; font-family: var(--font-mono); font-size: 0.72rem; padding: 0.25rem 0.6rem; cursor: pointer; min-height: 32px; }
+.md-copy:hover { color: #ede6d6; border-color: rgba(201,168,106,0.5); }
+.md-codeblock pre { margin: 0; padding: 0.8rem; overflow-x: auto; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.6; }
+
+@media (max-width: 720px) {
+  .blog-grid { grid-template-columns: 1fr; }
+  .blog-reader-body { padding: 1rem 1rem 1.6rem; }
+}

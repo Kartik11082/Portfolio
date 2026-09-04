@@ -33,19 +33,9 @@ const TIMELINE_GROUPS = [
             type: "work",
             title: "Software Developer",
             org: "PyCray Technologies · Noida, India",
-            date: "Aug 2023 - Jun 2024",
+            date: "May 2023 - Jul 2024",
             isCurrent: false,
-            summary: "Designed secure high-performance APIs for an algorithmic trading product and integrated real-time market data pipelines on AWS.",
-        },
-    },
-    {
-        entry: {
-            type: "work",
-            title: "Software Developer Intern",
-            org: "PyCray Technologies · Noida, India",
-            date: "May 2023 - Jul 2023",
-            isCurrent: false,
-            summary: "Improved production search quality with Elasticsearch and automated operational messaging workflows.",
+            summary: "Designed secure high-performance APIs for an algorithmic trading product, integrated real-time market data pipelines on AWS, improved production search with Elasticsearch, and automated operational messaging workflows.",
         },
     },
     {
@@ -104,9 +94,9 @@ function renderBranchNetwork(layout) {
         >
             <defs>
                 <linearGradient id="tl-branch-stroke" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="rgba(159, 196, 163, 0.18)" />
-                    <stop offset="45%" stopColor="rgba(159, 196, 163, 0.34)" />
-                    <stop offset="100%" stopColor="rgba(184, 203, 185, 0.24)" />
+                    <stop offset="0%" stopColor="rgba(224, 104, 46, 0.16)" />
+                    <stop offset="45%" stopColor="rgba(224, 104, 46, 0.32)" />
+                    <stop offset="100%" stopColor="rgba(201, 168, 106, 0.24)" />
                 </linearGradient>
             </defs>
             {layout.targets.map((target, index) => {

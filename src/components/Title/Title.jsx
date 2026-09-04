@@ -55,6 +55,18 @@ const Title = ({ phase = "revealed", onNameReady, onOpenResume }) => {
                     <a href="mailto:karkerakartik27@gmail.com" className="t-email">Email me!</a>
                 </p>
             </div>
+            <button
+                className={`scroll-cue ${isRevealed ? "revealed" : ""}`}
+                onClick={() => {
+                    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                    document.querySelector("#projects")?.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+                }}
+                aria-label="Scroll to projects"
+                tabIndex={isRevealed ? 0 : -1}
+            >
+                <span className="scroll-cue-bar" aria-hidden="true" />
+                <span className="scroll-cue-arrow" aria-hidden="true">↓</span>
+            </button>
         </div>
     );
 };

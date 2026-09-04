@@ -4,7 +4,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(4, 5, 5, 0.78);
+    background: rgba(20, 17, 13, 0.8);
     backdrop-filter: blur(14px);
     z-index: 2000;
     display: flex;
@@ -22,7 +22,7 @@
     overflow: hidden;
     border: 1px solid var(--surface-border);
     box-shadow: var(--shadow-strong);
-    background: rgba(13, 15, 14, 0.95);
+    background: rgba(27, 24, 19, 0.96);
     border-radius: var(--radius-lg);
     animation: modalSlideUp 0.32s var(--ease-out-back) forwards;
 }
@@ -33,7 +33,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 var(--space-4);
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(237, 230, 214, 0.02);
     border-bottom: 1px solid var(--surface-border);
     user-select: none;
 }
@@ -78,6 +78,7 @@
     font-family: var(--font-mono);
     font-size: 0.78rem;
     padding: 0.3rem 0.75rem;
+    min-height: 44px;
     border-radius: 8px;
     cursor: pointer;
     background: transparent;
@@ -91,15 +92,35 @@
 
 .download-btn {
     color: var(--accent-gold);
-    border-color: rgba(159, 196, 163, 0.28);
-    background: rgba(159, 196, 163, 0.05);
+    border-color: rgba(224, 104, 46, 0.35);
+    background: rgba(224, 104, 46, 0.07);
 }
 
+.open-btn {
+    color: var(--text-100);
+    border-color: var(--surface-border);
+    background: rgba(237,230,214,0.04);
+}
+
+.open-btn:hover {
+    border-color: rgba(201,168,106,0.4);
+    background: rgba(237,230,214,0.07);
+}
+
+.resume-fallback {
+    padding: 0.6rem 1rem;
+    font-size: 0.78rem;
+    color: var(--text-300);
+    border-bottom: 1px solid var(--surface-border);
+    background: rgba(237,230,214,0.02);
+}
+.resume-fallback a { color: var(--accent-gold); }
+
 .download-btn:hover {
-    background: rgba(159, 196, 163, 0.18);
+    background: rgba(224, 104, 46, 0.16);
     border-color: var(--accent-gold);
     color: var(--text-100);
-    box-shadow: 0 0 10px rgba(159, 196, 163, 0.1);
+    box-shadow: none;
 }
 
 .close-btn {
@@ -109,13 +130,13 @@
 
 .close-btn:hover {
     color: var(--text-100);
-    border-color: rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(201,168,106,0.35);
+    background: rgba(237,230,214,0.06);
 }
 
 .resume-modal-body {
     flex: 1;
-    background: #0f1110;
+    background: #171410;
     position: relative;
 }
 
@@ -123,7 +144,7 @@
     width: 100%;
     height: 100%;
     border: none;
-    background: #0f1110;
+    background: #171410;
 }
 
 @keyframes modalOverlayFade {

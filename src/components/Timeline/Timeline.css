@@ -73,7 +73,7 @@
     stroke-width: 1.4;
     stroke-linecap: round;
     stroke-linejoin: round;
-    filter: drop-shadow(0 0 6px rgba(159, 196, 163, 0.08));
+    filter: drop-shadow(0 0 6px rgba(224, 104, 46, 0.07));
 }
 
 .tl-branch-card {
@@ -92,8 +92,8 @@
     bottom: 0.2rem;
     width: 1px;
     border-radius: 999px;
-    background: linear-gradient(180deg, rgba(159, 196, 163, 0.6), rgba(159, 196, 163, 0.12));
-    box-shadow: 0 0 10px rgba(159, 196, 163, 0.12);
+    background: linear-gradient(180deg, rgba(224, 104, 46, 0.6), rgba(224, 104, 46, 0.1));
+    box-shadow: 0 0 10px rgba(224, 104, 46, 0.1);
 }
 
 .tl-gutter {
@@ -109,8 +109,8 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: rgba(159, 196, 163, 0.9);
-    box-shadow: 0 0 0 4px rgba(159, 196, 163, 0.08);
+    background: rgba(224, 104, 46, 0.9);
+    box-shadow: 0 0 0 4px rgba(224, 104, 46, 0.08);
 }
 
 .tl-dot {
@@ -124,14 +124,14 @@
 
 .tl-dot-active {
     background: var(--accent-gold);
-    box-shadow: 0 0 0 3px rgba(232, 211, 162, 0.18);
+    box-shadow: 0 0 0 3px rgba(224, 104, 46, 0.16);
 }
 
 .tl-connector {
     flex: 1;
     width: 1px;
     margin-top: 5px;
-    background: rgba(255, 255, 255, 0.09);
+    background: rgba(201, 168, 106, 0.14);
 }
 
 .tl-body {
@@ -164,21 +164,21 @@
 }
 
 .tl-tag-work {
-    color: #7bc4a0;
-    border: 1px solid rgba(123, 196, 160, 0.28);
-    background: rgba(123, 196, 160, 0.07);
+    color: #c9a86a;
+    border: 1px solid rgba(201, 168, 106, 0.3);
+    background: rgba(201, 168, 106, 0.07);
 }
 
 .tl-tag-education {
-    color: #7ca8d8;
-    border: 1px solid rgba(124, 168, 216, 0.28);
-    background: rgba(124, 168, 216, 0.07);
+    color: #b3a996;
+    border: 1px solid rgba(179, 169, 150, 0.3);
+    background: rgba(179, 169, 150, 0.07);
 }
 
 .tl-now {
     padding: 0.13rem 0.48rem;
     border-radius: 999px;
-    color: #0d150f;
+    color: #14110d;
     background: var(--accent-gold);
     font-size: 0.62rem;
     font-weight: 700;

@@ -44,6 +44,15 @@ const ResumeModal = ({ isOpen, onClose }) => {
                     <div className="resume-modal-actions">
                         <a
                             href="/resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="modal-action-btn open-btn"
+                            title="Open in new tab (best on mobile)"
+                        >
+                            Open
+                        </a>
+                        <a
+                            href="/resume.pdf"
                             download="Kartik_Karkera_Resume.pdf"
                             className="modal-action-btn download-btn"
                             title="Download PDF directly"
@@ -56,6 +65,9 @@ const ResumeModal = ({ isOpen, onClose }) => {
                     </div>
                 </div>
                 <div className="resume-modal-body">
+                    <div className="resume-fallback">
+                        <p>Preview not supported on this device? <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Open resume in new tab</a> or tap Download.</p>
+                    </div>
                     <iframe
                         src="/resume.pdf#toolbar=0"
                         title="Kartik Karkera Resume"
