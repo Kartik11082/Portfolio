@@ -159,20 +159,31 @@
 }
 
 /* Resume Nav Button Styling */
-a.nav-link.resume-button {
+.nav-link.resume-button {
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    color: var(--accent-gold);
+    justify-content: center;
+    min-height: 44px;
+    color: var(--bg-900);
+    background: var(--accent-gold);
+    border-color: var(--accent-gold);
+    margin-left: var(--space-2);
 }
 
-a.nav-link.resume-button::after {
-    background-color: var(--accent-gold);
+.nav-link.resume-button:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+}
+
+.nav-link.resume-button::after {
+    display: none;
 }
 
 @media screen and (max-width: 900px) {
-    a.nav-link.resume-button {
+    .nav-link.resume-button {
         margin-top: 0.25rem;
+        margin-left: 0;
     }
 }
 

@@ -1,250 +1,114 @@
-import { useEffect, useRef, useState } from "react";
 import "./Timeline.css";
 
-const TIMELINE_GROUPS = [
+const TIMELINE_ENTRIES = [
     {
-        entry: {
-            type: "education",
-            title: "Master of Science in Computer Science",
-            org: "University of Texas at Dallas",
-            date: "Aug 2024 - Present",
-            isCurrent: true,
-            summary: "Pursuing MSCS (graduating May 2026), focused on databases, algorithms, and web systems.",
-        },
-        branches: [
+        type: "work",
+        title: "SDE Intern",
+        org: "Kapi Advisors · Dallas, TX",
+        date: "Jul 2026 - Present",
+        isCurrent: true,
+        summary: "Backend engineering for a procurement platform, covering quotation evaluation, award optimization, and buyer and supplier workflows.",
+        highlights: [
+            "Developed deterministic scoring microservices that normalize currencies, pack sizes, discounts, taxes, and freight, giving buyers a consistent basis for item-level quotation comparisons.",
+            "Built an award optimization engine with Google OR-Tools CP-SAT to minimize sourcing costs or maximize supplier scores while enforcing demand, budget, minimum-order, and supplier-count constraints.",
+            "Implemented a data adapter that maps supplier quotes, pricing tiers, and eligibility into solver inputs and returns allocation recommendations for buyer review.",
+            "Designed APIs and PostgreSQL models for quotation submissions, clarification rounds, and approvals, with auditable histories of buyer and supplier decisions.",
+        ],
+    },
+    {
+        type: "work",
+        title: "Parallel roles at UTD",
+        roles: [
             {
                 type: "work",
                 title: "Grader - Computer Architecture",
-                org: "Prof. Alice Wang · UTD",
-                date: "Jan 2025 - Present",
-                isCurrent: true,
+                org: "Prof. Alice Wang · University of Texas at Dallas",
+                date: "Jan 2025 - May 2026",
             },
             {
                 type: "work",
                 title: "Technical Officer (Backend)",
-                org: "AWS Club at UTD",
-                date: "Oct 2024 - Present",
-                isCurrent: true,
+                org: "AWS Club · University of Texas at Dallas",
+                date: "Oct 2024 - May 2026",
             },
         ],
     },
     {
-        entry: {
-            type: "work",
-            title: "Software Developer",
-            org: "PyCray Technologies · Noida, India",
-            date: "May 2023 - Jul 2024",
-            isCurrent: false,
-            summary: "Designed secure high-performance APIs for an algorithmic trading product, integrated real-time market data pipelines on AWS, improved production search with Elasticsearch, and automated operational messaging workflows.",
-        },
+        type: "education",
+        title: "Master of Science in Computer Science",
+        org: "University of Texas at Dallas · Richardson, TX",
+        date: "Aug 2024 - May 2026",
+        summary: "Completed a master's degree in Computer Science with a GPA of 3.67/4.0, focused on databases, algorithms, and web systems.",
     },
     {
-        entry: {
-            type: "education",
-            title: "Bachelor of Engineering in Computer Science",
-            org: "University of Mumbai",
-            date: "Aug 2019 - May 2023",
-            isCurrent: false,
-            summary: "Built and deployed course and capstone projects including recommendation and computer vision systems.",
-        },
+        type: "work",
+        title: "Data Engineer",
+        org: "PyCray Technologies · Noida, India",
+        date: "May 2023 - Jun 2024",
+        summary: "Data engineering for an algorithmic trading product, alongside geospatial search development for a carpooling application.",
+        highlights: [
+            "Engineered an event-driven pipeline with DynamoDB Streams and AppSync subscriptions that delivered trading position updates with under 50 ms end-to-end latency.",
+            "Designed a hot-cold data architecture with DynamoDB for active trades and PostgreSQL for historical analytics, separating operational queries from reporting workloads.",
+            "Built Lambda ETL jobs triggered by EventBridge to move trading records into PostgreSQL, handling schema evolution and consistency between data stores.",
+            "Implemented Elasticsearch geospatial indexing to optimize location-based ride searches.",
+            "Developed analytics pipelines that aggregated active users, open positions, and profit-and-loss metrics for daily business reporting.",
+        ],
+    },
+    {
+        type: "education",
+        title: "Bachelor of Engineering in Computer Science",
+        org: "University of Mumbai",
+        date: "Aug 2019 - May 2023",
+        summary: "Built and deployed course and capstone projects including recommendation and computer vision systems.",
     },
 ];
-
-function renderMeta(entry, compact = false) {
-    return (
-        <div className={`tl-meta ${compact ? "tl-meta-compact" : ""}`}>
-            <span className={`tl-tag tl-tag-${entry.type}`}>
-                {entry.type === "work" ? "Work" : "Education"}
-            </span>
-            {entry.isCurrent && <span className="tl-now">Now</span>}
-            <span className="tl-date">{entry.date}</span>
-        </div>
-    );
-}
 
 function renderEntry(entry) {
     return (
         <>
-            {renderMeta(entry)}
+            <div className="tl-meta">
+                <span className={`tl-tag tl-tag-${entry.type}`}>
+                    {entry.type === "work" ? "Work" : "Education"}
+                </span>
+                {entry.isCurrent && <span className="tl-now">Current</span>}
+                <span className="tl-date">{entry.date}</span>
+            </div>
             <h3 className="tl-title">{entry.title}</h3>
             <p className="tl-org">{entry.org}</p>
-            <p className="tl-summary">{entry.summary}</p>
+            {entry.summary && <p className="tl-summary">{entry.summary}</p>}
+            {entry.highlights && (
+                <ul className="tl-highlights">
+                    {entry.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+                </ul>
+            )}
         </>
     );
 }
 
-function renderBranch(entry, key) {
-    return (
-        <article className={`tl-branch-card ${entry.isCurrent ? "tl-branch-card-current" : ""}`} key={key}>
-            <span className="tl-branch-anchor" aria-hidden="true" />
-            {renderMeta(entry, true)}
-            <h4 className="tl-branch-title">{entry.title}</h4>
-            <p className="tl-branch-org">{entry.org}</p>
-        </article>
-    );
-}
-
-function renderBranchNetwork(layout) {
-    return (
-        <svg
-            className="tl-group-network"
-            viewBox={`0 0 ${layout.width} ${layout.height}`}
-            preserveAspectRatio="none"
-            aria-hidden="true"
-        >
-            <defs>
-                <linearGradient id="tl-branch-stroke" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="rgba(224, 104, 46, 0.16)" />
-                    <stop offset="45%" stopColor="rgba(224, 104, 46, 0.32)" />
-                    <stop offset="100%" stopColor="rgba(201, 168, 106, 0.24)" />
-                </linearGradient>
-            </defs>
-            {layout.targets.map((target, index) => {
-                const deltaX = target.x - layout.start.x;
-                const deltaY = layout.start.y - target.y;
-                const controlLift = Math.max(34, deltaY * 0.58);
-                const controlSpread = Math.max(26, deltaX * 0.34);
-                const controlX1 = layout.start.x;
-                const controlY1 = layout.start.y - controlLift;
-                const controlX2 = target.x - controlSpread;
-                const controlY2 = target.y + Math.max(14, controlLift * 0.26);
-
-                return (
-                    <path
-                        key={`curve-${index}`}
-                        d={`M ${layout.start.x} ${layout.start.y} C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${target.x} ${target.y}`}
-                    />
-                );
-            })}
-        </svg>
-    );
-}
-
 function Timeline() {
-    const groupRefs = useRef([]);
-    const frameRef = useRef(null);
-    const [branchLayouts, setBranchLayouts] = useState({});
-
-    useEffect(() => {
-        const measureBranches = () => {
-            const nextLayouts = {};
-
-            groupRefs.current.forEach((groupElement, index) => {
-                if (!groupElement) {
-                    return;
-                }
-
-                const mainDot = groupElement.querySelector(".tl-main-dot");
-                const branchAnchors = Array.from(groupElement.querySelectorAll(".tl-branch-anchor"));
-
-                if (!mainDot || branchAnchors.length === 0) {
-                    return;
-                }
-
-                const groupRect = groupElement.getBoundingClientRect();
-                const dotRect = mainDot.getBoundingClientRect();
-
-                nextLayouts[index] = {
-                    width: groupRect.width,
-                    height: groupRect.height,
-                    start: {
-                        x: dotRect.left - groupRect.left + dotRect.width / 2,
-                        y: dotRect.top - groupRect.top + dotRect.height / 2,
-                    },
-                    targets: branchAnchors.map((anchor) => {
-                        const anchorRect = anchor.getBoundingClientRect();
-
-                        return {
-                            x: anchorRect.left - groupRect.left + anchorRect.width / 2,
-                            y: anchorRect.top - groupRect.top + anchorRect.height / 2,
-                        };
-                    }),
-                };
-            });
-
-            setBranchLayouts(nextLayouts);
-        };
-
-        const scheduleMeasure = () => {
-            if (frameRef.current) {
-                cancelAnimationFrame(frameRef.current);
-            }
-
-            frameRef.current = requestAnimationFrame(measureBranches);
-        };
-
-        scheduleMeasure();
-
-        const resizeObserver = typeof ResizeObserver !== "undefined"
-            ? new ResizeObserver(scheduleMeasure)
-            : null;
-
-        groupRefs.current.forEach((groupElement) => {
-            if (groupElement && resizeObserver) {
-                resizeObserver.observe(groupElement);
-            }
-        });
-
-        window.addEventListener("resize", scheduleMeasure);
-
-        return () => {
-            if (frameRef.current) {
-                cancelAnimationFrame(frameRef.current);
-            }
-
-            window.removeEventListener("resize", scheduleMeasure);
-
-            if (resizeObserver) {
-                resizeObserver.disconnect();
-            }
-        };
-    }, []);
-
     return (
         <div className="tl-shell">
             <h2 className="tl-heading">Experience &amp; Education</h2>
-            <div className="tl-list">
-                {TIMELINE_GROUPS.map((group, index) => {
-                    const hasBranches = Array.isArray(group.branches) && group.branches.length > 0;
-                    const isLast = index === TIMELINE_GROUPS.length - 1;
-
-                    return (
-                        <section
-                            key={group.entry.title}
-                            className={`tl-group ${hasBranches ? "tl-group-branched" : ""}`}
-                            ref={(element) => {
-                                groupRefs.current[index] = element;
-                            }}
-                        >
-                            {hasBranches && branchLayouts[index] && renderBranchNetwork(branchLayouts[index])}
-
-                            {hasBranches && (
-                                <div className="tl-branch-row">
-                                    <div className="tl-branch-gutter">
-                                        <span className="tl-branch-gutter-line" />
-                                    </div>
-                                    <div
-                                        className="tl-branch-grid"
-                                        style={{ "--branch-count": group.branches.length }}
-                                    >
-                                        {group.branches.map((branch) => renderBranch(branch, branch.title))}
-                                    </div>
-                                </div>
-                            )}
-
-                            <div className="tl-entry">
-                                <div className={`tl-gutter ${hasBranches ? "tl-gutter-joined" : ""}`}>
-                                    <span className={`tl-dot tl-main-dot ${group.entry.isCurrent ? "tl-dot-active" : ""}`} />
-                                    {!isLast && <span className="tl-connector" />}
-                                </div>
-                                <div className={`tl-body ${!isLast ? "tl-body-spaced" : ""}`}>
-                                    {renderEntry(group.entry)}
+            <ol className="tl-list" aria-label="Experience and education, most recent start date first">
+                {TIMELINE_ENTRIES.map((entry) => (
+                    <li className="tl-entry" key={entry.title}>
+                        <span className={`tl-dot ${entry.isCurrent ? "tl-dot-active" : ""}`} aria-hidden="true" />
+                        {entry.roles ? (
+                            <div className="tl-body">
+                                <div className="tl-parallel-grid" aria-label="Concurrent roles at University of Texas at Dallas">
+                                    {entry.roles.map((role) => (
+                                        <article className="tl-parallel-role" key={role.title}>
+                                            {renderEntry(role)}
+                                        </article>
+                                    ))}
                                 </div>
                             </div>
-                        </section>
-                    );
-                })}
-            </div>
+                        ) : (
+                            <article className="tl-body">{renderEntry(entry)}</article>
+                        )}
+                    </li>
+                ))}
+            </ol>
         </div>
     );
 }

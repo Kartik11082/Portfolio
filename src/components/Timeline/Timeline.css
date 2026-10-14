@@ -1,10 +1,10 @@
 .tl-shell {
-    max-width: 760px;
+    max-width: 860px;
 }
 
 .tl-heading {
-    margin: 0 0 1.75rem;
-    color: var(--text-300);
+    margin: 0 0 var(--space-5);
+    color: var(--text-200);
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 500;
@@ -13,145 +13,112 @@
 }
 
 .tl-list {
-    display: flex;
-    flex-direction: column;
-}
-
-.tl-group {
     position: relative;
-    display: flex;
-    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.tl-entry,
-.tl-branch-row {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: 18px minmax(0, 1fr);
-    gap: 0 1.25rem;
-}
-
-.tl-branch-row {
-    margin-bottom: 0.8rem;
-    padding-bottom: 0.65rem;
-}
-
-.tl-branch-gutter {
-    display: flex;
-    justify-content: center;
-}
-
-.tl-branch-gutter-line {
-    display: none;
-}
-
-.tl-branch-grid {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(var(--branch-count), minmax(0, 1fr));
-    gap: 1.75rem;
-    min-width: 0;
-    align-items: end;
-    padding-bottom: 0.9rem;
-}
-
-.tl-group-network {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.96;
-}
-
-.tl-group-network path {
-    fill: none;
-    stroke: url(#tl-branch-stroke);
-    stroke-width: 1.4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    filter: drop-shadow(0 0 6px rgba(224, 104, 46, 0.07));
-}
-
-.tl-branch-card {
-    position: relative;
-    width: 100%;
-    min-width: 0;
-    z-index: 1;
-    padding: 0.15rem 0 0.15rem 1rem;
-}
-
-.tl-branch-card-current::before {
+/* One rail spans the entire list, including the space between entries. */
+.tl-list::before {
     content: "";
     position: absolute;
-    left: 0;
-    top: 0.15rem;
-    bottom: 0.2rem;
+    top: 0.75rem;
+    bottom: 0;
+    left: 8px;
     width: 1px;
-    border-radius: 999px;
-    background: linear-gradient(180deg, rgba(224, 104, 46, 0.6), rgba(224, 104, 46, 0.1));
-    box-shadow: 0 0 10px rgba(224, 104, 46, 0.1);
+    background: rgba(201, 168, 106, 0.35);
 }
 
-.tl-gutter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.tl-entry {
+    position: relative;
+    padding: 0 0 var(--space-6) calc(18px + var(--space-4));
 }
 
-.tl-branch-anchor {
-    position: absolute;
-    left: 0;
-    bottom: -0.72rem;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(224, 104, 46, 0.9);
-    box-shadow: 0 0 0 4px rgba(224, 104, 46, 0.08);
+.tl-entry:last-child {
+    padding-bottom: var(--space-1);
 }
 
 .tl-dot {
-    width: 9px;
-    height: 9px;
-    margin-top: 0.28rem;
+    position: absolute;
+    left: 3px;
+    top: 0.45rem;
+    width: 11px;
+    height: 11px;
+    border: 2px solid var(--accent-blue);
     border-radius: 50%;
-    background: var(--text-300);
-    flex-shrink: 0;
+    background: var(--bg-900);
 }
 
 .tl-dot-active {
+    border-color: var(--accent-gold);
     background: var(--accent-gold);
-    box-shadow: 0 0 0 3px rgba(224, 104, 46, 0.16);
-}
-
-.tl-connector {
-    flex: 1;
-    width: 1px;
-    margin-top: 5px;
-    background: rgba(201, 168, 106, 0.14);
 }
 
 .tl-body {
     min-width: 0;
 }
 
-.tl-body-spaced {
-    padding-bottom: 2rem;
+.tl-parallel-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+    padding-top: var(--space-4);
+}
+
+/* Both role branches meet the same rail that leads up to the current role. */
+.tl-parallel-grid::before {
+    content: "";
+    position: absolute;
+    top: var(--space-1);
+    left: calc(8px - 18px - var(--space-4));
+    right: calc(50% - var(--space-4) / 2);
+    height: var(--space-3);
+    border-top: 1px solid rgba(201, 168, 106, 0.35);
+    border-right: 1px solid rgba(201, 168, 106, 0.35);
+    border-top-right-radius: var(--space-3);
+}
+
+.tl-parallel-role {
+    position: relative;
+    min-width: 0;
+    padding-left: var(--space-3);
+}
+
+.tl-parallel-role::before {
+    content: "";
+    position: absolute;
+    top: calc(-1 * var(--space-3));
+    left: -8px;
+    height: var(--space-3);
+    width: 9px;
+    border-top: 1px solid rgba(201, 168, 106, 0.35);
+    border-right: 1px solid rgba(201, 168, 106, 0.35);
+    border-top-right-radius: 8px;
+}
+
+.tl-parallel-role:last-child::before {
+    display: none;
+}
+
+.tl-parallel-role::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -3px;
+    width: 7px;
+    height: 7px;
+    border: 1px solid var(--accent-blue);
+    border-radius: 50%;
+    background: var(--bg-900);
 }
 
 .tl-meta {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.tl-meta-compact {
-    gap: 0.4rem;
-    margin-bottom: 0.15rem;
+    gap: var(--space-1);
 }
 
 .tl-tag {
@@ -164,13 +131,13 @@
 }
 
 .tl-tag-work {
-    color: #c9a86a;
+    color: var(--accent-blue);
     border: 1px solid rgba(201, 168, 106, 0.3);
     background: rgba(201, 168, 106, 0.07);
 }
 
 .tl-tag-education {
-    color: #b3a996;
+    color: var(--text-200);
     border: 1px solid rgba(179, 169, 150, 0.3);
     background: rgba(179, 169, 150, 0.07);
 }
@@ -178,7 +145,7 @@
 .tl-now {
     padding: 0.13rem 0.48rem;
     border-radius: 999px;
-    color: #14110d;
+    color: var(--bg-900);
     background: var(--accent-gold);
     font-size: 0.62rem;
     font-weight: 700;
@@ -187,93 +154,76 @@
 }
 
 .tl-date {
-    color: var(--text-300);
+    color: var(--text-200);
     font-family: var(--font-mono);
-}
-
-.tl-date {
     font-size: 0.72rem;
 }
 
 .tl-title {
-    margin: 0.4rem 0 0.2rem;
+    margin: var(--space-1) 0 0.25rem;
     color: var(--text-100);
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 700;
     line-height: 1.3;
-}
-
-.tl-org {
-    margin: 0 0 0.5rem;
-    color: var(--text-200);
-    font-size: 0.82rem;
-}
-
-.tl-summary {
-    margin: 0;
-    color: var(--text-200);
-    font-size: 0.85rem;
-    line-height: 1.65;
-}
-
-.tl-branch-title {
-    margin: 0.3rem 0 0.15rem;
-    color: var(--text-100);
-    font-size: 0.95rem;
-    font-weight: 700;
-    line-height: 1.22;
     text-wrap: balance;
 }
 
-.tl-branch-org {
-    margin: 0;
+.tl-org {
+    margin: 0 0 var(--space-2);
     color: var(--text-200);
-    font-size: 0.78rem;
-    line-height: 1.4;
+    font-size: 0.85rem;
 }
 
-@media (max-width: 700px) {
-    .tl-shell {
-        max-width: 100%;
-    }
+.tl-summary,
+.tl-highlights {
+    max-width: 75ch;
+    margin: 0;
+    color: var(--text-200);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
 
-    .tl-branch-grid {
-        gap: 1rem;
-        padding-bottom: 1.75rem;
-    }
+.tl-highlights {
+    list-style: disc;
+    padding-left: var(--space-3);
+}
 
-    .tl-branch-title {
-        font-size: 0.9rem;
-    }
+.tl-summary + .tl-highlights {
+    margin-top: var(--space-3);
+}
+
+.tl-highlights li + li {
+    margin-top: var(--space-2);
+}
+
+.tl-highlights li::marker {
+    color: var(--accent-blue);
 }
 
 @media (max-width: 600px) {
-    .tl-branch-row {
-        padding-bottom: 0;
-        margin-bottom: 1rem;
+    .tl-entry {
+        padding-left: calc(18px + var(--space-2));
     }
 
-    .tl-group-network,
-    .tl-branch-gutter-line,
-    .tl-gutter-joined::before {
-        display: none;
+    .tl-date {
+        flex-basis: 100%;
     }
 
-    .tl-branch-grid {
+    .tl-parallel-grid {
         grid-template-columns: 1fr;
-        gap: 0.9rem;
     }
 
-    .tl-branch-grid {
-        padding-bottom: 0;
+    .tl-parallel-grid::before {
+        left: calc(8px - 18px - var(--space-2));
+        right: 100%;
+        height: calc(100% - var(--space-1));
+        border-top: 1px solid rgba(201, 168, 106, 0.35);
+        border-right: 1px solid rgba(201, 168, 106, 0.35);
+        border-top-right-radius: var(--space-3);
+        background: none;
     }
 
-    .tl-branch-card:first-of-type,
-    .tl-branch-card:last-of-type {
-        justify-self: stretch;
-    }
-
-    .tl-branch-card {
-        padding: 0.15rem 0 0.15rem 0.9rem;
+    .tl-parallel-role::before {
+        display: none;
     }
 }

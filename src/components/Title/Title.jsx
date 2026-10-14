@@ -29,39 +29,32 @@ const Title = ({ phase = "revealed", onNameReady, onOpenResume }) => {
                     {"{ KARTIK KARKERA }"}
                 </h1>
                 <p className="terminal-line">
-                    I'm a <Age /> year-old developer
+                    I'm a <Age /> year-old software engineer building software.
                 </p>
                 <p className="terminal-line">
-                    who uses{" "}
-                    <span className="t-python">Python</span>,{" "}
-                    <span className="t-sql">SQL</span>,{" "}
-                    <span className="t-spark">Apache Spark</span>, and{" "}
-                    <span className="t-aws">AWS</span>.
+                    Procurement optimization at <a href="#timeline" className="t-link">Kapi</a>. Building APIs and data pipelines at PyCray.
+                </p>
+                <p className="terminal-line terminal-awards">
+                    <a href="#projects" className="t-project">1st at TidalHack · 3rd in the 3LC × AWS AI challenge</a>
                 </p>
                 <div className="terminal-gap" />
+                <button onClick={onOpenResume} className="t-resume">View Resume</button>
                 <p className="terminal-line">
-                    Check out my{" "}
-                    <a href="https://github.com/Kartik11082" target="_blank" rel="noopener noreferrer" className="t-link">GitHub</a>,{" "}
-                    <a href="https://www.linkedin.com/in/kartikkarkera/" target="_blank" rel="noopener noreferrer" className="t-link">LinkedIn</a>,{" "}
-                    and{" "}
-                    <button onClick={onOpenResume} className="t-link t-resume">Resume</button>.
+                    <a href="https://github.com/Kartik11082" target="_blank" rel="noopener noreferrer" className="t-link">GitHub</a> · {" "}
+                    <a href="https://www.linkedin.com/in/kartikkarkera/" target="_blank" rel="noopener noreferrer" className="t-link">LinkedIn</a>
                 </p>
                 <p className="terminal-line">
-                    I was last seen working on{" "}
-                    <a href="#projects" className="t-project">Traceline</a>.
-                </p>
-                <p className="terminal-line">
-                    Looking for my next role &mdash;{" "}
-                    <a href="mailto:karkerakartik27@gmail.com" className="t-email">Email me!</a>
+                    Open to backend and data engineering roles. {" "}
+                    <a href="mailto:karkerakartik27@gmail.com" className="t-email">Let's talk.</a>
                 </p>
             </div>
             <button
                 className={`scroll-cue ${isRevealed ? "revealed" : ""}`}
                 onClick={() => {
                     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-                    document.querySelector("#projects")?.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+                    document.querySelector("#timeline")?.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
                 }}
-                aria-label="Scroll to projects"
+                aria-label="Scroll to experience"
                 tabIndex={isRevealed ? 0 : -1}
             >
                 <span className="scroll-cue-bar" aria-hidden="true" />

@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar/Navbar";
 import Title from "./components/Title/Title";
 import Footer from "./components/Footer/Footer";
 import Projects from "./components/Projects/Projects";
-import Blog, { BlogReader } from "./components/Blog/Blog";
 import Timeline from "./components/Timeline/Timeline";
 import Certification from "./components/Certification/Certification";
 import ResumeModal from "./components/ResumeModal/ResumeModal";
@@ -20,9 +19,7 @@ function App() {
   const [phase, setPhase] = useState(INTRO_PHASES.TYPING);
   const [introCompleted, setIntroCompleted] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const [activePost, setActivePost] = useState(null);
   const introRef = useRef(null);
-  const { ref: blogRef, isVisible: blogVisible } = useScrollReveal();
   const { ref: certsRef, isVisible: certsVisible } = useScrollReveal();
   const { ref: projectsRef, isVisible: projectsVisible } = useScrollReveal();
   const { ref: timelineRef, isVisible: timelineVisible } = useScrollReveal();
@@ -74,15 +71,15 @@ function App() {
           </div>
         </section>
 
-        <section ref={projectsRef} id="projects" className={`app-section reveal ${projectsVisible ? "is-visible" : ""}`}>
+        <section ref={timelineRef} id="timeline" className={`app-section reveal ${timelineVisible ? "is-visible" : ""}`}>
           <div className="section-content">
-            <Projects />
+            <Timeline />
           </div>
         </section>
 
-        <section ref={blogRef} id="blog" className={`app-section reveal ${blogVisible ? "is-visible" : ""}`}>
+        <section ref={projectsRef} id="projects" className={`app-section reveal ${projectsVisible ? "is-visible" : ""}`}>
           <div className="section-content">
-            <Blog onOpen={setActivePost} />
+            <Projects />
           </div>
         </section>
 
@@ -92,19 +89,12 @@ function App() {
           </div>
         </section>
 
-        <section ref={timelineRef} id="timeline" className={`app-section reveal ${timelineVisible ? "is-visible" : ""}`}>
-          <div className="section-content">
-            <Timeline />
-          </div>
-        </section>
-
         <section id="contact" className="app-section contact-section">
           <Footer />
         </section>
       </main>
 
       <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
-      <BlogReader post={activePost} onClose={() => setActivePost(null)} />
     </div>
   );
 }

@@ -6,9 +6,9 @@ const Navbar = ({ isReady = true, onOpenResume }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const navItems = [
         { label: "Home", href: "#home" },
+        { label: "Experience", href: "#timeline" },
         { label: "Projects", href: "#projects" },
-        { label: "Blog", href: "#blog" },
-        { label: "Timeline", href: "#timeline" },
+        { label: "Certifications", href: "#certifications" },
         { label: "Contact", href: "#contact" }
     ];
 

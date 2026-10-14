@@ -6,10 +6,8 @@ import tidalhackImage from "../../assets/tidalHackImage.png";
 const PROJECTS = [
     {
         title: "Traceline",
-        summary: "Aligns pipeline inspection anomalies across years and corrects odometer drift in a 24-hour hackathon build.",
-        problem: "Pipeline anomaly reports drift year over year, making repeats hard to match.",
-        built: "Year-over-year alignment + drift correction with visual QA in Streamlit/Plotly.",
-        tech: ["Python", "Pandas", "Scikit-learn", "Plotly", "Streamlit"],
+        summary: "Built an ingestion and alignment pipeline for 15+ years of RCP Inc. inspection records to track corrosion across inspection runs. Designed a matching algorithm that uses fixed hardware anchors to correct odometer drift and align anomalies. Built a React-based 3D dashboard to visualize anomalies and their progression.",
+        tech: ["Python", "Flask", "Pandas", "NumPy", "React"],
         link: "http://tidalfrontend.s3-website-us-east-1.amazonaws.com/",
         status: "hackathon",
         awardLabel: "1st Place",
@@ -18,10 +16,8 @@ const PROJECTS = [
     },
     {
         title: "Chihuahua vs Muffin",
-        summary: "Data-centric AI challenge — improved classifier accuracy to ~93.5% through dataset curation, not model changes.",
-        problem: "Model was stuck because the dataset had bad labels and weak classes.",
-        built: "Curated and rebalanced the dataset, kept test set clean, versioned every change.",
-        tech: ["Python", "Machine Learning", "3LC"],
+        summary: "Achieved 94% validation accuracy on a ResNet-18 classifier by improving the training data. Used the 3LC Dashboard and embedding analysis to relabel low-confidence samples, rebalance classes, and adjust per-sample training weights. Kept the architecture unchanged and used no external data or pretrained weights.",
+        tech: ["Python", "ResNet-18", "3LC", "AWS"],
         link: "https://github.com/Kartik11082/3LCxAWSHackathon#images---accuracy935",
         status: "hackathon",
         awardLabel: "3rd Place",
@@ -30,7 +26,7 @@ const PROJECTS = [
     },
     {
         title: "PotionWatch",
-        summary: "Real-time anomaly detection for oil & gas transaction records — built in 24 hours at HackUTD.",
+        summary: "Built a real-time anomaly detection application for oil and gas transaction records in 24 hours at HackUTD 2025. Combined Python and Pandas data processing with a Flask backend and React interface to surface anomalous transactions for review.",
         tech: ["Python", "Flask", "React", "Pandas"],
         link: "http://18.220.118.210/",
         status: "hackathon",
@@ -39,53 +35,49 @@ const PROJECTS = [
     },
     {
         title: "Waypoint",
-        summary: "Daily geography news guessing game. Players locate real stories on a world map using three AI clues.",
-        problem: "News games are either trivial or stale after one play.",
-        built: "Daily seed + 3 progressive AI clues on a map, serverless API on Lambda + DynamoDB.",
+        summary: "Built a daily geography game that turns real news stories into map-based challenges with three progressive AI clues. Developed a React interface and a serverless FastAPI backend on AWS Lambda, using DynamoDB for game data and Amazon Bedrock for clue generation.",
         tech: ["FastAPI", "React", "AWS Lambda", "DynamoDB", "Bedrock"],
         link: "https://waypoint.madebykartik.us/",
         status: "standard",
     },
     {
         title: "Midnight Commits",
-        summary: "Real-time analytics for global developer activity — geospatial commit insights with city-level leaderboards.",
-        problem: "Global dev activity is noisy and hard to explore by place and time.",
-        built: "Streaming ingest (Kafka) → FastAPI + Postgres → map + leaderboards UI.",
+        summary: "Developing a streaming analytics platform for global developer activity. The pipeline ingests commit events with Kafka and exposes PostgreSQL-backed analytics through FastAPI, with a React map and city-level leaderboards for exploring activity by location.",
         tech: ["Kafka", "FastAPI", "PostgreSQL", "React", "AWS"],
         link: "https://github.com/Kartik11082/MidnightCommits",
         status: "in-progress",
     },
     {
         title: "Noisy to Nice",
-        summary: "Profiles CSV quality and generates AI-guided cleanup actions for ML readiness.",
+        summary: "Built a CSV profiling tool that identifies data quality issues and generates cleanup recommendations with Amazon Bedrock. Uses S3 and DynamoDB alongside Python processing to support data preparation for machine learning.",
         tech: ["Python", "AWS Bedrock", "DynamoDB", "S3"],
         link: "https://github.com/Kartik11082/Noisy-to-Nice---Data-Centric",
         status: "standard",
     },
     {
         title: "TF-IDF Search Engine",
-        summary: "Movie search engine ranking results with TF-IDF and cosine similarity over PySpark.",
+        summary: "Implemented a movie search engine in PySpark using TF-IDF text representations and cosine similarity to rank results by relevance. Applied distributed text processing to turn movie metadata into searchable features.",
         tech: ["Python", "PySpark", "NLP"],
         link: "https://github.com/Kartik11082/Big-Data-Management/blob/main/MovieSearch.ipynb",
         status: "standard",
     },
     {
         title: "Mushroom Classifier",
-        summary: "Predicts mushroom edibility from structured features. Benchmarked DT, k-NN, and Random Forest on 50k+ records.",
+        summary: "Built a classification pipeline to predict mushroom edibility from structured features. Benchmarked decision trees, k-nearest neighbors, and random forests on 50,000+ records to compare model performance.",
         tech: ["Python", "scikit-learn", "Pandas"],
         link: "https://github.com/Kartik11082/Machine-Learning",
         status: "standard",
     },
     {
         title: "FlixTime",
-        summary: "Movie recommendation platform combining collaborative and content-based filtering with a React front end.",
+        summary: "Built a movie recommendation application that combines collaborative filtering with content-based recommendations. Connected the Python and Flask recommendation backend to a React interface for browsing suggested titles.",
         tech: ["Python", "Flask", "React"],
         link: "https://flix-time-three.vercel.app/",
         status: "standard",
     },
     {
         title: "TermiStack",
-        summary: "CLI tool for searching StackOverflow with lightweight local-model query interpretation.",
+        summary: "Built a Python command-line tool for searching Stack Overflow from the terminal. Uses a lightweight local Llama model to interpret queries and web scraping to retrieve relevant results.",
         tech: ["Python", "Llama", "Web Scraping"],
         link: "https://github.com/Kartik11082/TermiStack",
         status: "standard",
@@ -109,17 +101,16 @@ function CraftMedia({ p }) {
     }
     return (
         <div className="craft-media craft-media-fallback" aria-hidden="true">
-            <span className="craft-fallback-prompt">$ ./run --craft {p.title.toLowerCase().replace(/\s+/g, "-")}</span>
-            <span className="craft-fallback-sub">github ↗ · readme · notes</span>
+            <span className="craft-fallback-prompt">{p.title}</span>
+            <span className="craft-fallback-sub">Interactive web application</span>
         </div>
     );
 }
 
 export const FeaturedCraft = () => (
     <div className="craft-shell">
-        <p className="craft-kicker">$ ls ./projects --featured</p>
         <h2 className="craft-heading">Projects</h2>
-        <p className="craft-sub">Hackathon wins first — 1st + 3rd — plus Waypoint. GitHub only.</p>
+        <p className="craft-sub">Selected work in backend systems, data engineering, and applied machine learning.</p>
         <div className="craft-grid">
             {featured.map((p) => (
                 <article key={p.title} className="craft-card glass-panel">
@@ -133,16 +124,15 @@ export const FeaturedCraft = () => (
                                 <span className="hbadge hbadge-first">{p.awardLabel}</span>
                             ) : null}
                         </div>
-                        {p.problem && <p className="craft-line"><span className="craft-label">Problem:</span> {p.problem}</p>}
-                        {p.built && <p className="craft-line"><span className="craft-label">Built:</span> {p.built}</p>}
+                        {p.eventLabel && <p className="craft-event">{p.eventLabel}</p>}
                         <p className="craft-summary">{p.summary}</p>
                         <div className="hack-tech">
-                            {p.tech.slice(0, 4).map((t) => (
+                            {p.tech.map((t) => (
                                 <span key={t} className="tech-pill">{t}</span>
                             ))}
                         </div>
                         <a href={p.link} target="_blank" rel="noopener noreferrer" className="craft-link">
-                            {p.link.includes("github.com") ? "GitHub" : "Visit"} <span aria-hidden="true">↗</span>
+                            {p.link.includes("github.com") ? "View source" : "View project"} <span aria-hidden="true">↗</span>
                         </a>
                     </div>
                 </article>
@@ -179,7 +169,7 @@ export const ProjectsGrid = () => (
                         <h3 className="hack-title">{p.title}</h3>
                         <p className="hack-summary">{p.summary}</p>
                         <div className="hack-tech">
-                            {p.tech.slice(0, 4).map(t => (
+                            {p.tech.map(t => (
                                 <span key={t} className="tech-pill">{t}</span>
                             ))}
                         </div>
@@ -206,7 +196,7 @@ export const ProjectsGrid = () => (
                     </div>
                     <p className="other-summary">{p.summary}</p>
                     <div className="other-tech">
-                        {p.tech.slice(0, 4).map(t => (
+                        {p.tech.map(t => (
                             <span key={t} className="tech-pill">{t}</span>
                         ))}
                     </div>

@@ -6,12 +6,6 @@
 
 /* ── Featured craft ───────────────────────────── */
 .craft-shell { display: flex; flex-direction: column; gap: 0.6rem; }
-.craft-kicker {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--text-300);
-    margin: 0;
-}
 .craft-heading {
     font-family: var(--font-mono);
     font-size: clamp(1.2rem, 3vw, 1.6rem);
@@ -61,8 +55,8 @@
 .craft-body { padding: 0.9rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
 .craft-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
 .craft-title { font-size: 0.98rem; font-weight: 700; color: var(--text-100); margin: 0; }
-.craft-line, .craft-summary { font-size: 0.82rem; line-height: 1.6; color: var(--text-200); margin: 0; }
-.craft-label { color: var(--accent-gold); font-family: var(--font-mono); font-size: 0.76rem; }
+.craft-summary { font-size: 0.85rem; line-height: 1.7; color: var(--text-200); margin: 0; }
+.craft-event { font-size: 0.75rem; color: var(--text-200); margin: 0; }
 .craft-link {
     margin-top: auto;
     padding-top: 0.4rem;
@@ -203,10 +197,6 @@
     line-height: 1.55;
     color: var(--text-200);
     margin: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
 .hack-tech {
@@ -286,10 +276,6 @@
     line-height: 1.5;
     color: var(--text-200);
     margin: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
 .other-tech {
