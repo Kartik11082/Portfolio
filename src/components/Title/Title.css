@@ -138,6 +138,12 @@
     text-decoration-color: var(--accent-gold);
 }
 
+/* "@" reads as a handle, so keep it quieter than the company name */
+.hero-at {
+    color: var(--accent-blue);
+    font-weight: 400;
+}
+
 .hero-sep {
     margin: 0 0.55em;
     color: var(--accent-blue);
@@ -148,71 +154,62 @@
     white-space: nowrap;
 }
 
-/* 3. Age: a quiet signature detail */
+/* 3. Age: the live number is the signature detail, so it gets the emphasis */
 .hero-age {
-    margin: 0;
+    margin: var(--space-1) 0 0;
     font-family: var(--font-mono);
-    font-size: clamp(0.8rem, 2.2vw, 0.9rem);
-    color: var(--text-300);
+    font-size: clamp(0.82rem, 2.3vw, 0.95rem);
+    line-height: 1.6;
+    color: var(--text-200);
 }
 
-/* 4. Now: the one loud element below the name */
+.hero-age .t-age {
+    font-size: 1.32em;
+    font-weight: 500;
+    vertical-align: -0.06em;
+}
+
+/* 4. Now: a quiet outlined link; the orange dot is its only accent */
+/* inline text (not flex) so a narrow screen wraps the sentence, not the dot and arrow */
 .hero-now {
-    display: inline-flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.35rem 0.6rem;
+    display: inline-block;
+    text-align: center;
+    line-height: 1.6;
     margin-top: var(--space-4);
-    padding: 0.55rem 1rem;
+    padding: 0.45rem 0.95rem;
     min-height: 44px;
-    border: 1px solid rgba(224, 104, 46, 0.38);
+    border: 1px solid rgba(201, 168, 106, 0.24);
     border-radius: 999px;
-    background: rgba(224, 104, 46, 0.08);
     font-family: var(--font-mono);
-    font-size: clamp(0.8rem, 2.3vw, 0.9rem);
-    color: var(--text-100);
+    font-size: clamp(0.8rem, 2.3vw, 0.88rem);
+    color: var(--text-200);
     text-decoration: none;
-    transition: border-color 0.25s ease, background-color 0.25s ease;
+    transition: border-color 0.25s ease, color 0.25s ease;
 }
 
 .hero-now:hover {
-    border-color: rgba(224, 104, 46, 0.75);
-    background: rgba(224, 104, 46, 0.14);
+    border-color: rgba(224, 104, 46, 0.6);
+    color: var(--text-100);
 }
 
 .hero-now strong {
-    color: var(--accent-gold);
+    color: var(--text-100);
     font-weight: 500;
-}
-
-.hero-now-label {
-    font-size: 0.78em;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent-gold);
 }
 
 .hero-now-dot {
-    position: relative;
-    width: 8px;
-    height: 8px;
+    display: inline-block;
+    vertical-align: 0.12em;
+    margin-right: 0.6em;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: var(--accent-gold);
-}
-
-/* "live" pulse; the global reduced-motion rule stops it */
-.hero-now-dot::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: var(--accent-gold);
-    animation: nowPulse 2s var(--ease-out-quint) infinite;
 }
 
 .hero-now-arrow {
+    display: inline-block;
+    margin-left: 0.5em;
     color: var(--accent-gold);
     transition: transform 0.25s var(--ease-out-quint);
 }
@@ -358,11 +355,6 @@
 }
 
 /* ── Keyframes ─────────────────────────────────────────────── */
-@keyframes nowPulse {
-    0%   { transform: scale(1); opacity: 0.6; }
-    80%, 100% { transform: scale(2.6); opacity: 0; }
-}
-
 @keyframes caretBlink {
     50% { opacity: 0; }
 }
@@ -386,6 +378,13 @@
     .hero-now {
         border-radius: 16px;
         padding: 0.6rem 0.9rem;
+    }
+
+    /* the hero is taller than a phone screen, so the cue would sit on the links;
+       touch users scroll naturally anyway. Scoped under .hero-terminal so it outranks
+       the base .scroll-cue rule, which sits later in this file. */
+    .hero-terminal .scroll-cue {
+        display: none;
     }
 }
 

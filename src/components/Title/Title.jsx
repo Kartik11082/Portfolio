@@ -21,11 +21,14 @@ const Title = ({ phase = "revealed", onNameReady, onOpenResume }) => {
         }
     }, [phase, onNameReady]);
 
+    // The h1 appears only when the overlay lands on it (a seamless swap),
+    // but everything else starts fading in as soon as the name begins to glide.
     const isRevealed = phase === "revealed";
+    const showContent = phase !== "typing";
 
     return (
         <div className={`hero-terminal phase-${phase}`}>
-            <div className={`terminal-content ${isRevealed ? "revealed" : ""}`}>
+            <div className={`terminal-content ${showContent ? "revealed" : ""}`}>
                 <h1
                     ref={nameRef}
                     className="terminal-name"
@@ -37,17 +40,16 @@ const Title = ({ phase = "revealed", onNameReady, onOpenResume }) => {
                     {"{ KARTIK KARKERA }"}
                 </h1>
                 <p className="hero-role" style={{ "--i": 1 }}>
-                    <span className="hero-role-item">ML Engineer Intern at <a href="#timeline">Kapi</a></span>
+                    <span className="hero-role-item">ML Engineer Intern <span className="hero-at">@</span> <a href="#timeline">Kapi</a></span>
                     <span className="hero-sep" aria-hidden="true">·</span>
-                    <span className="hero-role-item">Former SDE at <a href="#timeline">PyCray</a></span>
+                    <span className="hero-role-item">Former SDE <span className="hero-at">@</span> <a href="#timeline">PyCray</a></span>
                 </p>
                 <p className="hero-age" style={{ "--i": 2 }}>
                     I&apos;m a <Age /> year-old software engineer.
                 </p>
                 <a href="#project-duo" className="hero-now" style={{ "--i": 3 }}>
                     <span className="hero-now-dot" aria-hidden="true" />
-                    <span className="hero-now-label">Now</span>
-                    <span>Building <strong>Duo</strong>, a long-running AI agent</span>
+                    <span>Now building <strong>Duo</strong>, a long-running AI agent</span>
                     <span className="hero-now-arrow" aria-hidden="true">→</span>
                 </a>
                 <ul className="hero-awards" style={{ "--i": 4 }} aria-label="Hackathon awards">
@@ -73,13 +75,13 @@ const Title = ({ phase = "revealed", onNameReady, onOpenResume }) => {
                 </div>
             </div>
             <button
-                className={`scroll-cue ${isRevealed ? "revealed" : ""}`}
+                className={`scroll-cue ${showContent ? "revealed" : ""}`}
                 onClick={() => {
                     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
                     document.querySelector("#timeline")?.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
                 }}
                 aria-label="Scroll to experience"
-                tabIndex={isRevealed ? 0 : -1}
+                tabIndex={showContent ? 0 : -1}
             >
                 <span className="scroll-cue-bar" aria-hidden="true" />
                 <span className="scroll-cue-arrow" aria-hidden="true">↓</span>
