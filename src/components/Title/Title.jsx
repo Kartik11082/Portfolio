@@ -29,10 +29,13 @@ const Title = ({ phase = "revealed", onNameReady, onOpenResume }) => {
                     {"{ KARTIK KARKERA }"}
                 </h1>
                 <p className="terminal-line">
-                    I'm a <Age /> year-old software engineer building software.
+                    I'm a <Age /> year-old software engineer.
                 </p>
                 <p className="terminal-line">
-                    Procurement optimization at <a href="#timeline" className="t-link">Kapi</a>. Building APIs and data pipelines at PyCray.
+                    ML Engineer Intern at <a href="#timeline" className="t-link">Kapi</a>. Former SDE at <a href="#timeline" className="t-link">PyCray</a>.
+                </p>
+                <p className="terminal-line">
+                    Currently building <a href="#project-duo" className="t-project">Duo</a>, a long-running AI agent.
                 </p>
                 <p className="terminal-line terminal-awards">
                     <a href="#projects" className="t-project">1st at TidalHack · 3rd in the 3LC × AWS AI challenge</a>
@@ -41,11 +44,8 @@ const Title = ({ phase = "revealed", onNameReady, onOpenResume }) => {
                 <button onClick={onOpenResume} className="t-resume">View Resume</button>
                 <p className="terminal-line">
                     <a href="https://github.com/Kartik11082" target="_blank" rel="noopener noreferrer" className="t-link">GitHub</a> · {" "}
-                    <a href="https://www.linkedin.com/in/kartikkarkera/" target="_blank" rel="noopener noreferrer" className="t-link">LinkedIn</a>
-                </p>
-                <p className="terminal-line">
-                    Open to backend and data engineering roles. {" "}
-                    <a href="mailto:karkerakartik27@gmail.com" className="t-email">Let's talk.</a>
+                    <a href="https://www.linkedin.com/in/kartikkarkera/" target="_blank" rel="noopener noreferrer" className="t-link">LinkedIn</a> · {" "}
+                    <a href="mailto:karkerakartik27@gmail.com" className="t-link">Email</a>
                 </p>
             </div>
             <button

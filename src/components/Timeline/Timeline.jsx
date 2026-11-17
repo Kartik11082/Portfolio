@@ -3,16 +3,15 @@ import "./Timeline.css";
 const TIMELINE_ENTRIES = [
     {
         type: "work",
-        title: "SDE Intern",
+        title: "Machine Learning Engineer Intern",
         org: "Kapi Advisors · Dallas, TX",
-        date: "Jul 2026 - Present",
+        date: "Oct 2026 - Present",
         isCurrent: true,
-        summary: "Backend engineering for a procurement platform, covering quotation evaluation, award optimization, and buyer and supplier workflows.",
         highlights: [
-            "Developed deterministic scoring microservices that normalize currencies, pack sizes, discounts, taxes, and freight, giving buyers a consistent basis for item-level quotation comparisons.",
-            "Built an award optimization engine with Google OR-Tools CP-SAT to minimize sourcing costs or maximize supplier scores while enforcing demand, budget, minimum-order, and supplier-count constraints.",
-            "Implemented a data adapter that maps supplier quotes, pricing tiers, and eligibility into solver inputs and returns allocation recommendations for buyer review.",
-            "Designed APIs and PostgreSQL models for quotation submissions, clarification rounds, and approvals, with auditable histories of buyer and supplier decisions.",
+            "Developing a sourcing optimization engine using Google OR-Tools CP-SAT to recommend supplier allocations that minimize costs or maximize supplier scores while satisfying demand, budget, minimum order quantity, and supplier-count constraints.",
+            "Built deterministic quotation scoring microservices to normalize currencies, pack sizes, discounts, taxes, and freight, enabling consistent cost comparisons across supplier bids.",
+            "Implemented a data integration adapter to transform supplier quotes, pricing tiers, and eligibility records into optimization inputs and return allocation recommendations for buyer review.",
+            "Designed APIs and PostgreSQL data models for buyer and supplier workflows, supporting quotation submissions, clarification rounds, approvals, and auditable decision histories.",
         ],
     },
     {
@@ -42,7 +41,7 @@ const TIMELINE_ENTRIES = [
     },
     {
         type: "work",
-        title: "Data Engineer",
+        title: "SDE",
         org: "PyCray Technologies · Noida, India",
         date: "May 2023 - Jun 2024",
         summary: "Data engineering for an algorithmic trading product, alongside geospatial search development for a carpooling application.",
@@ -85,30 +84,40 @@ function renderEntry(entry) {
     );
 }
 
+const TIMELINE_GROUPS = [
+    { label: "Experience", entries: TIMELINE_ENTRIES.filter((entry) => entry.type === "work") },
+    { label: "Education", entries: TIMELINE_ENTRIES.filter((entry) => entry.type === "education") },
+];
+
 function Timeline() {
     return (
         <div className="tl-shell">
             <h2 className="tl-heading">Experience &amp; Education</h2>
-            <ol className="tl-list" aria-label="Experience and education, most recent start date first">
-                {TIMELINE_ENTRIES.map((entry) => (
-                    <li className="tl-entry" key={entry.title}>
-                        <span className={`tl-dot ${entry.isCurrent ? "tl-dot-active" : ""}`} aria-hidden="true" />
-                        {entry.roles ? (
-                            <div className="tl-body">
-                                <div className="tl-parallel-grid" aria-label="Concurrent roles at University of Texas at Dallas">
-                                    {entry.roles.map((role) => (
-                                        <article className="tl-parallel-role" key={role.title}>
-                                            {renderEntry(role)}
-                                        </article>
-                                    ))}
-                                </div>
-                            </div>
-                        ) : (
-                            <article className="tl-body">{renderEntry(entry)}</article>
-                        )}
-                    </li>
-                ))}
-            </ol>
+            {TIMELINE_GROUPS.map((group) => (
+                <div className="tl-group" key={group.label}>
+                    <h3 className="tl-group-label">{group.label}</h3>
+                    <ol className="tl-list" aria-label={`${group.label}, most recent first`}>
+                        {group.entries.map((entry) => (
+                            <li className="tl-entry" key={entry.title}>
+                                <span className={`tl-dot ${entry.isCurrent ? "tl-dot-active" : ""}`} aria-hidden="true" />
+                                {entry.roles ? (
+                                    <div className="tl-body">
+                                        <div className="tl-parallel-grid" aria-label="Concurrent roles at University of Texas at Dallas">
+                                            {entry.roles.map((role) => (
+                                                <article className="tl-parallel-role" key={role.title}>
+                                                    {renderEntry(role)}
+                                                </article>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <article className="tl-body">{renderEntry(entry)}</article>
+                                )}
+                            </li>
+                        ))}
+                    </ol>
+                </div>
+            ))}
         </div>
     );
 }

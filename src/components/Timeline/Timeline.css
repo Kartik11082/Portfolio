@@ -227,3 +227,18 @@
         display: none;
     }
 }
+
+/* ── Experience / Education groups ─────────────────────────── */
+.tl-group + .tl-group {
+    margin-top: var(--space-5);
+}
+
+.tl-group-label {
+    margin: 0 0 var(--space-4);
+    color: var(--accent-blue);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}

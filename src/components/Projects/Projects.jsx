@@ -5,6 +5,15 @@ import tidalhackImage from "../../assets/tidalHackImage.png";
 
 const PROJECTS = [
     {
+        title: "Duo",
+        id: "project-duo",
+        summary: "Building a long-running AI agent that reacts to GitHub events and chat messages, pausing for human approval over Telegram before it acts. Uses LangGraph with durable checkpoints, a FastAPI webhook server, a background job queue, and a GitHub App to carry out approved actions, with a swappable local or hosted LLM. Next: Postgres with pgvector memory, MCP connectors, and an AWS deployment.",
+        tech: ["Python", "LangGraph", "FastAPI", "Telegram", "GitHub Apps"],
+        link: "https://github.com/Kartik11082/duo-agent",
+        status: "in-progress",
+        mediaLabel: "Long-running AI agent",
+    },
+    {
         title: "Traceline",
         summary: "Built an ingestion and alignment pipeline for 15+ years of RCP Inc. inspection records to track corrosion across inspection runs. Designed a matching algorithm that uses fixed hardware anchors to correct odometer drift and align anomalies. Built a React-based 3D dashboard to visualize anomalies and their progression.",
         tech: ["Python", "Flask", "Pandas", "NumPy", "React"],
@@ -41,13 +50,6 @@ const PROJECTS = [
         status: "standard",
     },
     {
-        title: "Midnight Commits",
-        summary: "Developing a streaming analytics platform for global developer activity. The pipeline ingests commit events with Kafka and exposes PostgreSQL-backed analytics through FastAPI, with a React map and city-level leaderboards for exploring activity by location.",
-        tech: ["Kafka", "FastAPI", "PostgreSQL", "React", "AWS"],
-        link: "https://github.com/Kartik11082/MidnightCommits",
-        status: "in-progress",
-    },
-    {
         title: "Noisy to Nice",
         summary: "Built a CSV profiling tool that identifies data quality issues and generates cleanup recommendations with Amazon Bedrock. Uses S3 and DynamoDB alongside Python processing to support data preparation for machine learning.",
         tech: ["Python", "AWS Bedrock", "DynamoDB", "S3"],
@@ -59,13 +61,6 @@ const PROJECTS = [
         summary: "Implemented a movie search engine in PySpark using TF-IDF text representations and cosine similarity to rank results by relevance. Applied distributed text processing to turn movie metadata into searchable features.",
         tech: ["Python", "PySpark", "NLP"],
         link: "https://github.com/Kartik11082/Big-Data-Management/blob/main/MovieSearch.ipynb",
-        status: "standard",
-    },
-    {
-        title: "Mushroom Classifier",
-        summary: "Built a classification pipeline to predict mushroom edibility from structured features. Benchmarked decision trees, k-nearest neighbors, and random forests on 50,000+ records to compare model performance.",
-        tech: ["Python", "scikit-learn", "Pandas"],
-        link: "https://github.com/Kartik11082/Machine-Learning",
         status: "standard",
     },
     {
@@ -84,7 +79,7 @@ const PROJECTS = [
     },
 ];
 
-const FEATURED_TITLES = ["Traceline", "Chihuahua vs Muffin", "Waypoint"];
+const FEATURED_TITLES = ["Duo", "Traceline", "Chihuahua vs Muffin", "Waypoint"];
 
 const featured = PROJECTS.filter((p) => FEATURED_TITLES.includes(p.title));
 const rest = PROJECTS.filter((p) => !FEATURED_TITLES.includes(p.title));
@@ -102,7 +97,7 @@ function CraftMedia({ p }) {
     return (
         <div className="craft-media craft-media-fallback" aria-hidden="true">
             <span className="craft-fallback-prompt">{p.title}</span>
-            <span className="craft-fallback-sub">Interactive web application</span>
+            <span className="craft-fallback-sub">{p.mediaLabel ?? "Interactive web application"}</span>
         </div>
     );
 }
@@ -113,7 +108,7 @@ export const FeaturedCraft = () => (
         <p className="craft-sub">Selected work in backend systems, data engineering, and applied machine learning.</p>
         <div className="craft-grid">
             {featured.map((p) => (
-                <article key={p.title} className="craft-card glass-panel">
+                <article key={p.title} id={p.id} className="craft-card glass-panel">
                     <CraftMedia p={p} />
                     <div className="craft-body">
                         <div className="craft-top">

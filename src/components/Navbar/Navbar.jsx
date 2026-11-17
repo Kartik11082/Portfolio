@@ -13,20 +13,13 @@ const Navbar = ({ isReady = true, onOpenResume }) => {
     ];
 
     useEffect(() => {
-        const handleScroll = () => {
-            const isScrolled = window.scrollY > 20;
-            if (isScrolled !== scrolled) {
-                setScrolled(isScrolled);
-            }
-        };
+        const handleScroll = () => setScrolled(window.scrollY > 20);
 
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
         handleScroll();
 
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, [scrolled]);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     useEffect(() => {
         const handleResize = () => {
@@ -42,7 +35,8 @@ const Navbar = ({ isReady = true, onOpenResume }) => {
     const scrollToSection = (href) => {
         const element = document.querySelector(href);
         if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
+            const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            element.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
             setMenuOpen(false);
         }
     };

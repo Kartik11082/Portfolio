@@ -10,6 +10,7 @@
 
 /* ── Intro overlay ─────────────────────────────────────────── */
 .hero-intro {
+    display: flex;
     position: fixed;
     top: 50vh;
     left: 50vw;
@@ -18,8 +19,8 @@
     z-index: 3000;
     /* top/left transition fires when JS sets inline styles on phase=moving */
     transition:
-        top 0.85s var(--ease-out-expo),
-        left 0.85s var(--ease-out-expo);
+        top var(--intro-move-ms, 600ms) var(--ease-out-expo),
+        left var(--intro-move-ms, 600ms) var(--ease-out-expo);
 }
 
 /* instant hide — no opacity fade so there is zero flicker on the swap */
@@ -27,27 +28,48 @@
     visibility: hidden;
 }
 
+/* Block inside the flex overlay: no stray line box, so the overlay centre matches the h1 centre.
+   white-space: pre keeps the space between the names, matching the h1 text exactly. */
 .hero-intro-text {
     margin: 0;
-    display: inline-block;
-    max-width: 0;
-    overflow: hidden;
-    white-space: nowrap;
+    white-space: pre;
     font-family: var(--font-mono);
-    /* starts large; JS sets the target size on phase=moving → CSS transitions it */
-    font-size: clamp(2.2rem, 7vw, 3.5rem);
+    /* starts large; JS sets the target size on phase=moving → CSS transitions it.
+       18 glyphs ≈ 12.2em wide, so 6.5vw keeps the name inside ~80% of a phone viewport */
+    font-size: clamp(1.3rem, 6.5vw, 3.5rem);
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: 0.08em;
     color: #ede6d6;
-    border-right: 2px solid rgba(237, 230, 214, 0.7);
-    transition: font-size 0.85s var(--ease-out-expo);
-    animation: typeName 1.5s steps(22, end) forwards, cursorBlink 0.6s step-end 3;
+    transition: font-size var(--intro-move-ms, 800ms) var(--ease-out-expo);
 }
 
-.hero-intro.is-moving .hero-intro-text {
-    border-right-color: transparent;
-    animation: typeName 1.5s steps(22, end) forwards;
+/* Untyped characters still take up space, so the layout never changes while typing */
+.hero-intro-rest {
+    visibility: hidden;
+}
+
+/* Zero-width caret: the negative margin cancels its width so glyphs never shift */
+.hero-intro-caret {
+    display: inline-block;
+    width: 2px;
+    height: 1.05em;
+    margin-right: -2px;
+    vertical-align: -0.12em;
+    background: rgba(237, 230, 214, 0.85);
+    /* blinks while the finished name holds, like an idle terminal */
+    animation: caretBlink 0.9s steps(1) infinite;
+}
+
+/* solid while typing, as a real caret is while keys are pressed */
+.hero-intro-text.is-typing .hero-intro-caret {
+    animation: none;
+}
+
+.hero-intro.is-moving .hero-intro-caret {
+    animation: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
 }
 
 /* ── Terminal content ──────────────────────────────────────── */
@@ -75,8 +97,8 @@
 .terminal-content.revealed > :nth-child(2) { transition-delay: 0.05s; }
 .terminal-content.revealed > :nth-child(3) { transition-delay: 0.12s; }
 .terminal-content.revealed > :nth-child(4) { transition-delay: 0.20s; }
-.terminal-content.revealed > :nth-child(6) { transition-delay: 0.28s; }
-.terminal-content.revealed > :nth-child(7) { transition-delay: 0.36s; }
+.terminal-content.revealed > :nth-child(5) { transition-delay: 0.27s; }
+.terminal-content.revealed > :nth-child(7) { transition-delay: 0.34s; }
 .terminal-content.revealed > :nth-child(8) { transition-delay: 0.40s; }
 
 /* Name: opacity + transform controlled via inline styles in JSX */
@@ -168,14 +190,8 @@
 .t-email   { color: #e0682e; }
 
 /* ── Keyframes ─────────────────────────────────────────────── */
-@keyframes typeName {
-    from { max-width: 0; }
-    to   { max-width: 22em; }
-}
-
-@keyframes cursorBlink {
-    from, to { border-right-color: rgba(237, 230, 214, 0.85); }
-    50%      { border-right-color: transparent; }
+@keyframes caretBlink {
+    50% { opacity: 0; }
 }
 
 @media (max-width: 680px) {
@@ -201,7 +217,7 @@
     min-height: 44px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.9s var(--ease-out-quint) 0.9s, transform 0.9s var(--ease-out-quint) 0.9s;
+    transition: opacity 0.6s var(--ease-out-quint) 0.45s, transform 0.6s var(--ease-out-quint) 0.45s;
 }
 .scroll-cue.revealed {
     opacity: 0.55;

@@ -6,6 +6,7 @@ import Projects from "./components/Projects/Projects";
 import Timeline from "./components/Timeline/Timeline";
 import Certification from "./components/Certification/Certification";
 import ResumeModal from "./components/ResumeModal/ResumeModal";
+import IntroName from "./components/Title/IntroName";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import { useState, useEffect, useRef, useCallback } from "react";
 
@@ -14,6 +15,17 @@ const INTRO_PHASES = {
   MOVING: "moving",
   REVEALED: "revealed"
 };
+
+// Single source of truth for the intro timing.
+// First and last name type in parallel over typeMs, hold, then glide into the hero heading.
+const INTRO_TIMING = {
+  typeMs: 1100,
+  holdMs: 450,
+  moveMs: 800
+};
+
+// Typed in parallel; joined with a space they must equal the hero h1 text.
+const INTRO_PARTS = ["{ KARTIK", "KARKERA }"];
 
 function App() {
   const [phase, setPhase] = useState(INTRO_PHASES.TYPING);
@@ -41,11 +53,12 @@ function App() {
       return undefined;
     }
 
-    const toMoving = window.setTimeout(() => setPhase(INTRO_PHASES.MOVING), 1700);
+    const { typeMs, holdMs, moveMs } = INTRO_TIMING;
+    const toMoving = window.setTimeout(() => setPhase(INTRO_PHASES.MOVING), typeMs + holdMs);
     const toRevealed = window.setTimeout(() => {
       setPhase(INTRO_PHASES.REVEALED);
       setIntroCompleted(true);
-    }, 2550);
+    }, typeMs + holdMs + moveMs);
 
     return () => {
       window.clearTimeout(toMoving);
@@ -58,9 +71,12 @@ function App() {
       <div
         ref={introRef}
         className={`hero-intro ${phase !== INTRO_PHASES.TYPING ? "is-moving" : ""} ${phase === INTRO_PHASES.REVEALED ? "is-hidden" : ""}`}
+        style={{
+          "--intro-move-ms": `${INTRO_TIMING.moveMs}ms`
+        }}
         aria-hidden="true"
       >
-        <p className="hero-intro-text">{"{ KARTIK KARKERA }"}</p>
+        <IntroName parts={INTRO_PARTS} durationMs={INTRO_TIMING.typeMs} />
       </div>
 
       <Navbar isReady={introCompleted} onOpenResume={() => setIsResumeOpen(true)} />

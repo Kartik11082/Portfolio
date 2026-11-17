@@ -22,10 +22,13 @@
 }
 .craft-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* four featured projects → an even 2 × 2 */
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.85rem;
 }
 .craft-card {
+    /* clears the fixed navbar when the hero's "Currently building" link jumps here */
+    scroll-margin-top: 6rem;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -301,8 +304,6 @@
 
 /* ── Responsive ─────────────────────────────────── */
 @media (max-width: 900px) {
-    .craft-grid { grid-template-columns: 1fr 1fr; }
-    .craft-grid > :last-child { grid-column: 1 / -1; }
     .hack-grid {
         grid-template-columns: 1fr 1fr;
     }
