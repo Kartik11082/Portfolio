@@ -84,7 +84,14 @@ const PROJECTS = [
     },
 ];
 
-const FEATURED_TITLES = ["Duo", "Traceline", "Chihuahua vs Muffin", "Waypoint"];
+// Name a link by where it goes, so a reader knows before clicking
+function linkLabel(url) {
+    if (url.includes("github.com")) return "GitHub";
+    if (url.includes("devpost.com")) return "Devpost";
+    return "Live demo";
+}
+
+const FEATURED_TITLES =["Duo", "Traceline", "Chihuahua vs Muffin", "Waypoint"];
 
 const featured = PROJECTS.filter((p) => FEATURED_TITLES.includes(p.title));
 const rest = PROJECTS.filter((p) => !FEATURED_TITLES.includes(p.title));
@@ -133,11 +140,11 @@ export const FeaturedCraft = () => (
                         </div>
                         <div className="craft-links">
                             <a href={p.link} target="_blank" rel="noopener noreferrer" className="craft-link" data-umami-event="project-click" data-umami-event-project={p.title}>
-                                {p.link.includes("github.com") ? "View source" : "View project"} <span aria-hidden="true">↗</span>
+                                {linkLabel(p.link)} <span aria-hidden="true">↗</span>
                             </a>
                             {p.repo && (
                                 <a href={p.repo} target="_blank" rel="noopener noreferrer" className="craft-link" data-umami-event="project-click" data-umami-event-project={`${p.title} (source)`}>
-                                    Source <span aria-hidden="true">↗</span>
+                                    {linkLabel(p.repo)} <span aria-hidden="true">↗</span>
                                 </a>
                             )}
                         </div>
@@ -182,6 +189,7 @@ export const ProjectsGrid = () => (
                                 <span key={t} className="tech-pill">{t}</span>
                             ))}
                         </div>
+                        <span className="card-dest hack-dest">{linkLabel(p.link)} <span aria-hidden="true">↗</span></span>
                     </div>
                 </a>
             ))}
@@ -203,7 +211,7 @@ export const ProjectsGrid = () => (
                     <div className="other-header">
                         <span className="other-title">{p.title}</span>
                         {p.status === "in-progress" && <span className="wip-badge">WIP</span>}
-                        <span className="other-arrow">↗</span>
+                        <span className="card-dest other-arrow">{linkLabel(p.link)} <span aria-hidden="true">↗</span></span>
                     </div>
                     <p className="other-summary">{p.summary}</p>
                     <div className="other-tech">

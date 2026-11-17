@@ -169,6 +169,17 @@
     vertical-align: -0.06em;
 }
 
+/* each clause wraps as a unit, so a narrow screen breaks the sentence at "with" */
+.hero-age-part {
+    white-space: nowrap;
+}
+
+/* one integer digit, so it is a character narrower than the age: drop the age's
+   reserved width so no gap sits before "years" (tabular digits keep it steady) */
+.hero-age .t-exp {
+    min-width: 0;
+}
+
 /* 4. Now: a quiet outlined link; the orange dot is its only accent */
 /* inline text (not flex) so a narrow screen wraps the sentence, not the dot and arrow */
 .hero-now {
@@ -295,15 +306,22 @@
     font-size: 0.9rem;
 }
 
-.hero-links a {
+.hero-links a,
+.hero-links button {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
     color: var(--text-200);
     text-decoration: none;
+    cursor: pointer;
 }
 
-.hero-links a:hover {
+.hero-links a:hover,
+.hero-links button:hover {
     color: var(--text-100);
     text-decoration: underline;
     text-underline-offset: 0.25em;
@@ -331,29 +349,6 @@
     white-space: nowrap;
 }
 
-.t-resume {
-    color: var(--bg-900);
-    font-weight: 700;
-    background: var(--accent-gold);
-    border: 1px solid var(--accent-gold);
-    border-radius: var(--radius-md);
-    padding: var(--space-2) var(--space-4);
-    min-height: 48px;
-    font-family: inherit;
-    font-size: 0.95rem;
-    cursor: pointer;
-    line-height: inherit;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.25s ease, border-color 0.25s ease;
-}
-
-.t-resume:hover {
-    background: var(--accent-blue);
-    border-color: var(--accent-blue);
-}
-
 /* ── Keyframes ─────────────────────────────────────────────── */
 @keyframes caretBlink {
     50% { opacity: 0; }
@@ -373,6 +368,15 @@
 
     .hero-sep {
         display: none;
+    }
+
+    /* the age clause alone is wider than a phone, so let it wrap like normal text */
+    .hero-age {
+        text-wrap: balance;
+    }
+
+    .hero-age-part {
+        white-space: normal;
     }
 
     .hero-now {

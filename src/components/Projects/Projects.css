@@ -268,16 +268,28 @@
     flex-shrink: 0;
 }
 
-.other-arrow {
-    font-size: 0.85rem;
+/* "GitHub ↗" / "Devpost ↗" / "Live demo ↗" on whole-card links */
+.card-dest {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
     color: var(--text-300);
+    white-space: nowrap;
     flex-shrink: 0;
-    transition: color 0.2s ease, transform 0.2s ease;
+    transition: color 0.2s ease;
 }
 
-.other-card:hover .other-arrow {
-    color: var(--text-200);
-    transform: translate(1px, -1px);
+.other-arrow {
+    margin-left: auto;
+}
+
+.hack-dest {
+    margin-top: auto;
+    padding-top: 0.2rem;
+}
+
+.other-card:hover .card-dest,
+.hack-card:hover .card-dest {
+    color: var(--accent-gold);
 }
 
 .other-summary {

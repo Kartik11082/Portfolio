@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import Age from "../Age/Age";
+import Experience from "../Age/Experience";
 import "./Title.css";
 
 // The keywords recruiters scan for, drawn from the experience and project sections.
@@ -45,7 +46,8 @@ const Title = ({ phase = "revealed", onNameReady, onOpenResume }) => {
                     <span className="hero-role-item">Former SDE <span className="hero-at">@</span> <a href="#timeline">PyCray</a></span>
                 </p>
                 <p className="hero-age" style={{ "--i": 2 }}>
-                    I&apos;m a <Age /> year-old software engineer.
+                    <span className="hero-age-part">I&apos;m a <Age /> year-old software engineer</span>{" "}
+                    <span className="hero-age-part">with <Experience /> years of experience.</span>
                 </p>
                 <a href="#project-duo" className="hero-now" style={{ "--i": 3 }}>
                     <span className="hero-now-dot" aria-hidden="true" />
@@ -66,8 +68,9 @@ const Title = ({ phase = "revealed", onNameReady, onOpenResume }) => {
                     {STACK.map((tech) => <li key={tech}>{tech}</li>)}
                 </ul>
                 <div className="hero-actions" style={{ "--i": 6 }}>
-                    <button onClick={onOpenResume} className="t-resume" data-umami-event="resume-open" data-umami-event-from="hero">View Resume</button>
                     <p className="hero-links">
+                        {/* a button, not a link: it opens the resume modal rather than a new page */}
+                        <button type="button" onClick={onOpenResume} data-umami-event="resume-open" data-umami-event-from="hero">Resume</button>
                         <a href="https://github.com/Kartik11082" target="_blank" rel="noopener noreferrer" data-umami-event="profile-click" data-umami-event-to="github">GitHub</a>
                         <a href="https://www.linkedin.com/in/kartikkarkera/" target="_blank" rel="noopener noreferrer" data-umami-event="profile-click" data-umami-event-to="linkedin">LinkedIn</a>
                         <a href="mailto:karkerakartik27@gmail.com" data-umami-event="email-click" data-umami-event-from="hero">Email</a>
