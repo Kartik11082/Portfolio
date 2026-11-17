@@ -1,41 +1,41 @@
 .footer {
-    width: 100%;
+  width: 100%;
 }
 
 .footer-content {
-    padding: 2.5rem 2rem;
-    text-align: center;
+  padding: 2.5rem 2rem;
+  text-align: center;
 }
 
 .footer-content h2 {
-    font-size: clamp(1.25rem, 4vw, 1.8rem);
+  font-size: clamp(1.25rem, 4vw, 1.8rem);
 }
 
 .footer-description {
-    margin-top: 0.6rem;
-    color: var(--text-200);
-    font-size: 0.95rem;
+  margin-top: 0.6rem;
+  color: var(--text-200);
+  font-size: 0.95rem;
 }
 
 .footer-link {
-    margin-top: var(--space-3);
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    overflow-wrap: anywhere;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--accent-blue);
-    text-decoration: none;
+  margin-top: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  overflow-wrap: anywhere;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  text-decoration: none;
 }
 
 .footer-link:hover {
-    color: var(--accent-blue);
-    opacity: 0.8;
+  color: var(--accent-blue);
+  opacity: 0.8;
 }
 
 .footer-credit {
-    margin-top: var(--space-4);
-    color: var(--text-300);
-    font-size: 0.84rem;
+  margin-top: var(--space-4);
+  color: var(--text-300);
+  font-size: 0.84rem;
 }

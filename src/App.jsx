@@ -13,7 +13,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 const INTRO_PHASES = {
   TYPING: "typing",
   MOVING: "moving",
-  REVEALED: "revealed"
+  REVEALED: "revealed",
 };
 
 // Single source of truth for the intro timing.
@@ -21,7 +21,7 @@ const INTRO_PHASES = {
 const INTRO_TIMING = {
   typeMs: 1400,
   holdMs: 450,
-  moveMs: 800
+  moveMs: 800,
 };
 
 // Must equal the hero h1 text so the overlay lands exactly on it.
@@ -55,10 +55,13 @@ function App() {
 
     const { typeMs, holdMs, moveMs } = INTRO_TIMING;
     const toMoving = window.setTimeout(() => setPhase(INTRO_PHASES.MOVING), typeMs + holdMs);
-    const toRevealed = window.setTimeout(() => {
-      setPhase(INTRO_PHASES.REVEALED);
-      setIntroCompleted(true);
-    }, typeMs + holdMs + moveMs);
+    const toRevealed = window.setTimeout(
+      () => {
+        setPhase(INTRO_PHASES.REVEALED);
+        setIntroCompleted(true);
+      },
+      typeMs + holdMs + moveMs,
+    );
 
     return () => {
       window.clearTimeout(toMoving);
@@ -72,7 +75,7 @@ function App() {
         ref={introRef}
         className={`hero-intro ${phase !== INTRO_PHASES.TYPING ? "is-moving" : ""} ${phase === INTRO_PHASES.REVEALED ? "is-hidden" : ""}`}
         style={{
-          "--intro-move-ms": `${INTRO_TIMING.moveMs}ms`
+          "--intro-move-ms": `${INTRO_TIMING.moveMs}ms`,
         }}
         aria-hidden="true"
       >
@@ -83,23 +86,39 @@ function App() {
       <main className="site-main">
         <section id="home" className="app-section hero-section">
           <div className="section-content">
-            <Title phase={phase} onNameReady={handleNameReady} onOpenResume={() => setIsResumeOpen(true)} />
+            <Title
+              phase={phase}
+              onNameReady={handleNameReady}
+              onOpenResume={() => setIsResumeOpen(true)}
+            />
           </div>
         </section>
 
-        <section ref={timelineRef} id="timeline" className={`app-section reveal ${timelineVisible ? "is-visible" : ""}`}>
+        <section
+          ref={timelineRef}
+          id="timeline"
+          className={`app-section reveal ${timelineVisible ? "is-visible" : ""}`}
+        >
           <div className="section-content">
             <Timeline />
           </div>
         </section>
 
-        <section ref={projectsRef} id="projects" className={`app-section reveal ${projectsVisible ? "is-visible" : ""}`}>
+        <section
+          ref={projectsRef}
+          id="projects"
+          className={`app-section reveal ${projectsVisible ? "is-visible" : ""}`}
+        >
           <div className="section-content">
             <Projects />
           </div>
         </section>
 
-        <section ref={certsRef} id="certifications" className={`app-section reveal ${certsVisible ? "is-visible" : ""}`}>
+        <section
+          ref={certsRef}
+          id="certifications"
+          className={`app-section reveal ${certsVisible ? "is-visible" : ""}`}
+        >
           <div className="section-content">
             <Certification />
           </div>

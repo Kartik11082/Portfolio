@@ -1,96 +1,98 @@
 .hero-terminal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: calc(100vh - 5.25rem);
-    text-align: center;
-    font-family: var(--font-mono);
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 5.25rem);
+  text-align: center;
+  font-family: var(--font-mono);
+  position: relative;
 }
 
 /* ── Intro overlay ─────────────────────────────────────────── */
 .hero-intro {
-    display: flex;
-    position: fixed;
-    top: 50vh;
-    left: 50vw;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 3000;
-    /* top/left transition fires when JS sets inline styles on phase=moving */
-    transition:
-        top var(--intro-move-ms, 600ms) var(--ease-out-expo),
-        left var(--intro-move-ms, 600ms) var(--ease-out-expo);
+  display: flex;
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 3000;
+  /* top/left transition fires when JS sets inline styles on phase=moving */
+  transition:
+    top var(--intro-move-ms, 600ms) var(--ease-out-expo),
+    left var(--intro-move-ms, 600ms) var(--ease-out-expo);
 }
 
 /* instant hide — no opacity fade so there is zero flicker on the swap */
 .hero-intro.is-hidden {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 /* Block inside the flex overlay: no stray line box, so the overlay centre matches the h1 centre.
    white-space: pre keeps the space between the names, matching the h1 text exactly. */
 .hero-intro-text {
-    margin: 0;
-    white-space: pre;
-    font-family: var(--font-mono);
-    /* starts large; JS sets the target size on phase=moving → CSS transitions it.
+  margin: 0;
+  white-space: pre;
+  font-family: var(--font-mono);
+  /* starts large; JS sets the target size on phase=moving → CSS transitions it.
        18 glyphs ≈ 12.2em wide, so 6.5vw keeps the name inside ~80% of a phone viewport */
-    font-size: clamp(1.3rem, 6.5vw, 3.5rem);
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: 0.08em;
-    color: #ede6d6;
-    transition: font-size var(--intro-move-ms, 800ms) var(--ease-out-expo);
+  font-size: clamp(1.3rem, 6.5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.08em;
+  color: #ede6d6;
+  transition: font-size var(--intro-move-ms, 800ms) var(--ease-out-expo);
 }
 
 /* Untyped characters still take up space, so the layout never changes while typing */
 .hero-intro-rest {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 /* Zero-width caret: the negative margin cancels its width so glyphs never shift */
 .hero-intro-caret {
-    display: inline-block;
-    width: 2px;
-    height: 1.05em;
-    margin-right: -2px;
-    vertical-align: -0.12em;
-    background: rgba(237, 230, 214, 0.85);
-    /* blinks while the finished name holds, like an idle terminal */
-    animation: caretBlink 0.9s steps(1) infinite;
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-right: -2px;
+  vertical-align: -0.12em;
+  background: rgba(237, 230, 214, 0.85);
+  /* blinks while the finished name holds, like an idle terminal */
+  animation: caretBlink 0.9s steps(1) infinite;
 }
 
 /* solid while typing, as a real caret is while keys are pressed */
 .hero-intro-text.is-typing .hero-intro-caret {
-    animation: none;
+  animation: none;
 }
 
 .hero-intro.is-moving .hero-intro-caret {
-    animation: none;
-    opacity: 0;
-    transition: opacity 0.2s ease-out;
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
 }
 
 /* ── Terminal content ──────────────────────────────────────── */
 .terminal-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-    padding-block: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding-block: var(--space-6);
 }
 
 /* All lines (not the name or the gap) start hidden and slide up */
 .terminal-content > *:not(.terminal-name) {
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.45s var(--ease-out-quint), transform 0.45s var(--ease-out-quint);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.45s var(--ease-out-quint),
+    transform 0.45s var(--ease-out-quint);
 }
 
 .terminal-content.revealed > *:not(.terminal-name) {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Stagger each line by its --i index, set inline in Title.jsx.
@@ -98,7 +100,7 @@
    The selector mirrors the base rule's :not() so it out-ranks that rule's
    `transition` shorthand, which would otherwise reset the delay to 0. */
 .terminal-content.revealed > *:not(.terminal-name) {
-    transition-delay: calc(var(--i, 0) * 65ms);
+  transition-delay: calc(var(--i, 0) * 65ms);
 }
 
 /* ── Hierarchy: name → role → age → now → awards → stack → actions ── */
@@ -106,330 +108,347 @@
 /* 1. Name: opacity + transform controlled via inline styles in JSX.
    The intro overlay reads this font-size and shrinks into it. */
 .terminal-name {
-    font-family: var(--font-mono);
-    font-size: clamp(1.5rem, 5.2vw, 2.5rem);
-    font-weight: 400;
-    color: var(--text-100);
-    letter-spacing: 0.08em;
-    line-height: 1.15;
-    margin: 0 0 var(--space-2);
+  font-family: var(--font-mono);
+  font-size: clamp(1.5rem, 5.2vw, 2.5rem);
+  font-weight: 400;
+  color: var(--text-100);
+  letter-spacing: 0.08em;
+  line-height: 1.15;
+  margin: 0 0 var(--space-2);
 }
 
 /* 2. Role: the headline a recruiter reads first, so sans, larger, brightest */
 .hero-role {
-    margin: 0;
-    font-family: var(--font-body);
-    font-size: clamp(1.08rem, 3.2vw, 1.4rem);
-    font-weight: 500;
-    line-height: 1.45;
-    color: var(--text-100);
-    text-wrap: balance;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(1.08rem, 3.2vw, 1.4rem);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--text-100);
+  text-wrap: balance;
 }
 
 .hero-role a {
-    color: inherit;
-    text-decoration: underline;
-    text-decoration-color: rgba(201, 168, 106, 0.45);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.22em;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(201, 168, 106, 0.45);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
 }
 
 .hero-role a:hover {
-    text-decoration-color: var(--accent-gold);
+  text-decoration-color: var(--accent-gold);
 }
 
 /* "@" reads as a handle, so keep it quieter than the company name */
 .hero-at {
-    color: var(--accent-blue);
-    font-weight: 400;
+  color: var(--accent-blue);
+  font-weight: 400;
 }
 
 .hero-sep {
-    margin: 0 0.55em;
-    color: var(--accent-blue);
+  margin: 0 0.55em;
+  color: var(--accent-blue);
 }
 
 /* each role wraps as a unit, never mid-phrase */
 .hero-role-item {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 /* 3. Age: the live number is the signature detail, so it gets the emphasis */
 .hero-age {
-    margin: var(--space-1) 0 0;
-    font-family: var(--font-mono);
-    font-size: clamp(0.82rem, 2.3vw, 0.95rem);
-    line-height: 1.6;
-    color: var(--text-200);
+  margin: var(--space-1) 0 0;
+  font-family: var(--font-mono);
+  font-size: clamp(0.82rem, 2.3vw, 0.95rem);
+  line-height: 1.6;
+  color: var(--text-200);
 }
 
 .hero-age .t-age {
-    font-size: 1.32em;
-    font-weight: 500;
-    vertical-align: -0.06em;
+  font-size: 1.32em;
+  font-weight: 500;
+  vertical-align: -0.06em;
 }
 
 /* each clause wraps as a unit, so a narrow screen breaks the sentence at "with" */
 .hero-age-part {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 /* one integer digit, so it is a character narrower than the age: drop the age's
    reserved width so no gap sits before "years" (tabular digits keep it steady) */
 .hero-age .t-exp {
-    min-width: 0;
+  min-width: 0;
 }
 
 /* 4. Now: a quiet outlined link; the orange dot is its only accent */
 /* inline text (not flex) so a narrow screen wraps the sentence, not the dot and arrow */
 .hero-now {
-    display: inline-block;
-    text-align: center;
-    line-height: 1.6;
-    margin-top: var(--space-4);
-    padding: 0.45rem 0.95rem;
-    min-height: 44px;
-    border: 1px solid rgba(201, 168, 106, 0.24);
-    border-radius: 999px;
-    font-family: var(--font-mono);
-    font-size: clamp(0.8rem, 2.3vw, 0.88rem);
-    color: var(--text-200);
-    text-decoration: none;
-    transition: border-color 0.25s ease, color 0.25s ease;
+  display: inline-block;
+  text-align: center;
+  line-height: 1.6;
+  margin-top: var(--space-4);
+  padding: 0.45rem 0.95rem;
+  min-height: 44px;
+  border: 1px solid rgba(201, 168, 106, 0.24);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: clamp(0.8rem, 2.3vw, 0.88rem);
+  color: var(--text-200);
+  text-decoration: none;
+  transition:
+    border-color 0.25s ease,
+    color 0.25s ease;
 }
 
 .hero-now:hover {
-    border-color: rgba(224, 104, 46, 0.6);
-    color: var(--text-100);
+  border-color: rgba(224, 104, 46, 0.6);
+  color: var(--text-100);
 }
 
 .hero-now strong {
-    color: var(--text-100);
-    font-weight: 500;
+  color: var(--text-100);
+  font-weight: 500;
 }
 
 .hero-now-dot {
-    display: inline-block;
-    vertical-align: 0.12em;
-    margin-right: 0.6em;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent-gold);
+  display: inline-block;
+  vertical-align: 0.12em;
+  margin-right: 0.6em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-gold);
 }
 
 .hero-now-arrow {
-    display: inline-block;
-    margin-left: 0.5em;
-    color: var(--accent-gold);
-    transition: transform 0.25s var(--ease-out-quint);
+  display: inline-block;
+  margin-left: 0.5em;
+  color: var(--accent-gold);
+  transition: transform 0.25s var(--ease-out-quint);
 }
 
 .hero-now:hover .hero-now-arrow {
-    transform: translateX(3px);
+  transform: translateX(3px);
 }
 
 /* 5. Awards: compact badges, rank emphasised */
 .hero-awards,
 .hero-stack {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .hero-awards {
-    gap: var(--space-1);
-    margin-top: var(--space-3);
+  gap: var(--space-1);
+  margin-top: var(--space-3);
 }
 
 .hero-awards a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    min-height: 40px;
-    padding: 0.3rem 0.75rem;
-    border: 1px solid rgba(201, 168, 106, 0.22);
-    border-radius: 8px;
-    font-family: var(--font-mono);
-    font-size: clamp(0.75rem, 2.1vw, 0.82rem);
-    color: var(--text-200);
-    text-decoration: none;
-    transition: border-color 0.25s ease, color 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 40px;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid rgba(201, 168, 106, 0.22);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: clamp(0.75rem, 2.1vw, 0.82rem);
+  color: var(--text-200);
+  text-decoration: none;
+  transition:
+    border-color 0.25s ease,
+    color 0.25s ease;
 }
 
 .hero-awards a:hover {
-    border-color: rgba(201, 168, 106, 0.5);
-    color: var(--text-100);
+  border-color: rgba(201, 168, 106, 0.5);
+  color: var(--text-100);
 }
 
 .hero-award-rank {
-    font-weight: 500;
-    color: var(--accent-blue);
+  font-weight: 500;
+  color: var(--accent-blue);
 }
 
 /* 6. Stack: scannable keywords, quietest text in the block */
 .hero-stack {
-    gap: 0.4rem;
-    max-width: 40rem;
-    margin-top: var(--space-3);
+  gap: 0.4rem;
+  max-width: 40rem;
+  margin-top: var(--space-3);
 }
 
 .hero-stack li {
-    padding: 0.15rem 0.55rem;
-    border: 1px solid rgba(201, 168, 106, 0.14);
-    border-radius: 999px;
-    background: rgba(237, 230, 214, 0.03);
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--text-300);
-    letter-spacing: 0.02em;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid rgba(201, 168, 106, 0.14);
+  border-radius: 999px;
+  background: rgba(237, 230, 214, 0.03);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-300);
+  letter-spacing: 0.02em;
 }
 
 /* 7. Actions: primary resume button, profile links beside it */
 .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2) var(--space-4);
-    margin-top: var(--space-5);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-5);
 }
 
 .hero-links {
-    display: flex;
-    gap: var(--space-4);
-    margin: 0;
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
+  display: flex;
+  gap: var(--space-4);
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
 }
 
 .hero-links a,
 .hero-links button {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    padding: 0;
-    border: none;
-    background: none;
-    font: inherit;
-    color: var(--text-200);
-    text-decoration: none;
-    cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: var(--text-200);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .hero-links a:hover,
 .hero-links button:hover {
-    color: var(--text-100);
-    text-decoration: underline;
-    text-underline-offset: 0.25em;
+  color: var(--text-100);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
 }
 
 .t-age {
-    color: var(--accent-gold);
-    font-variant-numeric: tabular-nums;
-    font-feature-settings: "tnum";
-    letter-spacing: 0.02em;
-    display: inline-block;
-    min-width: 12ch;
-    white-space: nowrap;
-    text-align: left;
+  color: var(--accent-gold);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  letter-spacing: 0.02em;
+  display: inline-block;
+  min-width: 12ch;
+  white-space: nowrap;
+  text-align: left;
 }
 
 .t-age-readable {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* ── Keyframes ─────────────────────────────────────────────── */
 @keyframes caretBlink {
-    50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 @media (max-width: 680px) {
-    .hero-terminal {
-        min-height: calc(100vh - 4.5rem);
-    }
+  .hero-terminal {
+    min-height: calc(100vh - 4.5rem);
+  }
 }
 
 /* Phones: stack the two roles, and let the "Now" chip become a soft card when it wraps */
 @media (max-width: 520px) {
-    .hero-role-item {
-        display: block;
-    }
+  .hero-role-item {
+    display: block;
+  }
 
-    .hero-sep {
-        display: none;
-    }
+  .hero-sep {
+    display: none;
+  }
 
-    /* the age clause alone is wider than a phone, so let it wrap like normal text */
-    .hero-age {
-        text-wrap: balance;
-    }
+  /* the age clause alone is wider than a phone, so let it wrap like normal text */
+  .hero-age {
+    text-wrap: balance;
+  }
 
-    .hero-age-part {
-        white-space: normal;
-    }
+  .hero-age-part {
+    white-space: normal;
+  }
 
-    .hero-now {
-        border-radius: 16px;
-        padding: 0.6rem 0.9rem;
-    }
+  .hero-now {
+    border-radius: 16px;
+    padding: 0.6rem 0.9rem;
+  }
 
-    /* the hero is taller than a phone screen, so the cue would sit on the links;
+  /* the hero is taller than a phone screen, so the cue would sit on the links;
        touch users scroll naturally anyway. Scoped under .hero-terminal so it outranks
        the base .scroll-cue rule, which sits later in this file. */
-    .hero-terminal .scroll-cue {
-        display: none;
-    }
+  .hero-terminal .scroll-cue {
+    display: none;
+  }
 }
 
 /* ── Subtle scroll cue ─────────────────────────────────────── */
 .scroll-cue {
-    position: absolute;
-    bottom: 1.1rem;
-    left: 50%;
-    transform: translateX(-50%) translateY(6px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    min-height: 44px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.6s var(--ease-out-quint) 0.45s, transform 0.6s var(--ease-out-quint) 0.45s;
+  position: absolute;
+  bottom: 1.1rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  min-height: 44px;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.6s var(--ease-out-quint) 0.45s,
+    transform 0.6s var(--ease-out-quint) 0.45s;
 }
 .scroll-cue.revealed {
-    opacity: 0.55;
-    transform: translateX(-50%) translateY(0);
-    pointer-events: auto;
+  opacity: 0.55;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
 }
-.scroll-cue:hover { opacity: 1; }
+.scroll-cue:hover {
+  opacity: 1;
+}
 .scroll-cue-bar {
-    width: 1px;
-    height: 2rem;
-    background: linear-gradient(180deg, transparent, var(--text-300));
-    display: block;
+  width: 1px;
+  height: 2rem;
+  background: linear-gradient(180deg, transparent, var(--text-300));
+  display: block;
 }
 .scroll-cue-arrow {
-    font-size: 0.8rem;
-    color: var(--text-300);
-    line-height: 1;
-    animation: cueDrift 2.4s ease-in-out infinite;
+  font-size: 0.8rem;
+  color: var(--text-300);
+  line-height: 1;
+  animation: cueDrift 2.4s ease-in-out infinite;
 }
 @keyframes cueDrift {
-    0%, 100% { transform: translateY(0); opacity: 0.6; }
-    50% { transform: translateY(4px); opacity: 1; }
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 1;
+  }
 }

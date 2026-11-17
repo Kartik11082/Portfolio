@@ -1,184 +1,198 @@
 .resume-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(20, 17, 13, 0.8);
-    backdrop-filter: blur(14px);
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-4);
-    animation: modalOverlayFade 0.25s var(--ease-out-quart) forwards;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(20, 17, 13, 0.8);
+  backdrop-filter: blur(14px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  animation: modalOverlayFade 0.25s var(--ease-out-quart) forwards;
 }
 
 .resume-modal-container {
-    width: min(920px, 100%);
-    height: min(85vh, 900px);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    border: 1px solid var(--surface-border);
-    box-shadow: var(--shadow-strong);
-    background: rgba(27, 24, 19, 0.96);
-    border-radius: var(--radius-lg);
-    animation: modalSlideUp 0.32s var(--ease-out-back) forwards;
+  width: min(920px, 100%);
+  height: min(85vh, 900px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--shadow-strong);
+  background: rgba(27, 24, 19, 0.96);
+  border-radius: var(--radius-lg);
+  animation: modalSlideUp 0.32s var(--ease-out-back) forwards;
 }
 
 .resume-modal-header {
-    height: 3.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 var(--space-4);
-    background: rgba(237, 230, 214, 0.02);
-    border-bottom: 1px solid var(--surface-border);
-    user-select: none;
+  height: 3.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-4);
+  background: rgba(237, 230, 214, 0.02);
+  border-bottom: 1px solid var(--surface-border);
+  user-select: none;
 }
 
 .terminal-dots {
-    display: flex;
-    gap: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .dot {
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-    transition: filter 0.2s ease, transform 0.15s ease;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition:
+    filter 0.2s ease,
+    transform 0.15s ease;
 }
 
 .dot:hover {
-    filter: brightness(1.2) contrast(1.1);
-    transform: scale(1.1);
+  filter: brightness(1.2) contrast(1.1);
+  transform: scale(1.1);
 }
 
-.dot-red { background-color: #ff5f56; }
-.dot-yellow { background-color: #ffbd2e; }
-.dot-green { background-color: #27c93f; }
+.dot-red {
+  background-color: #ff5f56;
+}
+.dot-yellow {
+  background-color: #ffbd2e;
+}
+.dot-green {
+  background-color: #27c93f;
+}
 
 .resume-modal-title {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--text-200);
-    letter-spacing: 0.05em;
-    font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-200);
+  letter-spacing: 0.05em;
+  font-weight: 500;
 }
 
 .resume-modal-actions {
-    display: flex;
-    gap: var(--space-2);
+  display: flex;
+  gap: var(--space-2);
 }
 
 .modal-action-btn {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    padding: 0.3rem 0.75rem;
-    min-height: 44px;
-    border-radius: 8px;
-    cursor: pointer;
-    background: transparent;
-    border: 1px solid transparent;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s var(--ease-out-quint);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.3rem 0.75rem;
+  min-height: 44px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s var(--ease-out-quint);
 }
 
 .download-btn {
-    color: var(--accent-gold);
-    border-color: rgba(224, 104, 46, 0.35);
-    background: rgba(224, 104, 46, 0.07);
+  color: var(--accent-gold);
+  border-color: rgba(224, 104, 46, 0.35);
+  background: rgba(224, 104, 46, 0.07);
 }
 
 .open-btn {
-    color: var(--text-100);
-    border-color: var(--surface-border);
-    background: rgba(237,230,214,0.04);
+  color: var(--text-100);
+  border-color: var(--surface-border);
+  background: rgba(237, 230, 214, 0.04);
 }
 
 .open-btn:hover {
-    border-color: rgba(201,168,106,0.4);
-    background: rgba(237,230,214,0.07);
+  border-color: rgba(201, 168, 106, 0.4);
+  background: rgba(237, 230, 214, 0.07);
 }
 
 .resume-fallback {
-    padding: 0.6rem 1rem;
-    font-size: 0.78rem;
-    color: var(--text-300);
-    border-bottom: 1px solid var(--surface-border);
-    background: rgba(237,230,214,0.02);
+  padding: 0.6rem 1rem;
+  font-size: 0.78rem;
+  color: var(--text-300);
+  border-bottom: 1px solid var(--surface-border);
+  background: rgba(237, 230, 214, 0.02);
 }
-.resume-fallback a { color: var(--accent-gold); }
+.resume-fallback a {
+  color: var(--accent-gold);
+}
 
 .download-btn:hover {
-    background: rgba(224, 104, 46, 0.16);
-    border-color: var(--accent-gold);
-    color: var(--text-100);
-    box-shadow: none;
+  background: rgba(224, 104, 46, 0.16);
+  border-color: var(--accent-gold);
+  color: var(--text-100);
+  box-shadow: none;
 }
 
 .close-btn {
-    color: var(--text-200);
-    border-color: var(--surface-border);
+  color: var(--text-200);
+  border-color: var(--surface-border);
 }
 
 .close-btn:hover {
-    color: var(--text-100);
-    border-color: rgba(201,168,106,0.35);
-    background: rgba(237,230,214,0.06);
+  color: var(--text-100);
+  border-color: rgba(201, 168, 106, 0.35);
+  background: rgba(237, 230, 214, 0.06);
 }
 
 .resume-modal-body {
-    flex: 1;
-    background: #171410;
-    position: relative;
+  flex: 1;
+  background: #171410;
+  position: relative;
 }
 
 .resume-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: #171410;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #171410;
 }
 
 @keyframes modalOverlayFade {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes modalSlideUp {
-    from {
-        opacity: 0;
-        transform: translateY(24px) scale(0.97);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Mobile layout adaptation */
 @media screen and (max-width: 720px) {
-    .resume-modal-overlay {
-        padding: var(--space-2);
-    }
-    
-    .resume-modal-container {
-        height: 94vh;
-        border-radius: var(--radius-md);
-    }
-    
-    .resume-modal-header {
-        padding: 0 var(--space-3);
-    }
-    
-    .resume-modal-title {
-        display: none;
-    }
+  .resume-modal-overlay {
+    padding: var(--space-2);
+  }
+
+  .resume-modal-container {
+    height: 94vh;
+    border-radius: var(--radius-md);
+  }
+
+  .resume-modal-header {
+    padding: 0 var(--space-3);
+  }
+
+  .resume-modal-title {
+    display: none;
+  }
 }

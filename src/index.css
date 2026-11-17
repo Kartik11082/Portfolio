@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap");
 
 :root {
   --bg-900: #14110d;
@@ -110,7 +110,9 @@ a {
   opacity: 0;
   transform: translateY(24px);
   will-change: opacity, transform;
-  transition: opacity 0.8s var(--ease-out-quint), transform 0.8s var(--ease-out-quint);
+  transition:
+    opacity 0.8s var(--ease-out-quint),
+    transform 0.8s var(--ease-out-quint);
 }
 
 .reveal.is-visible {
@@ -118,11 +120,21 @@ a {
   transform: translateY(0);
 }
 
-.reveal-delay-1 { transition-delay: 100ms; }
-.reveal-delay-2 { transition-delay: 200ms; }
-.reveal-delay-3 { transition-delay: 300ms; }
-.reveal-delay-4 { transition-delay: 400ms; }
-.reveal-delay-5 { transition-delay: 500ms; }
+.reveal-delay-1 {
+  transition-delay: 100ms;
+}
+.reveal-delay-2 {
+  transition-delay: 200ms;
+}
+.reveal-delay-3 {
+  transition-delay: 300ms;
+}
+.reveal-delay-4 {
+  transition-delay: 400ms;
+}
+.reveal-delay-5 {
+  transition-delay: 500ms;
+}
 
 @media (max-width: 720px) {
   :root {

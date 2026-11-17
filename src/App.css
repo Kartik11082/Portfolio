@@ -1,44 +1,49 @@
 .site-main {
-    padding-top: 5.25rem;
+  padding-top: 5.25rem;
 }
 
 .app-section {
-    padding-block: var(--space-6);
-    scroll-margin-top: 6rem;
+  padding-block: var(--space-6);
+  scroll-margin-top: 6rem;
 }
 
 .app-section:not(.hero-section):not(.contact-section) {
-    border-top: none;
-    position: relative;
+  border-top: none;
+  position: relative;
 }
 
 .app-section:not(.hero-section):not(.contact-section)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(224, 104, 46, 0.55) 0%, rgba(201, 168, 106, 0.14) 30%, transparent 65%);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(224, 104, 46, 0.55) 0%,
+    rgba(201, 168, 106, 0.14) 30%,
+    transparent 65%
+  );
 }
 
 .hero-section {
-    min-height: auto;
-    padding-top: 0;
-    padding-bottom: 0;
+  min-height: auto;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .hero-section + .app-section {
-    padding-top: var(--space-6);
+  padding-top: var(--space-6);
 }
 
 .contact-section {
-    padding-top: var(--space-5);
-    padding-bottom: var(--space-5);
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-5);
 }
 
 @media (max-width: 900px) {
-    .site-main {
-        padding-top: 4.5rem;
-    }
+  .site-main {
+    padding-top: 4.5rem;
+  }
 }
