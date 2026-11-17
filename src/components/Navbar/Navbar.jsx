@@ -70,6 +70,8 @@ const Navbar = ({ isReady = true, onOpenResume }) => {
                     <li className="nav-item">
                         <button
                             className="nav-link resume-button"
+                            data-umami-event="resume-open"
+                            data-umami-event-from="nav"
                             onClick={() => {
                                 if (onOpenResume) onOpenResume();
                                 setMenuOpen(false);

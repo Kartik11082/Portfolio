@@ -94,6 +94,11 @@
     border: 1px solid rgba(201,168,106,0.3);
     border-radius: 8px;
     padding: 0.4rem;
+    /* 44px: comfortable thumb target */
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
 }
 
 .menu-icon span {

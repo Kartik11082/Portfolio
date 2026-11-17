@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+<defs>
+<pattern id="d" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.9" fill="#ede6d6" fill-opacity="0.07"/></pattern>
+<radialGradient id="g" cx="55%" cy="55%" r="55%"><stop offset="0" stop-color="#e0682e" stop-opacity="0.11"/><stop offset="1" stop-color="#e0682e" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="640" height="360" fill="#17140f"/>
+<rect width="640" height="360" fill="url(#d)"/>
+<rect width="640" height="360" fill="url(#g)"/>
+<path d="M70 142H570M70 246H570" stroke="#c9a86a" stroke-opacity="0.6" stroke-width="1.5"/>
+<path d="M88 137v10M88 241v10M128 137v10M129.4 241v10M168 137v10M170.8 241v10M208 137v10M212.2 241v10M248 137v10M253.6 241v10M288 137v10M295 241v10M328 137v10M336.4 241v10M368 137v10M377.8 241v10M408 137v10M419.2 241v10M448 137v10M460.6 241v10M488 137v10M502 241v10M528 137v10M543.4 241v10M568 137v10" stroke="#ede6d6" stroke-opacity="0.22" stroke-width="1.2"/>
+<path d="M102 142V246" stroke="#ede6d6" stroke-opacity="0.16" stroke-width="1"/>
+<rect x="97" y="137" width="10" height="10" fill="#17140f" stroke="#ede6d6" stroke-opacity="0.7" stroke-width="1.4"/>
+<rect x="97" y="241" width="10" height="10" fill="#17140f" stroke="#ede6d6" stroke-opacity="0.7" stroke-width="1.4"/>
+<path d="M538 142V246" stroke="#ede6d6" stroke-opacity="0.16" stroke-width="1"/>
+<rect x="533" y="137" width="10" height="10" fill="#17140f" stroke="#ede6d6" stroke-opacity="0.7" stroke-width="1.4"/>
+<rect x="533" y="241" width="10" height="10" fill="#17140f" stroke="#ede6d6" stroke-opacity="0.7" stroke-width="1.4"/>
+<path d="M190 150L201 236" stroke="#e0682e" stroke-opacity="0.55" stroke-width="1.3" stroke-dasharray="3 4"/>
+<circle cx="190" cy="142" r="4" fill="#17140f" stroke="#c9a86a" stroke-width="1.6"/>
+<circle cx="201" cy="246" r="6.5" fill="#e0682e" fill-opacity="0.2" stroke="#e0682e" stroke-width="1.8"/>
+<path d="M318 150L333 236" stroke="#e0682e" stroke-opacity="0.55" stroke-width="1.3" stroke-dasharray="3 4"/>
+<circle cx="318" cy="142" r="4.5" fill="#17140f" stroke="#c9a86a" stroke-width="1.6"/>
+<circle cx="333" cy="246" r="8" fill="#e0682e" fill-opacity="0.2" stroke="#e0682e" stroke-width="1.8"/>
+<path d="M440 150L457 236" stroke="#e0682e" stroke-opacity="0.55" stroke-width="1.3" stroke-dasharray="3 4"/>
+<circle cx="440" cy="142" r="3.5" fill="#17140f" stroke="#c9a86a" stroke-width="1.6"/>
+<circle cx="457" cy="246" r="5.5" fill="#e0682e" fill-opacity="0.2" stroke="#e0682e" stroke-width="1.8"/>
+</svg>

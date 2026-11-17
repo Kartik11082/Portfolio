@@ -60,9 +60,15 @@
 .craft-title { font-size: 0.98rem; font-weight: 700; color: var(--text-100); margin: 0; }
 .craft-summary { font-size: 0.85rem; line-height: 1.7; color: var(--text-200); margin: 0; }
 .craft-event { font-size: 0.75rem; color: var(--text-200); margin: 0; }
-.craft-link {
+/* pinned to the card bottom; holds the demo link and, when present, a source link */
+.craft-links {
     margin-top: auto;
     padding-top: 0.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-4);
+}
+.craft-link {
     font-family: var(--font-mono);
     font-size: 0.82rem;
     color: var(--accent-gold);
@@ -251,7 +257,7 @@
 }
 
 .wip-badge {
-    font-size: 0.62rem;
+    font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+<defs>
+<pattern id="d" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.9" fill="#ede6d6" fill-opacity="0.07"/></pattern>
+<radialGradient id="g" cx="50%" cy="50%" r="55%"><stop offset="0" stop-color="#e0682e" stop-opacity="0.11"/><stop offset="1" stop-color="#e0682e" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="640" height="360" fill="#17140f"/>
+<rect width="640" height="360" fill="url(#d)"/>
+<rect width="640" height="360" fill="url(#g)"/>
+<path d="M174 200H282" stroke="#c9a86a" stroke-opacity="0.55" stroke-width="1.5" stroke-dasharray="4 5"/>
+<path d="M358 200H466" stroke="#c9a86a" stroke-opacity="0.55" stroke-width="1.5" stroke-dasharray="4 5"/>
+<path d="M276 195l6 5-6 5M460 195l6 5-6 5" stroke="#c9a86a" stroke-opacity="0.75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M500 164C500 90 320 90 320 160" stroke="#e0682e" stroke-opacity="0.7" stroke-width="1.5" stroke-dasharray="3 5" stroke-linecap="round"/>
+<path d="M315 153l5 7 5-7" stroke="#e0682e" stroke-opacity="0.85" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="140" cy="200" r="32" stroke="#c9a86a" stroke-width="1.5"/>
+<path d="M134 189V211M134 198C134 192 147 194 147 189" stroke="#ede6d6" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="134" cy="189" r="2.6" fill="#17140f" stroke="#ede6d6" stroke-width="1.6"/>
+<circle cx="134" cy="211" r="2.6" fill="#17140f" stroke="#ede6d6" stroke-width="1.6"/>
+<circle cx="147" cy="189" r="2.6" fill="#17140f" stroke="#ede6d6" stroke-width="1.6"/>
+<path d="M320 170L350 200L320 230L290 200Z" fill="#e0682e" fill-opacity="0.14" stroke="#e0682e" stroke-width="1.8"/>
+<path d="M311 200l6 6 12-12" stroke="#ede6d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="500" cy="200" r="32" stroke="#c9a86a" stroke-width="1.5"/>
+<path d="M488 199L512 190L506 211L499 203Z M499 203L512 190" stroke="#ede6d6" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M130 252h20M310 252h20M490 252h20" stroke="#ede6d6" stroke-opacity="0.18" stroke-width="2" stroke-linecap="round"/>
+</svg>

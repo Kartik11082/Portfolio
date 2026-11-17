@@ -1,7 +1,10 @@
 import "./Projects.css";
-import potionwatchImage from "../../assets/potionwatch.png";
-import ThreeLCxAWS from "../../assets/3LCxAWShackathon.png";
-import tidalhackImage from "../../assets/tidalHackImage.png";
+// Minimal SVG cover art (1–6 KB each), drawn in the site palette
+import duoArt from "../../assets/projects/duo.svg";
+import tracelineArt from "../../assets/projects/traceline.svg";
+import chihuahuaMuffinArt from "../../assets/projects/chihuahua-muffin.svg";
+import waypointArt from "../../assets/projects/waypoint.svg";
+import potionwatchArt from "../../assets/projects/potionwatch.svg";
 
 const PROJECTS = [
     {
@@ -11,17 +14,18 @@ const PROJECTS = [
         tech: ["Python", "LangGraph", "FastAPI", "Telegram", "GitHub Apps"],
         link: "https://github.com/Kartik11082/duo-agent",
         status: "in-progress",
-        mediaLabel: "Long-running AI agent",
+        image: duoArt,
     },
     {
         title: "Traceline",
         summary: "Built an ingestion and alignment pipeline for 15+ years of RCP Inc. inspection records to track corrosion across inspection runs. Designed a matching algorithm that uses fixed hardware anchors to correct odometer drift and align anomalies. Built a React-based 3D dashboard to visualize anomalies and their progression.",
         tech: ["Python", "Flask", "Pandas", "NumPy", "React"],
         link: "http://tidalfrontend.s3-website-us-east-1.amazonaws.com/",
+        repo: "https://github.com/Kartik11082/Traceline-TidalHack2026",
         status: "hackathon",
         awardLabel: "1st Place",
         eventLabel: "TidalHack @ TAMU",
-        image: tidalhackImage,
+        image: tracelineArt,
     },
     {
         title: "Chihuahua vs Muffin",
@@ -31,22 +35,23 @@ const PROJECTS = [
         status: "hackathon",
         awardLabel: "3rd Place",
         eventLabel: "3LC × AWS Club Hackathon",
-        image: ThreeLCxAWS,
+        image: chihuahuaMuffinArt,
     },
     {
         title: "PotionWatch",
         summary: "Built a real-time anomaly detection application for oil and gas transaction records in 24 hours at HackUTD 2025. Combined Python and Pandas data processing with a Flask backend and React interface to surface anomalous transactions for review.",
         tech: ["Python", "Flask", "React", "Pandas"],
-        link: "http://18.220.118.210/",
+        link: "https://devpost.com/software/potionwatch",
         status: "hackathon",
         eventLabel: "HackUTD 2025",
-        image: potionwatchImage,
+        image: potionwatchArt,
     },
     {
         title: "Waypoint",
         summary: "Built a daily geography game that turns real news stories into map-based challenges with three progressive AI clues. Developed a React interface and a serverless FastAPI backend on AWS Lambda, using DynamoDB for game data and Amazon Bedrock for clue generation.",
         tech: ["FastAPI", "React", "AWS Lambda", "DynamoDB", "Bedrock"],
         link: "https://waypoint.madebykartik.us/",
+        image: waypointArt,
         status: "standard",
     },
     {
@@ -90,7 +95,7 @@ function CraftMedia({ p }) {
     if (p.image) {
         return (
             <div className="craft-media">
-                <img src={p.image} alt={p.title} loading="lazy" />
+                <img src={p.image} alt="" width="640" height="360" loading="lazy" />
             </div>
         );
     }
@@ -126,9 +131,16 @@ export const FeaturedCraft = () => (
                                 <span key={t} className="tech-pill">{t}</span>
                             ))}
                         </div>
-                        <a href={p.link} target="_blank" rel="noopener noreferrer" className="craft-link">
-                            {p.link.includes("github.com") ? "View source" : "View project"} <span aria-hidden="true">↗</span>
-                        </a>
+                        <div className="craft-links">
+                            <a href={p.link} target="_blank" rel="noopener noreferrer" className="craft-link" data-umami-event="project-click" data-umami-event-project={p.title}>
+                                {p.link.includes("github.com") ? "View source" : "View project"} <span aria-hidden="true">↗</span>
+                            </a>
+                            {p.repo && (
+                                <a href={p.repo} target="_blank" rel="noopener noreferrer" className="craft-link" data-umami-event="project-click" data-umami-event-project={`${p.title} (source)`}>
+                                    Source <span aria-hidden="true">↗</span>
+                                </a>
+                            )}
+                        </div>
                     </div>
                 </article>
             ))}
@@ -147,10 +159,12 @@ export const ProjectsGrid = () => (
                     href={p.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-umami-event="project-click"
+                    data-umami-event-project={p.title}
                     className={`hack-card glass-panel ${p.awardLabel?.includes("1st") ? "hack-first" : ""}`}
                 >
                     <div className="hack-media">
-                        <img src={p.image} alt={p.title} loading="lazy" />
+                        <img src={p.image} alt="" width="640" height="360" loading="lazy" />
                         <div className="hack-badges">
                             {p.awardLabel && (
                                 <span className={`hbadge ${p.awardLabel.includes("1st") ? "hbadge-first" : "hbadge-win"}`}>
@@ -182,6 +196,8 @@ export const ProjectsGrid = () => (
                     href={p.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-umami-event="project-click"
+                    data-umami-event-project={p.title}
                     className={`other-card glass-panel ${p.status === "in-progress" ? "other-card-wip" : ""}`}
                 >
                     <div className="other-header">

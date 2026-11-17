@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types -- the repo does not use prop-types */
 import { useEffect, useState } from "react";
 
 /**

@@ -2,6 +2,14 @@ import { useEffect, useRef } from "react";
 import Age from "../Age/Age";
 import "./Title.css";
 
+// The keywords recruiters scan for, drawn from the experience and project sections.
+const STACK = ["Python", "SQL", "PostgreSQL", "AWS", "FastAPI", "LangGraph", "Spark", "React"];
+
+const AWARDS = [
+    { rank: "1st", event: "TidalHack" },
+    { rank: "3rd", event: "3LC × AWS AI challenge" },
+];
+
 const Title = ({ phase = "revealed", onNameReady, onOpenResume }) => {
     const nameRef = useRef(null);
 
@@ -28,25 +36,41 @@ const Title = ({ phase = "revealed", onNameReady, onOpenResume }) => {
                 >
                     {"{ KARTIK KARKERA }"}
                 </h1>
-                <p className="terminal-line">
-                    I'm a <Age /> year-old software engineer.
+                <p className="hero-role" style={{ "--i": 1 }}>
+                    <span className="hero-role-item">ML Engineer Intern at <a href="#timeline">Kapi</a></span>
+                    <span className="hero-sep" aria-hidden="true">·</span>
+                    <span className="hero-role-item">Former SDE at <a href="#timeline">PyCray</a></span>
                 </p>
-                <p className="terminal-line">
-                    ML Engineer Intern at <a href="#timeline" className="t-link">Kapi</a>. Former SDE at <a href="#timeline" className="t-link">PyCray</a>.
+                <p className="hero-age" style={{ "--i": 2 }}>
+                    I&apos;m a <Age /> year-old software engineer.
                 </p>
-                <p className="terminal-line">
-                    Currently building <a href="#project-duo" className="t-project">Duo</a>, a long-running AI agent.
-                </p>
-                <p className="terminal-line terminal-awards">
-                    <a href="#projects" className="t-project">1st at TidalHack · 3rd in the 3LC × AWS AI challenge</a>
-                </p>
-                <div className="terminal-gap" />
-                <button onClick={onOpenResume} className="t-resume">View Resume</button>
-                <p className="terminal-line">
-                    <a href="https://github.com/Kartik11082" target="_blank" rel="noopener noreferrer" className="t-link">GitHub</a> · {" "}
-                    <a href="https://www.linkedin.com/in/kartikkarkera/" target="_blank" rel="noopener noreferrer" className="t-link">LinkedIn</a> · {" "}
-                    <a href="mailto:karkerakartik27@gmail.com" className="t-link">Email</a>
-                </p>
+                <a href="#project-duo" className="hero-now" style={{ "--i": 3 }}>
+                    <span className="hero-now-dot" aria-hidden="true" />
+                    <span className="hero-now-label">Now</span>
+                    <span>Building <strong>Duo</strong>, a long-running AI agent</span>
+                    <span className="hero-now-arrow" aria-hidden="true">→</span>
+                </a>
+                <ul className="hero-awards" style={{ "--i": 4 }} aria-label="Hackathon awards">
+                    {AWARDS.map((award) => (
+                        <li key={award.event}>
+                            <a href="#projects">
+                                <span className="hero-award-rank">{award.rank}</span>
+                                {award.event}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+                <ul className="hero-stack" style={{ "--i": 5 }} aria-label="Core stack">
+                    {STACK.map((tech) => <li key={tech}>{tech}</li>)}
+                </ul>
+                <div className="hero-actions" style={{ "--i": 6 }}>
+                    <button onClick={onOpenResume} className="t-resume" data-umami-event="resume-open" data-umami-event-from="hero">View Resume</button>
+                    <p className="hero-links">
+                        <a href="https://github.com/Kartik11082" target="_blank" rel="noopener noreferrer" data-umami-event="profile-click" data-umami-event-to="github">GitHub</a>
+                        <a href="https://www.linkedin.com/in/kartikkarkera/" target="_blank" rel="noopener noreferrer" data-umami-event="profile-click" data-umami-event-to="linkedin">LinkedIn</a>
+                        <a href="mailto:karkerakartik27@gmail.com" data-umami-event="email-click" data-umami-event-from="hero">Email</a>
+                    </p>
+                </div>
             </div>
             <button
                 className={`scroll-cue ${isRevealed ? "revealed" : ""}`}

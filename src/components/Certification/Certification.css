@@ -136,6 +136,7 @@
     font-family: var(--font-mono);
     font-size: 0.76rem;
     white-space: nowrap;
+    min-height: 44px;
     transition: color 0.2s ease, transform 0.2s ease;
 }
 

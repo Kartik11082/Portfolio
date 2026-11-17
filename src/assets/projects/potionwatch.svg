@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+<defs>
+<pattern id="d" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.9" fill="#ede6d6" fill-opacity="0.07"/></pattern>
+<radialGradient id="g" cx="63%" cy="32%" r="55%"><stop offset="0" stop-color="#e0682e" stop-opacity="0.11"/><stop offset="1" stop-color="#e0682e" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="640" height="360" fill="#17140f"/>
+<rect width="640" height="360" fill="url(#d)"/>
+<rect width="640" height="360" fill="url(#g)"/>
+<rect x="56" y="192" width="528" height="44" fill="#c9a86a" fill-opacity="0.06"/>
+<path d="M56 192H584M56 236H584" stroke="#c9a86a" stroke-opacity="0.22" stroke-width="1" stroke-dasharray="2 5"/>
+<path d="M56 205.4 L68 216.6 L80 221 L92 210.4 L104 204.7 L116 213.5 L128 217.3 L140 221.7 L152 205.5 L164 204.9 L176 218.9 L188 217.3 L200 224.7 L212 220.9 L224 213.3 L236 212.1 L248 232 L260 212 L272 208.5 L284 206 L296 214.7 L308 215 L320 211.6 L332 213.6 L344 215.9 L356 218.8 L368 221.7 L380 215.5 L392 216.8 L404 86 L416 208.1 L428 214 L440 208.6 L452 215.5 L464 237.1 L476 213.7 L488 219.9 L500 204.7 L512 212 L524 218.6 L536 213.4 L548 216.6 L560 214.7 L572 207 L584 217.9" stroke="#ede6d6" stroke-opacity="0.8" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="404" cy="86" r="20" stroke="#e0682e" stroke-width="1.6" stroke-dasharray="4 4"/>
+<circle cx="404" cy="86" r="4.5" fill="#e0682e"/>
+<path d="M404 110V254" stroke="#e0682e" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="2 4"/>
+<path d="M56 280H584" stroke="#ede6d6" stroke-opacity="0.12" stroke-width="1"/>
+</svg>
