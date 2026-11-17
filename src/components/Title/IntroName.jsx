@@ -2,13 +2,13 @@
 import { useEffect, useState } from "react";
 
 /**
- * Types every part in parallel over `durationMs`, so they all finish together.
+ * Types `text` left to right over `durationMs` with a single caret.
  *
  * The full text is always rendered; untyped characters are only `visibility: hidden`.
  * That keeps the layout at its final width from the first frame, so nothing is clipped,
  * nothing shifts while typing, and the text sits exactly where the hero h1's text does.
  */
-function IntroName({ parts, durationMs }) {
+function IntroName({ text, durationMs }) {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
@@ -23,22 +23,14 @@ function IntroName({ parts, durationMs }) {
         return () => cancelAnimationFrame(frame);
     }, [durationMs]);
 
-    const isTyping = progress < 1;
+    // ceil: the first character appears on the first frame, the last exactly at t = 1
+    const typed = Math.ceil(progress * text.length);
 
     return (
-        <p className={`hero-intro-text ${isTyping ? "is-typing" : ""}`}>
-            {parts.map((part, index) => {
-                // ceil: the first character appears on the first frame, the last exactly at t = 1
-                const typed = Math.ceil(progress * part.length);
-                return (
-                    <span className="hero-intro-part" key={part}>
-                        {index > 0 && " "}
-                        {part.slice(0, typed)}
-                        <span className="hero-intro-caret" />
-                        <span className="hero-intro-rest">{part.slice(typed)}</span>
-                    </span>
-                );
-            })}
+        <p className={`hero-intro-text ${progress < 1 ? "is-typing" : ""}`}>
+            {text.slice(0, typed)}
+            <span className="hero-intro-caret" />
+            <span className="hero-intro-rest">{text.slice(typed)}</span>
         </p>
     );
 }

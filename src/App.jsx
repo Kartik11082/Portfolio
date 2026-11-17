@@ -17,15 +17,15 @@ const INTRO_PHASES = {
 };
 
 // Single source of truth for the intro timing.
-// First and last name type in parallel over typeMs, hold, then glide into the hero heading.
+// The name types over typeMs, holds, then glides into the hero heading.
 const INTRO_TIMING = {
-  typeMs: 1100,
+  typeMs: 1400,
   holdMs: 450,
   moveMs: 800
 };
 
-// Typed in parallel; joined with a space they must equal the hero h1 text.
-const INTRO_PARTS = ["{ KARTIK", "KARKERA }"];
+// Must equal the hero h1 text so the overlay lands exactly on it.
+const INTRO_NAME = "{ KARTIK KARKERA }";
 
 function App() {
   const [phase, setPhase] = useState(INTRO_PHASES.TYPING);
@@ -76,7 +76,7 @@ function App() {
         }}
         aria-hidden="true"
       >
-        <IntroName parts={INTRO_PARTS} durationMs={INTRO_TIMING.typeMs} />
+        <IntroName text={INTRO_NAME} durationMs={INTRO_TIMING.typeMs} />
       </div>
 
       <Navbar isReady={introCompleted} onOpenResume={() => setIsResumeOpen(true)} />
