@@ -20,7 +20,7 @@ const TIMELINE_ENTRIES = [
     roles: [
       {
         type: "work",
-        title: "Grader - Computer Architecture",
+        title: "Teaching Assistant - Computer Architecture",
         org: "Prof. Alice Wang · University of Texas at Dallas",
         date: "Jan 2025 - May 2026",
       },
